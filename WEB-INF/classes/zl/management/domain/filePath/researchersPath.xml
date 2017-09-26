@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.filePath.ResearchersPath">
+	<insert id="add" parameterType="ResearchersPath">
+		insert into researcher_path(reaId, path)
+		values(#{reaId}, #{path})
+	</insert>
+
+	<update id="update" parameterType="ResearchersPath">
+		update user set researcher_path(path)
+		values(#{path})
+		where reaId=#{reaId}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from researcher_path where reaId = #{reaId}
+	</delete>
+
+    <select id="list" parameterType="Map" resultType="ResearchersPath">
+        select * from researcher_path where reaId = #{reaId}
+    </select>
+</mapper>
