@@ -2,21 +2,18 @@ package zl.management.test;
 
 import org.junit.Test;
 
-import zl.management.dao.AttendMeetingDao;
 import zl.management.dao.DAOFactory;
-import zl.management.domain.AttendMeeting;
+import zl.management.dao.imp.AcademicLectureDaoImp;
+import zl.management.domain.AcademicLecture;
 
 public class TestDao {
-	//private static ResearchersDao dao = DAOFactory.getResearchersDao();
-	private static AttendMeetingDao dao = DAOFactory.getAttendMeetingDao();
+	private static AcademicLectureDaoImp dao = DAOFactory.getAcademicLectureDao();
 	//@Test
 	public void testAdd() {
-		AttendMeeting atm = new AttendMeeting();
-		atm.setAttendee("小黑");
-		atm.setAuditStatus("信息学院");
-		atm.setConferenceName("天下第一黑项目");
-		
-		dao.add(atm);
+		AcademicLecture al = new AcademicLecture();
+		al.setEmecc("小白白");
+		al.setLectureName("学术讲座2");
+		dao.add(al);
 	}
 	
 	//@Test
@@ -26,12 +23,5 @@ public class TestDao {
 	
 	@Test
 	public void testUpdate() {
-		AttendMeeting atm = new AttendMeeting();
-		atm.setId(2);
-		atm.setAttendee("大黑");
-		atm.setAuditStatus("信息学院");
-		atm.setConferenceName("天下第一黑项目");
-		
-		dao.update(atm);
 	}
 }

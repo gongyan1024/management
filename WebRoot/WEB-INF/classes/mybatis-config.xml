@@ -24,5 +24,7 @@
 		<mapper resource="zl/management/domain/domainXml/researchersPath.xml"></mapper>
 		<mapper resource="zl/management/domain/domainXml/attendMeeting.xml"></mapper>
 		<mapper resource="zl/management/domain/domainXml/attendMeetingPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/academicLecture.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/academicLecturePath.xml"></mapper>
 	</mappers>
 </configuration>

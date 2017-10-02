@@ -154,14 +154,15 @@ public class ExcelUtil {
 			}
 			
 			List<Object> linked = new LinkedList<Object>();
-			for (int j = row.getFirstCellNum(); j <= row.getLastCellNum(); j++) {
+			for (int j = row.getFirstCellNum(); j < row.getLastCellNum(); j++) {
 				cell = row.getCell(j);
 				if (cell == null) {
+					linked.add("");
 					continue;
 				}
 				DecimalFormat df = new DecimalFormat("0");// 格式化 number String 字符
 				SimpleDateFormat sdf = new SimpleDateFormat(
-						"yyyy-MM-dd HH:mm:ss");// 格式化日期字符串
+						"yyyy-MM-dd");// 格式化日期字符串
 				DecimalFormat nf = new DecimalFormat("0.00");// 格式化数字
 				switch (cell.getCellType()) {
 				case XSSFCell.CELL_TYPE_STRING:
@@ -186,9 +187,6 @@ public class ExcelUtil {
 					break;
 				default:
 					value = cell.toString();
-				}
-				if (value == null || "".equals(value)) {
-					continue;
 				}
 				linked.add(value);
 			}

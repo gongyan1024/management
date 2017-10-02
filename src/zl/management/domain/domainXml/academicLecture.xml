@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.AcademicLecture">
+	<insert id="add" parameterType="AcademicLecture">
+		insert into academicLecture(
+		lectureName, subordinateUnit, teachingAndResearchSection, lectureType,
+		lectureDate, lectureLevel, lectureAssignment, speaker, speakerUnit,
+		keynoteHolder, titleOfSpeaker, venue, auditStatus,
+		attendanceAtLectures, relatedDisciplines, lectureObjects, emcee,
+		distinguishedGuest, moderatorResume, viewSummary)values(
+		#{lectureName}, #{subordinateUnit}, #{teachingAndResearchSection},
+		#{lectureType}, #{lectureDate}, #{lectureLevel}, #{lectureAssignment},
+		#{speaker}, #{speakerUnit}, #{keynoteHolder}, #{titleOfSpeaker},
+		#{venue}, #{auditStatus}, #{attendanceAtLectures},
+		#{relatedDisciplines}, #{lectureObjects}, #{emcee},
+		#{distinguishedGuest}, #{moderatorResume}, #{viewSummary})
+
+	</insert>
+
+	<update id="update" parameterType="AcademicLecture">
+		update academicLecture set
+		lectureName=#{lectureName}, subordinateUnit=#{subordinateUnit},
+		teachingAndResearchSection=#{teachingAndResearchSection},
+		lectureType=#{lectureType}, lectureDate=#{lectureDate},
+		lectureLevel=#{lectureLevel}, lectureAssignment=#{lectureAssignment},
+		speaker=#{speaker}, speakerUnit=#{speakerUnit},
+		keynoteHolder=#{keynoteHolder}, titleOfSpeaker=#{titleOfSpeaker},
+		venue=#{venue}, auditStatus=#{auditStatus},
+		attendanceAtLectures=#{attendanceAtLectures},
+		relatedDisciplines=#{relatedDisciplines},
+		lectureObjects=#{lectureObjects}, emcee=#{emcee},
+		distinguishedGuest=#{distinguishedGuest},
+		moderatorResume=#{moderatorResume}, viewSummary=#{viewSummary}
+
+		where id
+		= #{id}
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		delete from academicLecture
+		where
+		id =
+		#{id}
+	</delete>
+
+	<select id="load" parameterType="int" resultType="AcademicLecture">
+		select * from
+		academicLecture where id = #{id}
+	</select>
+
+	<select id="loadByName" parameterType="String" resultType="AcademicLecture">
+		select * from academicLecture where lectureName = #{lectureName}
+	</select>
+
+	<select id="find" parameterType="Map" resultType="AcademicLecture">
+		select * from academicLecture
+		<where>
+			<if test="lectureName != null and lectureName != ''">
+				(lectureName like #{lectureName})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if test="speaker != null and speaker != ''">
+				(speaker = #{speaker})
+			</if>
+			<if test="lectureLevel != null and lectureLevel != ''">
+				(lectureLevel = #{lectureLevel})
+			</if>
+			<if test="lectureType != null and lectureType != ''">
+				(lectureType = #{lectureType})
+			</if>
+		</where>
+		limit #{pageOffset}, #{pageSize}
+	</select>
+
+	<select id="find_count" parameterType="Map" resultType="int">
+		select
+		count(*) from academicLecture
+	</select>
+
+	<select id="list" parameterType="Map" resultType="AcademicLecture">
+		select * from academicLecture
+		<!--order by ${sort} ${order} -->
+	</select>
+</mapper>

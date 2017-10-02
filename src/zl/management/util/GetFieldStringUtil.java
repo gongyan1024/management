@@ -2,7 +2,7 @@ package zl.management.util;
 
 import java.lang.reflect.Field;
 
-import zl.management.domain.AttendMeeting;
+import zl.management.domain.AcademicLecture;
 
 public class GetFieldStringUtil {
 	public static String getInsertString(Class<?> clz) {
@@ -79,7 +79,7 @@ public class GetFieldStringUtil {
 
 		return sb.toString();
 	}
-	
+
 	public static String dealTheadHtml(Class<?> clz) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<tr>");
@@ -94,10 +94,10 @@ public class GetFieldStringUtil {
 			sb.append("\r\n");
 		}
 		sb.append("</tr>");
-		
+
 		return sb.toString();
 	}
-	
+
 	public static String dealTbodyHtml(Class<?> clz) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<tr>");
@@ -112,14 +112,15 @@ public class GetFieldStringUtil {
 			sb.append("\r\n");
 		}
 		sb.append("</tr>");
-		
+
 		return sb.toString();
 	}
-	
+
 	public static void main(String[] args) {
-		String str = "参会人	所属单位	教研室	会议名称	主办单位	会议类型	学科门类	参会地址	"
-				+ "参会日期	是否提交论文	论文题目	是否特邀报告	报告题目	审核状态";
-		System.out.println(dealTbodyHtml(AttendMeeting.class));
+		String str = "讲座名称	所属单位	教研室	讲座类型	讲座日期	讲座级别	讲座归属	主讲人	主讲人单位	主讲人职务	主讲人职称	讲座地点	审核状态	参加讲座人数	相关学科	讲座对象	主持人	嘉宾	主讲人学术简历	观点综述";
+		String[] strings = { "讲座名称", "所属单位", "教研室", "讲座类型", "讲座日期", "讲座级别", "讲座归属", "主讲人", "主讲人单位", "主讲人职务", "主讲人职称",
+				"讲座地点", "审核状态", "参加讲座人数", "相关学科", "讲座对象", "主持人", "嘉宾", "主讲人学术简历", "观点综述" };
+		System.out.println(dealTrHtml(strings, AcademicLecture.class));
 	}
 
 }

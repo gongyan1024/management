@@ -24,7 +24,7 @@
 				<div id="func">
 					<c:if test="${user.type == 1}">
 						<form
-							action="${pageContext.request.contextPath}/readExcelAttendMeeting"
+							action="${pageContext.request.contextPath}/readExcelAcademicLecture"
 							enctype="multipart/form-data" method="post" class="function">
 							上传excel:<input type="file" name="user" id="lg-form"> <input
 								type="submit" value="导入" id="lg-form">
@@ -32,29 +32,31 @@
 					</c:if>
 
 					<form
-						action="${pageContext.request.contextPath}/exportAttendMeeting"
+						action="${pageContext.request.contextPath}/exportAcademicLecture"
 						method="post" class="function">
 						<input type="submit" value="导出" id="lg-form">
 					</form>
-					<form action="${pageContext.request.contextPath}/findAttendMeeting"
+					<form
+						action="${pageContext.request.contextPath}/findAcademicLecture"
 						method="post" class="function">
 						<input type="submit" value="查询" id="lg-form">
 					</form>
-					<form action="${pageContext.request.contextPath}/addAttendMeeting"
+					<form
+						action="${pageContext.request.contextPath}/addAcademicLecture"
 						method="post" class="function">
 						<input type="submit" value="新增" id="lg-form">
 					</form>
 				</div>
 				<div>
 					<table>
-				    <h3 align="center">参加会议相关操作</h3>
+					<h3 align="center">学术讲座相关操作</h3>
 						<thead>
 							<tr>
-								<td>会议名称</td>
-								<td>参会人</td>
-								<td>主办单位</td>
-								<td>会议类型</td>
-								<td>参会日期</td>
+								<td>讲座名称</td>
+								<td>所属单位</td>
+								<td>讲座类型</td>
+								<td>讲座日期</td>
+								<td>主讲人</td>
 								<td>审核状态</td>
 								<td>操作</td>
 							</tr>
@@ -62,16 +64,16 @@
 						<tbody>
 							<c:forEach items="${entryList}" var="entry">
 								<tr align="center">
-									<td><a href="showAttendMeetingDetail?id=${entry.id}">${entry.conferenceName}</a></td>
-									<td>${entry.attendee}</td>
-									<td>${entry.sponsor}</td>
-									<td>${entry.meetingType}</td>
-									<td>${entry.participantDate}</td>
+									<td><a href="showAcademicLectureDetail?id=${entry.id}">${entry.lectureName}</a></td>
+									<td>${entry.subordinateUnit}</td>
+									<td>${entry.lectureType}</td>
+									<td>${entry.lectureDate}</td>
+									<td>${entry.speaker}</td>
 									<td>${entry.auditStatus}</td>
-									<td><a href="editAttendMeeting?id=${entry.id}">编辑</a> <a
-										href="showDownloadAttendMeeting?id=${entry.id}">下载</a> <c:if
+									<td><a href="editAcademicLecture?id=${entry.id}">编辑</a> <a
+										href="showDownloadAcademicLecture?id=${entry.id}">下载</a> <c:if
 											test="${user.type == 1}">
-											<a href="deleteAttendMeeting?id=${entry.id}">删除</a>
+											<a href="deleteAcademicLecture?id=${entry.id}">删除</a>
 										</c:if></td>
 								</tr>
 							</c:forEach>

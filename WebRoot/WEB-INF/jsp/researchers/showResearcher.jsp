@@ -46,6 +46,7 @@
 				</div>
 				<div>
 					<table>
+					<h3 align="center">科研人员相关操作</h3>
 						<thead>
 							<tr>
 								<td>人员名称</td>

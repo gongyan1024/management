@@ -65,3 +65,25 @@ CREATE TABLE attendMeeting_path(
     CONSTRAINT FOREIGN KEY(atmId) REFERENCES attendMeeting(id) ON DELETE CASCADE
 );
 
+CREATE TABLE academicLecture (
+    id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    lectureName VARCHAR(50) NOT NULL UNIQUE`management`,
+    subordinateUnit VARCHAR(30),
+    teachingAndResearchSection VARCHAR(30),
+    lectureType VARCHAR(50),
+    lectureDate VARCHAR(20),
+    lectureLevel VARCHAR(20),
+    lectureAssignment VARCHAR(20),
+    speaker VARCHAR(20),
+    speakerUnit VARCHAR(50),
+    titleOfSpeaker VARCHAR(20),
+    venue VARCHAR(50),
+    auditStatus VARCHAR(20),
+    attendanceAtLectures VARCHAR(10),
+    relatedDisciplines VARCHAR(30),
+    lectureObjects VARCHAR(25),
+    emcee VARCHAR(20),
+    distinguishedGuest VARCHAR(50),
+    moderatorResume TEXT,
+    viewSummary TEXT(50)
+);

@@ -56,10 +56,10 @@
 				(attendee like #{attendee})
 			</if>
 			<if test="conferenceName != null and conferenceName != ''">
-				(conferenceName == #{conferenceName})
+				(conferenceName = #{conferenceName})
 			</if>
 			<if test="sponsor != null and sponsor != ''">
-				(sponsor == #{sponsor})
+				(sponsor = #{sponsor})
 			</if>
 			<if test="participantDate != null and participantDate != ''">
 				(sponsor like #{participantDate})

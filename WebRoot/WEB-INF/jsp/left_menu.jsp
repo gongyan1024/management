@@ -70,7 +70,7 @@
 				<span></span>学术活动
 			</h4>
 			<div class="list-item none">
-				<a href="">主办会议</a> <a href="">学术讲座</a> <a
+				<a href="">主办会议</a> <a href="showAcademicLecture">学术讲座</a> <a
 					href="showAttendMeeting">参加会议</a>
 			</div>
 		</li>

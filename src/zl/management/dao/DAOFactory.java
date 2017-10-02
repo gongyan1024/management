@@ -1,5 +1,7 @@
 package zl.management.dao;
 
+import zl.management.dao.imp.AcademicLectureDaoImp;
+import zl.management.dao.imp.AcademicLecturePathDaoImp;
 import zl.management.dao.imp.AttendMeetingDaoImp;
 import zl.management.dao.imp.AttendMeetingPathDaoImp;
 import zl.management.dao.imp.ResearchersDaoImp;
@@ -26,5 +28,13 @@ public class DAOFactory {
 	
 	public static AttendMeetingPathDaoImp getAttendMeetingPathDao() {
 		return new AttendMeetingPathDaoImp();
+	}
+	
+	public static AcademicLectureDaoImp getAcademicLectureDao() {
+		return new AcademicLectureDaoImp();
+	}
+	
+	public static AcademicLecturePathDaoImp getAcademicLecturePathDao() {
+		return new AcademicLecturePathDaoImp();
 	}
 }
