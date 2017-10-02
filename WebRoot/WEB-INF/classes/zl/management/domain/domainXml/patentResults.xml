@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.PatentResults">
+	<insert id="add" parameterType="PatentResults">
+		insert into patentresults(
+		patentName, firstInventorType, firstInventor, subordinateUnits,
+		office, patentInventor, patentType, patentscope, patentStatus,
+		applicationNumber, applicationDate, openNo, openDate, licenseNo,
+		licenseDate, theSchoolName, auditStatus, remark,
+		isPositionPatent)values(#{patentName}, #{firstInventorType},
+		#{firstInventor}, #{subordinateUnits}, #{office}, #{patentInventor},
+		#{patentType}, #{patentscope}, #{patentStatus}, #{applicationNumber},
+		#{applicationDate}, #{openNo}, #{openDate}, #{licenseNo},
+		#{licenseDate}, #{theSchoolName}, #{auditStatus}, #{remark},
+		#{isPositionPatent})
+	</insert>
+
+	<update id="update" parameterType="PatentResults">
+		update patentresults set
+		patentName=#{patentName}, firstInventorType=#{firstInventorType},
+		firstInventor=#{firstInventor}, subordinateUnits=#{subordinateUnits},
+		office=#{office}, patentInventor=#{patentInventor},
+		patentType=#{patentType}, patentscope=#{patentscope},
+		patentStatus=#{patentStatus}, applicationNumber=#{applicationNumber},
+		applicationDate=#{applicationDate}, openNo=#{openNo},
+		openDate=#{openDate}, licenseNo=#{licenseNo},
+		licenseDate=#{licenseDate}, theSchoolName=#{theSchoolName},
+		auditStatus=#{auditStatus}, remark=#{remark},
+		isPositionPatent=#{isPositionPatent}
+		where id
+		= #{id}
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		delete from patentresults
+		where
+		id =
+		#{id}
+	</delete>
+
+	<select id="load" parameterType="int" resultType="PatentResults">
+		select * from
+		patentresults where id = #{id}
+	</select>
+
+	<select id="loadByName" parameterType="String" resultType="PatentResults">
+		select * from patentresults where lectureName = #{lectureName}
+	</select>
+
+	<select id="find" parameterType="Map" resultType="PatentResults">
+		select * from patentresults
+		<where>
+			<if test="patentName != null and patentName != ''">
+				(patentName like #{patentName})
+			</if>
+			<if test="firstInventor != null and firstInventor != ''">
+				(firstInventor = #{firstInventor})
+			</if>
+			<if test="patentInventor != null and patentInventor != ''">
+				(patentInventor = #{patentInventor})
+			</if>
+			<if test="applicationNumber != null and applicationNumber != ''">
+				(applicationNumber = #{applicationNumber})
+			</if>
+			<if test="patentStatus != null and patentStatus != ''">
+				(patentStatus = #{patentStatus})
+			</if>
+			<if test="openNo != null and openNo != ''">
+				(openNo = #{openNo})
+			</if>
+			<if test="licenseNo != null and licenseNo != ''">
+				(licenseNo = #{licenseNo})
+			</if>
+		</where>
+		limit #{pageOffset}, #{pageSize}
+	</select>
+
+	<select id="find_count" parameterType="Map" resultType="int">
+		select
+		count(*) from patentresults
+	</select>
+
+	<select id="list" parameterType="Map" resultType="PatentResults">
+		select * from patentresults
+		<!--order by ${sort} ${order} -->
+	</select>
+</mapper>

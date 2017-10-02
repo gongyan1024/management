@@ -16,7 +16,6 @@
 		#{venue}, #{auditStatus}, #{attendanceAtLectures},
 		#{relatedDisciplines}, #{lectureObjects}, #{emcee},
 		#{distinguishedGuest}, #{moderatorResume}, #{viewSummary})
-
 	</insert>
 
 	<update id="update" parameterType="AcademicLecture">

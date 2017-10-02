@@ -26,5 +26,9 @@
 		<mapper resource="zl/management/domain/domainXml/attendMeetingPath.xml"></mapper>
 		<mapper resource="zl/management/domain/domainXml/academicLecture.xml"></mapper>
 		<mapper resource="zl/management/domain/domainXml/academicLecturePath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/meetingHost.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/meetingHostPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/patentResults.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/patentResultsPath.xml"></mapper>
 	</mappers>
 </configuration>

@@ -73,7 +73,7 @@
 									<td><a href="editAcademicLecture?id=${entry.id}">编辑</a> <a
 										href="showDownloadAcademicLecture?id=${entry.id}">下载</a> <c:if
 											test="${user.type == 1}">
-											<a href="deleteAcademicLecture?id=${entry.id}">删除</a>
+											<a href="dropAcademicLecture?id=${entry.id}">删除</a>
 										</c:if></td>
 								</tr>
 							</c:forEach>

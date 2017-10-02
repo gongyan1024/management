@@ -1,26 +1,155 @@
 ﻿package zl.management.domain;
 //专利成果
 public class PatentResults {
+	private int id;
+	private String patentName; //专利名称
+	private String firstInventorType; //第一发明人类型
+	private String firstInventor; //第一发明人
+	private String subordinateUnits; //所属单位
+	private String office; //教研室
+	private String patentInventor; //专利发明人
+	private String patentType; //专利类型
+	private String patentscope; //专利范围
+	private String patentStatus; //专利状态
+	private String applicationNumber; //申请号
+	private String applicationDate; //申请日期
+	private String openNo; //公开号
+	private String openDate; //公开日期
+	private String licenseNo; //授权号
+	private String licenseDate; //授权日期
+	private String theSchoolName; //学校署名
+	private String auditStatus; //审核状态
+	private String remark; //备注
+	private String isPositionPatent; //是否为职务专利
 	
-	private String TheNameOfThePatent; //专利名称
-	private String TheFirstInventorType; //第一发明人类型
-	private String FirstInventor; //第一发明人
-	private String SubordinateUnits; //所属单位
-	private String Office; //教研室
-	private String PatentInventor; //专利发明人
-	private String PatentType; //专利类型
-	private String ScopeOfThePatent; //专利范围
-	private String PatentStatus; //专利状态
-	private String ApplicationNumber; //申请号
-	private String ApplicationDate; //申请日期
-	private String OpenNo; //公开号
-	private String OpenDate; //公开日期
-	private String LicenseNo; //授权号
-	private String LicenseDate; //授权日期
-	private String TheSchoolName; //学校署名
-	private String AuditStatus; //审核状态
-	private String Remark; //备注
-	private String WhetherItIsAPositionPatent; //是否为职务专利
-	
-
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getPatentName() {
+		return patentName;
+	}
+	public void setPatentName(String patentName) {
+		this.patentName = patentName;
+	}
+	public String getFirstInventorType() {
+		return firstInventorType;
+	}
+	public void setFirstInventorType(String firstInventorType) {
+		this.firstInventorType = firstInventorType;
+	}
+	public String getFirstInventor() {
+		return firstInventor;
+	}
+	public void setFirstInventor(String firstInventor) {
+		this.firstInventor = firstInventor;
+	}
+	public String getSubordinateUnits() {
+		return subordinateUnits;
+	}
+	public void setSubordinateUnits(String subordinateUnits) {
+		this.subordinateUnits = subordinateUnits;
+	}
+	public String getOffice() {
+		return office;
+	}
+	public void setOffice(String office) {
+		this.office = office;
+	}
+	public String getPatentInventor() {
+		return patentInventor;
+	}
+	public void setPatentInventor(String patentInventor) {
+		this.patentInventor = patentInventor;
+	}
+	public String getPatentType() {
+		return patentType;
+	}
+	public void setPatentType(String patentType) {
+		this.patentType = patentType;
+	}
+	public String getPatentscope() {
+		return patentscope;
+	}
+	public void setPatentscope(String patentscope) {
+		this.patentscope = patentscope;
+	}
+	public String getPatentStatus() {
+		return patentStatus;
+	}
+	public void setPatentStatus(String patentStatus) {
+		this.patentStatus = patentStatus;
+	}
+	public String getApplicationNumber() {
+		return applicationNumber;
+	}
+	public void setApplicationNumber(String applicationNumber) {
+		this.applicationNumber = applicationNumber;
+	}
+	public String getApplicationDate() {
+		return applicationDate;
+	}
+	public void setApplicationDate(String applicationDate) {
+		this.applicationDate = applicationDate;
+	}
+	public String getOpenNo() {
+		return openNo;
+	}
+	public void setOpenNo(String openNo) {
+		this.openNo = openNo;
+	}
+	public String getOpenDate() {
+		return openDate;
+	}
+	public void setOpenDate(String openDate) {
+		this.openDate = openDate;
+	}
+	public String getLicenseNo() {
+		return licenseNo;
+	}
+	public void setLicenseNo(String licenseNo) {
+		this.licenseNo = licenseNo;
+	}
+	public String getLicenseDate() {
+		return licenseDate;
+	}
+	public void setLicenseDate(String licenseDate) {
+		this.licenseDate = licenseDate;
+	}
+	public String getTheSchoolName() {
+		return theSchoolName;
+	}
+	public void setTheSchoolName(String theSchoolName) {
+		this.theSchoolName = theSchoolName;
+	}
+	public String getAuditStatus() {
+		return auditStatus;
+	}
+	public void setAuditStatus(String auditStatus) {
+		this.auditStatus = auditStatus;
+	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	public String getIsPositionPatent() {
+		return isPositionPatent;
+	}
+	public void setIsPositionPatent(String isPositionPatent) {
+		this.isPositionPatent = isPositionPatent;
+	}
+	@Override
+	public String toString() {
+		return "PatentResults [id=" + id + ", patentName=" + patentName + ", firstInventorType=" + firstInventorType
+				+ ", firstInventor=" + firstInventor + ", subordinateUnits=" + subordinateUnits + ", office=" + office
+				+ ", patentInventor=" + patentInventor + ", patentType=" + patentType + ", patentscope=" + patentscope
+				+ ", patentStatus=" + patentStatus + ", applicationNumber=" + applicationNumber + ", applicationDate="
+				+ applicationDate + ", openNo=" + openNo + ", openDate=" + openDate + ", licenseNo=" + licenseNo
+				+ ", licenseDate=" + licenseDate + ", theSchoolName=" + theSchoolName + ", auditStatus=" + auditStatus
+				+ ", remark=" + remark + ", isPositionPatent=" + isPositionPatent + "]";
+	}
 }

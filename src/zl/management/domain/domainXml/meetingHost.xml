@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.MeetingHost">
+	<insert id="add" parameterType="MeetingHost">
+		insert into meetingHost(
+		meetingName, theme, undertakeDepartment, office, disciplines,
+		level1Subject, meetingPlace, meetingType, startDate, endDate,
+		publications, numberOfForeignRepresentatives, delegates,
+		meetingContact, telephone, email, formAComprehensiveReport,
+		meetingFor, sourcesOfFunds, sessionDescription)values(#{meetingName},
+		#{theme}, #{undertakeDepartment}, #{office}, #{disciplines},
+		#{level1Subject}, #{meetingPlace}, #{meetingType}, #{startDate},
+		#{endDate}, #{publications}, #{numberOfForeignRepresentatives},
+		#{delegates}, #{meetingContact}, #{telephone}, #{email},
+		#{formAComprehensiveReport}, #{meetingFor}, #{sourcesOfFunds},
+		#{sessionDescription})
+
+
+	</insert>
+
+	<update id="update" parameterType="MeetingHost">
+		update meetingHost set
+		meetingName=#{meetingName}, theme=#{theme},
+		undertakeDepartment=#{undertakeDepartment}, office=#{office},
+		disciplines=#{disciplines}, level1Subject=#{level1Subject},
+		meetingPlace=#{meetingPlace}, meetingType=#{meetingType},
+		startDate=#{startDate}, endDate=#{endDate},
+		publications=#{publications},
+		numberOfForeignRepresentatives=#{numberOfForeignRepresentatives},
+		delegates=#{delegates}, meetingContact=#{meetingContact},
+		telephone=#{telephone}, email=#{email},
+		formAComprehensiveReport=#{formAComprehensiveReport},
+		meetingFor=#{meetingFor}, sourcesOfFunds=#{sourcesOfFunds},
+		sessionDescription=#{sessionDescription}
+		where id
+		= #{id}
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		delete from meetingHost
+		where
+		id =
+		#{id}
+	</delete>
+
+	<select id="load" parameterType="int" resultType="MeetingHost">
+		select * from
+		meetingHost where id = #{id}
+	</select>
+
+	<select id="loadByName" parameterType="String" resultType="MeetingHost">
+		select * from meetingHost where lectureName = #{lectureName}
+	</select>
+
+	<select id="find" parameterType="Map" resultType="MeetingHost">
+		select * from meetingHost
+		<where>
+			<if test="meetingName != null and meetingName != ''">
+				(meetingName like #{meetingName})
+			</if>
+			<if test="theme != null and theme != ''">
+				(theme = #{theme})
+			</if>
+			<if test="meetingPlace != null and meetingPlace != ''">
+				(meetingPlace = #{meetingPlace})
+			</if>
+			<if test="meetingContact != null and meetingContact != ''">
+				(meetingContact = #{meetingContact})
+			</if>
+		</where>
+		limit #{pageOffset}, #{pageSize}
+	</select>
+
+	<select id="find_count" parameterType="Map" resultType="int">
+		select count(*) from meetingHost
+	</select>
+
+	<select id="list" parameterType="Map" resultType="MeetingHost">
+		select * from meetingHost
+	</select>
+</mapper>

@@ -2,7 +2,7 @@ package zl.management.util;
 
 import java.lang.reflect.Field;
 
-import zl.management.domain.AcademicLecture;
+import zl.management.domain.PatentResults;
 
 public class GetFieldStringUtil {
 	public static String getInsertString(Class<?> clz) {
@@ -11,6 +11,8 @@ public class GetFieldStringUtil {
 		String fieldName = "(";
 		for (int i = 0; i < field.length; ++i) {
 			fieldName = field[i].getName();
+			if (fieldName.equals("id"))
+				continue;
 			sb.append(fieldName);
 			if (i != field.length - 1)
 				sb.append(", ");
@@ -20,6 +22,8 @@ public class GetFieldStringUtil {
 		sb.append("values(");
 		for (int i = 0; i < field.length; ++i) {
 			fieldName = field[i].getName();
+			if (fieldName.equals("id"))
+				continue;
 			sb.append("#{" + fieldName + "}");
 			if (i != field.length - 1)
 				sb.append(", ");
@@ -35,6 +39,8 @@ public class GetFieldStringUtil {
 		String fieldName = "";
 		for (int i = 0; i < field.length; ++i) {
 			fieldName = field[i].getName();
+			if (fieldName.equals("id"))
+				continue;
 			sb.append(fieldName);
 			sb.append("=#{" + fieldName + "}");
 			if (i != field.length - 1)
@@ -117,10 +123,10 @@ public class GetFieldStringUtil {
 	}
 
 	public static void main(String[] args) {
-		String str = "讲座名称	所属单位	教研室	讲座类型	讲座日期	讲座级别	讲座归属	主讲人	主讲人单位	主讲人职务	主讲人职称	讲座地点	审核状态	参加讲座人数	相关学科	讲座对象	主持人	嘉宾	主讲人学术简历	观点综述";
-		String[] strings = { "讲座名称", "所属单位", "教研室", "讲座类型", "讲座日期", "讲座级别", "讲座归属", "主讲人", "主讲人单位", "主讲人职务", "主讲人职称",
-				"讲座地点", "审核状态", "参加讲座人数", "相关学科", "讲座对象", "主持人", "嘉宾", "主讲人学术简历", "观点综述" };
-		System.out.println(dealTrHtml(strings, AcademicLecture.class));
+		String str = "专利名称	第一发明人类型	第一发明人	所属单位	教研室	专利发明人	专利类型	专利范围	专利状态	申请号	申请日期	公开号	公开日期	授权号	授权日期	学校署名	审核状态	备注	是否为职务专利";
+		String[] strings = { "专利名称", "第一发明人类型", "第一发明人", "所属单位", "教研室", "专利发明人", "专利类型", "专利范围", "专利状态", "申请号", "申请日期",
+				"公开号", "公开日期", "授权号", "授权日期", "学校署名", "审核状态", "备注", "是否为职务专利" };
+		System.out.println(dealTrHtml(strings, PatentResults.class));
 	}
 
 }

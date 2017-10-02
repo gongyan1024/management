@@ -14,6 +14,7 @@ import zl.management.controller.AcademicLectureController.ConfirmEditAcademicLec
 import zl.management.controller.AcademicLectureController.ConfirmFindAcademicLectureController;
 import zl.management.controller.AcademicLectureController.DeleteAcademicLectureController;
 import zl.management.controller.AcademicLectureController.DownloadAcademicLectureController;
+import zl.management.controller.AcademicLectureController.DropAcademicLectureController;
 import zl.management.controller.AcademicLectureController.EditAcademicLectureController;
 import zl.management.controller.AcademicLectureController.ExportAcademicLectureController;
 import zl.management.controller.AcademicLectureController.ReadAcademicLectureExcelController;
@@ -25,7 +26,8 @@ import zl.management.controller.AcademicLectureController.UploadAcademicLectureC
 @WebServlet(name = "AcademicLectureDispatcherServlet", urlPatterns = { "/showAcademicLecture", "/exportAcademicLecture",
 		"/addAcademicLecture", "/editAcademicLecture", "/uploadAcademicLecture", "/showDownloadAcademicLecture",
 		"/downloadAcademicLecture", "/showAcademicLectureDetail", "/readExcelAcademicLecture", "/deleteAcademicLecture",
-		"/findAcademicLecture", "/confrimEditAcademicLecture", "/confrimAddAcademicLecture", "/confirmFindAcademicLecture" })
+		"/findAcademicLecture", "/confrimEditAcademicLecture", "/confrimAddAcademicLecture",
+		"/confirmFindAcademicLecture", "/dropAcademicLecture" })
 
 public class AcademicLectureDispatcherServlet extends HttpServlet {
 
@@ -74,9 +76,10 @@ public class AcademicLectureDispatcherServlet extends HttpServlet {
 			dispatchUrl = new DeleteAcademicLectureController().handleRequest(req, resp);
 		} else if ("findAcademicLecture".equals(action)) {
 			dispatchUrl = "WEB-INF/jsp/academicLecture/findAcademicLecture.jsp";
-			;
 		} else if ("confirmFindAcademicLecture".equals(action)) {
 			dispatchUrl = new ConfirmFindAcademicLectureController().handleRequest(req, resp);
+		} else if ("dropAcademicLecture".equals(action)) {
+			dispatchUrl = new DropAcademicLectureController().handleRequest(req, resp);
 		}
 
 		if (null != dispatchUrl) {

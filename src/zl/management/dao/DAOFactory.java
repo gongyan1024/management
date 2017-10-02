@@ -4,6 +4,10 @@ import zl.management.dao.imp.AcademicLectureDaoImp;
 import zl.management.dao.imp.AcademicLecturePathDaoImp;
 import zl.management.dao.imp.AttendMeetingDaoImp;
 import zl.management.dao.imp.AttendMeetingPathDaoImp;
+import zl.management.dao.imp.MeetingHostDaoImp;
+import zl.management.dao.imp.MeetingHostPathDaoImp;
+import zl.management.dao.imp.PatentResultsDaoImp;
+import zl.management.dao.imp.PatentResultsPathDaoImp;
 import zl.management.dao.imp.ResearchersDaoImp;
 import zl.management.dao.imp.ResearchersPathDaoImp;
 import zl.management.dao.imp.UserDaoImp;
@@ -36,5 +40,21 @@ public class DAOFactory {
 	
 	public static AcademicLecturePathDaoImp getAcademicLecturePathDao() {
 		return new AcademicLecturePathDaoImp();
+	}
+	
+	public static MeetingHostDaoImp getMeetingHostDao() {
+		return new MeetingHostDaoImp();
+	}
+	
+	public static MeetingHostPathDaoImp getMeetingHostPathDao() {
+		return new MeetingHostPathDaoImp();
+	}
+	
+	public static PatentResultsDaoImp getPatentResultsDao() {
+		return new PatentResultsDaoImp();
+	}
+	
+	public static PatentResultsPathDaoImp getPatentResultsPathDao() {
+		return new PatentResultsPathDaoImp();
 	}
 }

@@ -77,7 +77,7 @@
 									<td><a href="editResearchs?id=${entry.id}">编辑</a></td>
 									<td><a href="showDownloadResearchs?id=${entry.id}">下载</a></td>
 									<c:if test="${user.type == 1}">
-										<td><a href="deleteResearchs?id=${entry.id}">删除</a></td>
+										<td><a href="dropResearcher?id=${entry.id}">删除</a></td>
 									</c:if>
 								</tr>
 							</c:forEach>

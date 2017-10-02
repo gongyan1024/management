@@ -14,6 +14,7 @@ import zl.management.controller.AttendMeetingController.ConfirmEditAttendMeeting
 import zl.management.controller.AttendMeetingController.ConfirmFindAttendMeetingController;
 import zl.management.controller.AttendMeetingController.DeleteAttendMeetingController;
 import zl.management.controller.AttendMeetingController.DownloadAttendMeetingController;
+import zl.management.controller.AttendMeetingController.DropAttendMeetingController;
 import zl.management.controller.AttendMeetingController.EditAttendMeetingController;
 import zl.management.controller.AttendMeetingController.ExportAttendMeetingController;
 import zl.management.controller.AttendMeetingController.ReadAttendMeetingExcelController;
@@ -25,7 +26,7 @@ import zl.management.controller.AttendMeetingController.UploadAttendMeetingContr
 @WebServlet(name = "AttendMeetingDispatcherServlet", urlPatterns = { "/showAttendMeeting", "/exportAttendMeeting",
 		"/addAttendMeeting", "/editAttendMeeting", "/uploadAttendMeeting", "/showDownloadAttendMeeting",
 		"/downloadAttendMeeting", "/showAttendMeetingDetail", "/readExcelAttendMeeting", "/deleteAttendMeeting",
-		"/findAttendMeeting", "/confrimEditAttendMeeting", "/confrimAddAttendMeeting", "/confirmFindAttendMeeting" })
+		"/findAttendMeeting", "/confrimEditAttendMeeting", "/confrimAddAttendMeeting", "/confirmFindAttendMeeting", "/dropAttendMeeting" })
 
 public class AttendMeetingDispatcherServlet extends HttpServlet {
 
@@ -74,9 +75,10 @@ public class AttendMeetingDispatcherServlet extends HttpServlet {
 			dispatchUrl = new DeleteAttendMeetingController().handleRequest(req, resp);
 		} else if ("findAttendMeeting".equals(action)) {
 			dispatchUrl = "WEB-INF/jsp/attendMeeting/findAttendMeeting.jsp";
-			;
 		} else if ("confirmFindAttendMeeting".equals(action)) {
 			dispatchUrl = new ConfirmFindAttendMeetingController().handleRequest(req, resp);
+		} else if ("dropAttendMeeting".equals(action)) {
+			dispatchUrl = new DropAttendMeetingController().handleRequest(req, resp);
 		}
 
 		if (null != dispatchUrl) {

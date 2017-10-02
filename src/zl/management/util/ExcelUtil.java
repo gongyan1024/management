@@ -26,7 +26,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-
 public class ExcelUtil {
 	public static <T> void exportExcel(String fileName, String[] headers, Collection<T> dataSet, OutputStream out) {
 
@@ -105,11 +104,10 @@ public class ExcelUtil {
 			e.printStackTrace();
 		}
 	}
-	
-	public static List<List<Object>> readExcel(File	file) {
+
+	public static List<List<Object>> readExcel(File file) {
 		String fileName = file.getName();
-		String extension = fileName.lastIndexOf(".") == -1 ? "" : fileName
-				.substring(fileName.lastIndexOf(".") + 1);
+		String extension = fileName.lastIndexOf(".") == -1 ? "" : fileName.substring(fileName.lastIndexOf(".") + 1);
 		if ("xls".equals(extension)) {
 			try {
 				return read2003Excel(file);
@@ -131,28 +129,27 @@ public class ExcelUtil {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 读取 office 2003 excel
+	 * 
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
 	@SuppressWarnings("deprecation")
-	private static List<List<Object>> read2003Excel(File file)
-			throws IOException {
+	private static List<List<Object>> read2003Excel(File file) throws IOException {
 		List<List<Object>> list = new LinkedList<List<Object>>();
 		HSSFWorkbook hwb = new HSSFWorkbook(new FileInputStream(file));
 		HSSFSheet sheet = hwb.getSheetAt(0);
 		Object value = null;
 		HSSFRow row = null;
 		HSSFCell cell = null;
-		for (int i = sheet.getFirstRowNum(); i < sheet
-				.getPhysicalNumberOfRows(); i++) {
+		for (int i = sheet.getFirstRowNum(); i < sheet.getPhysicalNumberOfRows(); i++) {
 			row = sheet.getRow(i);
 			if (row == null || row.getFirstCellNum() == -1) {
 				continue;
 			}
-			
+
 			List<Object> linked = new LinkedList<Object>();
 			for (int j = row.getFirstCellNum(); j < row.getLastCellNum(); j++) {
 				cell = row.getCell(j);
@@ -160,23 +157,29 @@ public class ExcelUtil {
 					linked.add("");
 					continue;
 				}
-				DecimalFormat df = new DecimalFormat("0");// 格式化 number String 字符
-				SimpleDateFormat sdf = new SimpleDateFormat(
-						"yyyy-MM-dd");// 格式化日期字符串
-				DecimalFormat nf = new DecimalFormat("0.00");// 格式化数字
+				DecimalFormat df = new DecimalFormat("0");// 格式化 number String
+															// 字符
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");// 格式化日期字符串
+				DecimalFormat nf = new DecimalFormat("#.##");// 格式化数字
 				switch (cell.getCellType()) {
 				case XSSFCell.CELL_TYPE_STRING:
 					value = cell.getStringCellValue();
 					break;
 				case XSSFCell.CELL_TYPE_NUMERIC:
-		  			if ("@".equals(cell.getCellStyle().getDataFormatString())) {
+					if ("@".equals(cell.getCellStyle().getDataFormatString())) {
 						value = df.format(cell.getNumericCellValue());
-					} else if ("General".equals(cell.getCellStyle()
-							.getDataFormatString())) {
-						value = nf.format(cell.getNumericCellValue());
+					} else if ("General".equals(cell.getCellStyle().getDataFormatString())) {
+						Object inputValue = null;
+						Long longVal = Math.round(cell.getNumericCellValue());
+						Double doubleVal = cell.getNumericCellValue();
+						if (Double.parseDouble(longVal + ".0") == doubleVal) { // 判断是否含有小数位.0
+							inputValue = longVal;
+						} else {
+							inputValue = doubleVal;
+						}
+						value = nf.format(inputValue);
 					} else {
-						value = sdf.format(HSSFDateUtil.getJavaDate(cell
-								.getNumericCellValue()));
+						value = sdf.format(HSSFDateUtil.getJavaDate(cell.getNumericCellValue()));
 					}
 					break;
 				case XSSFCell.CELL_TYPE_BOOLEAN:
@@ -191,22 +194,22 @@ public class ExcelUtil {
 				linked.add(value);
 			}
 			int blankNum = 0;
-			for(int j = 0; j < linked.size(); ++j) {
-				if(linked.get(j) == ""  || linked.get(j) == null)
+			for (int j = 0; j < linked.size(); ++j) {
+				if (linked.get(j) == "" || linked.get(j) == null)
 					blankNum++;
 			}
-			if(blankNum != linked.size())
+			if (blankNum != linked.size())
 				list.add(linked);
 		}
 		hwb.close();
 		return list;
 	}
+
 	/**
 	 * 读取Office 2007 excel
-	 * */
+	 */
 	@SuppressWarnings("deprecation")
-	private static List<List<Object>> read2007Excel(File file)
-			throws IOException {
+	private static List<List<Object>> read2007Excel(File file) throws IOException {
 		List<List<Object>> list = new LinkedList<List<Object>>();
 		// 构造 XSSFWorkbook 对象，strPath 传入文件路径
 		XSSFWorkbook xwb = new XSSFWorkbook(new FileInputStream(file));
@@ -215,8 +218,7 @@ public class ExcelUtil {
 		Object value = null;
 		XSSFRow row = null;
 		XSSFCell cell = null;
-		for (int i = sheet.getFirstRowNum(); i < sheet
-				.getPhysicalNumberOfRows(); i++) {
+		for (int i = sheet.getFirstRowNum(); i < sheet.getPhysicalNumberOfRows(); i++) {
 			row = sheet.getRow(i);
 			row = sheet.getRow(i);
 			if (row == null || row.getFirstCellNum() == -1) {
@@ -226,11 +228,12 @@ public class ExcelUtil {
 			for (int j = row.getFirstCellNum(); j <= row.getLastCellNum(); j++) {
 				cell = row.getCell(j);
 				if (cell == null) {
+					linked.add("");
 					continue;
 				}
-				DecimalFormat df = new DecimalFormat("0");// 格式化 number String 字符
-				SimpleDateFormat sdf = new SimpleDateFormat(
-						"yyyy-MM-dd HH:mm:ss");// 格式化日期字符串
+				DecimalFormat df = new DecimalFormat("0");// 格式化 number String
+															// 字符
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 格式化日期字符串
 				DecimalFormat nf = new DecimalFormat("0.00");// 格式化数字
 				switch (cell.getCellType()) {
 				case XSSFCell.CELL_TYPE_STRING:
@@ -239,12 +242,10 @@ public class ExcelUtil {
 				case XSSFCell.CELL_TYPE_NUMERIC:
 					if ("@".equals(cell.getCellStyle().getDataFormatString())) {
 						value = df.format(cell.getNumericCellValue());
-					} else if ("General".equals(cell.getCellStyle()
-							.getDataFormatString())) {
+					} else if ("General".equals(cell.getCellStyle().getDataFormatString())) {
 						value = nf.format(cell.getNumericCellValue());
 					} else {
-						value = sdf.format(HSSFDateUtil.getJavaDate(cell
-								.getNumericCellValue()));
+						value = sdf.format(HSSFDateUtil.getJavaDate(cell.getNumericCellValue()));
 					}
 					break;
 				case XSSFCell.CELL_TYPE_BOOLEAN:
@@ -262,11 +263,11 @@ public class ExcelUtil {
 				linked.add(value);
 			}
 			int blankNum = 0;
-			for(int j = 0; j < linked.size(); ++j) {
-				if(linked.get(j) == ""  || linked.get(j) == null)
+			for (int j = 0; j < linked.size(); ++j) {
+				if (linked.get(j) == "" || linked.get(j) == null)
 					blankNum++;
 			}
-			if(blankNum != linked.size())
+			if (blankNum != linked.size())
 				list.add(linked);
 		}
 		xwb.close();

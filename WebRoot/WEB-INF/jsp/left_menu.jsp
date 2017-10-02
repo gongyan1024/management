@@ -7,7 +7,7 @@
 				<span></span>科研办公
 			</h4>
 			<div class="list-item none">
-				<a href="showResearchs">科研人员管理</a>
+				<a href="">暂无</a>
 			</div>
 		</li>
 		<li>
@@ -37,7 +37,7 @@
 				<span></span>科研经费
 			</h4>
 			<div class="list-item none">
-				<a href="showResearchs">科研人员管理</a>
+				<a href="">暂无</a>
 			</div>
 		</li>
 		<li>
@@ -54,7 +54,7 @@
 				<span></span>知识产权
 			</h4>
 			<div class="list-item none">
-				<a href="">专利成果</a>
+				<a href="showPatentResults">专利成果</a>
 			</div>
 		</li>
 		<li>
@@ -62,7 +62,7 @@
 				<span></span>成果获奖
 			</h4>
 			<div class="list-item none">
-				<a href="showResearchs">科研人员管理</a>
+				<a href="">暂无</a>
 			</div>
 		</li>
 		<li>
@@ -70,7 +70,7 @@
 				<span></span>学术活动
 			</h4>
 			<div class="list-item none">
-				<a href="">主办会议</a> <a href="showAcademicLecture">学术讲座</a> <a
+				<a href="showMeetingHost">主办会议</a> <a href="showAcademicLecture">学术讲座</a> <a
 					href="showAttendMeeting">参加会议</a>
 			</div>
 		</li>
@@ -79,7 +79,7 @@
 				<span></span>用户管理
 			</h4>
 			<div class="list-item none">
-				<a href="showResearchs">科研人员管理</a>
+				<a href="auditStatus">暂无</a>
 			</div>
 		</li>
 		<li>

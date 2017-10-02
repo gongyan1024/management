@@ -71,7 +71,7 @@
 									<td><a href="editAttendMeeting?id=${entry.id}">编辑</a> <a
 										href="showDownloadAttendMeeting?id=${entry.id}">下载</a> <c:if
 											test="${user.type == 1}">
-											<a href="deleteAttendMeeting?id=${entry.id}">删除</a>
+											<a href="dropAttendMeeting?id=${entry.id}">删除</a>
 										</c:if></td>
 								</tr>
 							</c:forEach>

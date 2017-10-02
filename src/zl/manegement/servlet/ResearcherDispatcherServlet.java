@@ -25,7 +25,7 @@ import zl.management.controller.ResearcherController.UploadResPathController;
 @WebServlet(name = "ResearcherDispatcherServlet", urlPatterns = { "/showResearchs", "/exportResearchs",
 		"/confirmEditResearchs", "/editResearchs", "/uploadResearchs", "/showDownloadResearchs", "/downloadResearchs",
 		"/showResearcherDetail", "/readExcelResearchs", "/deleteResearchs", "/findResearcher",
-		"/confrimFindResearcher", "/addResearcher", "/confrimAddResearcher" })
+		"/confrimFindResearcher", "/addResearcher", "/confrimAddResearcher", "/dropResearcher" })
 
 public class ResearcherDispatcherServlet extends HttpServlet {
 
@@ -76,6 +76,8 @@ public class ResearcherDispatcherServlet extends HttpServlet {
 			dispatchUrl = "WEB-INF/jsp/researchers/addResearcher.jsp";
 		} else if("confrimAddResearcher".equals(action)) {
 			dispatchUrl = new AddResearcher().handleRequest(req, resp);
+		} else if("dropResearcher".equals(action)) {
+			dispatchUrl = new DropResearcher().handleRequest(req, resp);
 		}
 
 		if (null != dispatchUrl) {

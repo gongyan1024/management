@@ -36,9 +36,9 @@ create table researchers (
 );
 
 create table researcher_path(
-    reaId int,
+    did int,
     path varchar(200),
-    constraint foreign key(reaId) references researchers(id) ON DELETE CASCADE
+    constraint foreign key(did) references researchers(id) ON DELETE CASCADE
 );
 
 CREATE TABLE attendMeeting (
@@ -60,14 +60,14 @@ CREATE TABLE attendMeeting (
 );
 
 CREATE TABLE attendMeeting_path(
-    atmId INT,
+    did INT,
     path VARCHAR(200),
-    CONSTRAINT FOREIGN KEY(atmId) REFERENCES attendMeeting(id) ON DELETE CASCADE
+    CONSTRAINT FOREIGN KEY(did) REFERENCES attendMeeting(did) ON DELETE CASCADE
 );
 
 CREATE TABLE academicLecture (
     id INT(11) PRIMARY KEY AUTO_INCREMENT,
-    lectureName VARCHAR(50) NOT NULL UNIQUE`management`,
+    lectureName VARCHAR(50) NOT NULL UNIQUE,
     subordinateUnit VARCHAR(30),
     teachingAndResearchSection VARCHAR(30),
     lectureType VARCHAR(50),

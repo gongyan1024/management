@@ -181,4 +181,10 @@ public class ControllDeal {
 			return dowloadPath;
 		}
 	}
+	
+	public static <T> void dropDomain(HttpServletRequest request, HttpServletResponse response, BaseDao<T> dao,
+			Class<T> clz) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		dao.delete(clz, id);
+	}
 }
