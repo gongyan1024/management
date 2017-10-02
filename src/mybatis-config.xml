@@ -5,20 +5,24 @@
 <configuration>
 	<properties resource="jdbc.properties"></properties>
 	<typeAliases>
-		<package name="zl.management.domain" ></package></typeAliases>
+		<package name="zl.management.domain"></package>
+	</typeAliases>
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC"></transactionManager>
 			<dataSource type="pooled">
-				<property name="url" value="${url}" /><property name="driver" value="${driver}" /><property
-					name="username" value="${username}" />
+				<property name="url" value="${url}" />
+				<property name="driver" value="${driver}" />
+				<property name="username" value="${username}" />
 				<property name='password' value="${password}" />
 			</dataSource>
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="zl/management/domain/user.xml"></mapper>
-		<mapper resource="zl/management/domain/researchers.xml"></mapper>
-		<mapper resource="zl/management/domain/filePath/researchersPath.xml"></mapper>
-		</mappers>
+		<mapper resource="zl/management/domain/domainXml/user.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/researchers.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/researchersPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/attendMeeting.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/attendMeetingPath.xml"></mapper>
+	</mappers>
 </configuration>

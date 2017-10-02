@@ -114,7 +114,7 @@ public class BaseDao<T> {
 			int totalRecord = session.selectOne(sqlId + "_count", params);
 			pages.setTotalRecord(totalRecord);
 			pages.setTotalPage((pages.getTotalRecord() % pages.getPageSize() == 0)
-					? pages.getTotalRecord() % pages.getPageSize() : pages.getTotalRecord() % pages.getPageSize() + 1);
+					? pages.getTotalRecord() / pages.getPageSize() : pages.getTotalRecord() / pages.getPageSize() + 1);
 		} finally {
 			MyBatisUtil.closeSession(session);
 		}

@@ -38,6 +38,30 @@ create table researchers (
 create table researcher_path(
     reaId int,
     path varchar(200),
-    constraint foreign key(reaId) references researchers(id)
+    constraint foreign key(reaId) references researchers(id) ON DELETE CASCADE
+);
+
+CREATE TABLE attendMeeting (
+    id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    attendee VARCHAR(50),
+    subordinateUnit VARCHAR(50),
+    teachingResearchSection VARCHAR(100),
+    conferenceName TEXT,
+    sponsor VARCHAR(50),
+    meetingType VARCHAR(50),
+    disciplineCategory VARCHAR(50),
+    participantAddress VARCHAR(50),
+    participantDate VARCHAR(20),
+    submitThesis VARCHAR(10),
+    thesisTitle TEXT,
+    invitedReport VARCHAR(10),
+    reportTopic TEXT,
+    auditStatus VARCHAR(20)
+);
+
+CREATE TABLE attendMeeting_path(
+    atmId INT,
+    path VARCHAR(200),
+    CONSTRAINT FOREIGN KEY(atmId) REFERENCES attendMeeting(id) ON DELETE CASCADE
 );
 

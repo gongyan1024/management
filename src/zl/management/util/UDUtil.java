@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,6 +20,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadBase;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import zl.management.controller.ControllDeal;
 
 /*
  * 上传下载工具类
@@ -144,28 +145,22 @@ public class UDUtil {
 
 	public static void download(HttpServletRequest req, HttpServletResponse resp) {
 		String fileName = req.getParameter("filename");
-		try {
-			fileName = new String(fileName.getBytes("iso8859-1"), "utf-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-
 		File file = new File(fileName);
 		if (!file.exists()) {
-			req.setAttribute("message", "你所需要的资源已经删除");
-			try {
-				req.getRequestDispatcher("WEB-INF/jsp/message.jsp").forward(req, resp);
-			} catch (ServletException | IOException e) {
-				e.printStackTrace();
-			}
-			;
+			ControllDeal.sendMessage(req, resp, "你所需要的资源已经删除",
+					"showDownloadAttendMeeting?id=" + req.getParameter("id"));
 		} else {
 			String realname = fileName.substring(fileName.indexOf("_") + 1);
 			try {
-				resp.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(realname, "UTF-8"));
-			} catch (UnsupportedEncodingException e1) {
-				e1.printStackTrace();
+				if (req.getHeader("User-Agent").toUpperCase().indexOf("MSIE") > 0) {
+					realname = URLEncoder.encode(realname, "UTF-8");
+				} else {
+					realname = new String(realname.getBytes("UTF-8"), "ISO8859-1");
+				}
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
 			}
+			resp.setHeader("content-disposition", "attachment;filename=" + realname);
 			FileInputStream in = null;
 			OutputStream out = null;
 			try {
@@ -184,7 +179,7 @@ public class UDUtil {
 				try {
 					if (in != null)
 						in.close();
-					if(out != null)
+					if (out != null)
 						out.close();
 				} catch (IOException e) {
 					e.printStackTrace();

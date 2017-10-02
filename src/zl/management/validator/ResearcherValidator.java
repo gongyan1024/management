@@ -1,29 +1,25 @@
-/**   
- * Copyright © 2017 公司名. All rights reserved.
- * 
- * @Title: ResearcherValidator.java 
- * @Prject: management
- * @Package: zl.management.validator 
- * @Description: TODO
- * @author: zhenlin   
- * @date: 2017年9月21日 上午10:54:19 
- * @version: V1.0   
- */
+
 package zl.management.validator;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import zl.management.dao.DAOFactory;
-import zl.management.dao.UserDao;
-import zl.management.domain.User;
+import zl.management.domain.Researchers;
 
 public class ResearcherValidator {
-	private UserDao userDao = DAOFactory.getUserDao();
-
-	public Map<String, String> validateRegistered(User user) {
+	
+	public Map<String, String> validateRegistered(Researchers r) {
 		Map<String, String> errors = new HashMap<String, String>();
-
+		
+		String name = r.getName();
+		String email = r.getEmail();
+		
+		if(email == null || email.trim().equals("")) {
+			errors.put("email", "邮箱不为空");
+		}else if (!email.matches("\\w+@\\w+(\\.\\w+)+")){
+			errors.put("email", "邮箱格式错误");
+		}
+		
 		return errors;
 	}
 }

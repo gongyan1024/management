@@ -75,4 +75,20 @@ public class UserValidator {
 			
 		return errors;
 	}
+	
+	public Map<String, String> validateModifyPwd(User u, String oldPassword, String newPassword, String confirmPwd) {
+		Map<String, String> errors = new HashMap<String, String>();
+		
+		String truePwd = u.getPassword();
+		
+		if(!oldPassword.equals(truePwd)) {
+			errors.put("password", "原密码错误!!!");
+		}else if(oldPassword.equals(newPassword)) {
+			errors.put("newPassword", "新密码不可与原密码相同");
+		}else if(!newPassword.equals(confirmPwd)) {
+			errors.put("confirmPwd", "两次新密码输入不一致");
+		}
+		
+		return errors;
+	}
 }

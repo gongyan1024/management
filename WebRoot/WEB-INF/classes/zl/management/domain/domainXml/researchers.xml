@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.Researchers">
+	<insert id="add" parameterType="Researchers">
+		insert into Researchers(name,
+		sex, idCard, birth, researchUnit, finalDegree,
+		finalEducation, title,
+		researchDirection, administrativeDuty, country,
+		nation, address,
+		postCode, homePhone, phone, email, officePhone,
+		academicPartTime,
+		academicSpecialty)
+		values(#{name}, #{sex}, #{idCard}, #{birth},
+		#{researchUnit}, #{finalDegree}, #{finalEducation}, #{title},
+		#{researchDirection}, #{administrativeDuty}, #{country}, #{nation},
+		#{address},
+		#{postCode}, #{homePhone}, #{phone},
+		#{email},
+		#{officePhone},
+		#{academicPartTime}, #{academicSpecialty})
+	</insert>
+
+	<update id="update" parameterType="Researchers">
+		update Researchers set
+		name=#{name}, sex =#{sex}, idCard =#{idCard}, birth =#{birth},
+		researchUnit =#{researchUnit}, finalDegree
+		=#{finalDegree},
+		finalEducation =#{finalEducation}, title =#{title},
+		researchDirection
+		=#{researchDirection}, administrativeDuty =#{administrativeDuty},
+		country
+		=#{country}, nation =#{nation}, address =#{address}, postCode
+		=#{postCode}, homePhone =#{homePhone}, phone
+		=#{phone}, email
+		=#{email}, officePhone
+		=#{officePhone}, academicPartTime
+		=#{academicPartTime}, academicSpecialty =#{academicSpecialty}
+		where id
+		= #{id}
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		delete from Researchers where
+		id =
+		#{id}
+	</delete>
+
+	<select id="load" parameterType="int" resultType="Researchers">
+		select * from
+		Researchers where id = #{id}
+	</select>
+
+	<select id="loadByName" parameterType="String" resultType="Researchers">
+		select * from Researchers where name = #{name}
+	</select>
+
+	<select id="find" parameterType="Map" resultType="Researchers">
+		select * from Researchers
+		<where>
+			<if test="name != null and name != ''">
+				(name like #{name})
+			</if>
+			<if test="sex != null and sex != ''">
+				(sex = #{name})
+			</if>
+			<if test="idCard != null and idCard != ''">
+				(idCard = #{idCard})
+			</if>
+			<if test="homePhone != null and homePhone != ''">
+				(homePhone = #{homePhone})
+			</if>
+			<if test="phone != null and phone != ''">
+				(phone = #{phone})
+			</if>
+			<if test="email != null and email != ''">
+				(email = #{email})
+			</if>
+			<if test="officePhone != null and officePhone != ''">
+				(officePhone = #{officePhone})
+			</if>
+		</where>
+		limit #{pageOffset}, #{pageSize}
+	</select>
+
+	<select id="find_count" parameterType="Map" resultType="int">
+		select count(*) from Researchers
+		<if test="name != null">
+			where (name like #{name})
+		</if>
+	</select>
+
+	<select id="list" parameterType="Map" resultType="Researchers">
+		select * from Researchers
+		<where>
+			<if test="name != null">
+				(name like #{name})
+			</if>
+		</where>
+		<!--order by ${sort} ${order} -->
+	</select>
+</mapper>

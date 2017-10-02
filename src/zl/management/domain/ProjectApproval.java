@@ -1,0 +1,51 @@
+﻿package zl.management.domain;
+
+//项目立项
+public class ProjectApproval {
+	private String entryName;   //项目名称
+	private String projectNumber;   //项目编号
+	private String personInCharge;   //负责人
+	private String staffNumber;   //负责人职工号
+	private String subordinateUnit;   //所属单位
+	private String projectNature;   //项目性质
+	private String projectLevel;   //项目级别
+	private String projectMembers;   //项目成员
+	private String projectYear;   //项目年度
+	private String projectClassification;   //项目分类
+    private String projectSubclass;   //项目子类
+	private String projectStatus;   //项目状态
+	private String change;   //是否变更
+	private String postponed;   //是否延期
+	private String approvalNumber;   //批准号
+	private String projectSourceUnit;   //项目来源单位
+	private String commitmentUnitRanking;   //承担单位排名
+	private String projectDate;   //立项日期
+	private String startTime;   //开始时间
+	private String plannedCompletionDate;   //计划完成日期
+	private String dateOfEntry;   //结项日期
+	private String gradeOfKnot;   //结项等级
+	private String actualCompletionTime;   //实际完成时间
+	private String formOfAchievement;   //成果形式
+	private String subTopic;   //是否为子课题
+	private String typeOfContract;   //合同类型
+	private String contractFunds;   //合同经费
+	private String outlayCardNumber;   //经费卡号
+	private String matchingFunds;   //配套经费
+	private String matchingCardNumber;   //配套卡号
+	private String fileBox;   //所属档案盒
+	private String disciplineCategory;   //学科门类
+	private String subjectClassification;   //学科分类
+	private String projectSource;   //项目来源
+	private String researchCategory;   //研究类别
+	private String nationalBigEconomy;   //国民经济(大类)
+	private String nationalMiddleEconomy;   //国民经济(中类)
+	private String formOfCooperation;   //合作形式
+	private String socioEconomicGoals;   //社会经济目标
+	private String auditStatus;   //审核状态
+	private String remarks;   //备注
+	private String titleOfPersonInCharge;   //负责人职称号
+	private String startStopTime;   //起止时间
+	private String arrivalExpenses;   //到账经费
+	private String expenditure;   //支出经费
+	private String managementFees;   //已提管理费
+}

@@ -14,37 +14,17 @@
 
 <body>
 	<div class="top"></div>
-	<div id="header">
-		<div class="logo">管理系统</div>
-		<div class="navigation">
-			<ul>
-				<li>欢迎您！</li>
-				<li><a href="">${user.name }</a></li>
-				<li><a href="">修改密码</a></li>
-				<li><a href="">退出</a></li>
-			</ul>
-		</div>
-	</div>
+	<jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
 	<div id="content">
-		<div class="left_menu">
-			<ul id="nav_dot">
-				<li>
-					<h4 class="M1">
-						<span></span>人员管理
-					</h4>
-					<div class="list-item none">
-						<a href="showResearchs">科研人员管理</a>
-					</div>
-				</li>
-			</ul>
-		</div>
+		<jsp:include page="/WEB-INF/jsp/left_menu.jsp"></jsp:include>
 		<div class="m-right">
 			<div id="main"></div>
 		</div>
 	</div>
 	<div class="bottom"></div>
-	<script>navList(12);</script>
+	<script>navList(12);
+	</script>
 
-    </script>
+	</script>
 </body>
 </html>

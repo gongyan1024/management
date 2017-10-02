@@ -13,7 +13,9 @@ package zl.management.test;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -32,7 +34,8 @@ public class TestExportExcel {
 		SystemContext.setPageSize(8);
 		SystemContext.setPageIndex(1);
 		SystemContext.setPageOffset(0);
-		Pager<Researchers> page = dao.find(null);
+		Map<String, Object> params = new HashMap<String, Object>();
+		Pager<Researchers> page = dao.find(params);
 		List<Researchers> list = page.getDatas();
 		System.out.println(list.size());
 		try {

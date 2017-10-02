@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.AttendMeeting">
+	<insert id="add" parameterType="AttendMeeting">
+		insert into attendMeeting(
+		attendee, subordinateUnit, teachingResearchSection, conferenceName,
+		sponsor, meetingType, disciplineCategory, participantAddress,
+		participantDate, submitThesis, thesisTitle, invitedReport,
+		reportTopic, auditStatus) values( #{attendee},
+		#{subordinateUnit},
+		#{teachingResearchSection}, #{conferenceName},
+		#{sponsor},
+		#{meetingType}, #{disciplineCategory},
+		#{participantAddress},
+		#{participantDate}, #{submitThesis},
+		#{thesisTitle}, #{invitedReport},
+		#{reportTopic}, #{auditStatus})
+	</insert>
+
+	<update id="update" parameterType="AttendMeeting">
+		update attendMeeting set
+		attendee=#{attendee}, subordinateUnit=#{subordinateUnit},
+		teachingResearchSection=#{teachingResearchSection},
+		conferenceName=#{conferenceName}, sponsor=#{sponsor},
+		meetingType=#{meetingType}, disciplineCategory=#{disciplineCategory},
+		participantAddress=#{participantAddress},
+		participantDate=#{participantDate}, submitThesis=#{submitThesis},
+		thesisTitle=#{thesisTitle}, invitedReport=#{invitedReport},
+		reportTopic=#{reportTopic}, auditStatus=#{auditStatus}
+		where id
+		= #{id}
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		delete from attendMeeting where
+		id =
+		#{id}
+	</delete>
+
+	<select id="load" parameterType="int" resultType="AttendMeeting">
+		select * from
+		attendMeeting where id = #{id}
+	</select>
+
+	<select id="loadByName" parameterType="String" resultType="AttendMeeting">
+		select * from attendMeeting where conferenceName = #{conferenceName}
+	</select>
+
+	<select id="find" parameterType="Map" resultType="AttendMeeting">
+		select * from attendMeeting
+		<where>
+			<if test="attendee != null and attendee != ''">
+				(attendee like #{attendee})
+			</if>
+			<if test="conferenceName != null and conferenceName != ''">
+				(conferenceName == #{conferenceName})
+			</if>
+			<if test="sponsor != null and sponsor != ''">
+				(sponsor == #{sponsor})
+			</if>
+			<if test="participantDate != null and participantDate != ''">
+				(sponsor like #{participantDate})
+			</if>
+		</where>
+		limit #{pageOffset}, #{pageSize}
+	</select>
+
+	<select id="find_count" parameterType="Map" resultType="int">
+		select count(*) from attendMeeting
+	</select>
+
+	<select id="list" parameterType="Map" resultType="AttendMeeting">
+		select * from attendMeeting
+		<!--order by ${sort} ${order} -->
+	</select>
+</mapper>

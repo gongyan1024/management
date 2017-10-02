@@ -25,7 +25,6 @@ public class Researchers {
 	private String officePhone;
 	private String academicPartTime; // 学术兼职
 	private String academicSpecialty; // 学术特长
-	private List<String> evidences; // 佐证的上传文件路径
 
 	public int getId() {
 		return id;
@@ -195,12 +194,7 @@ public class Researchers {
 		this.academicSpecialty = academicSpecialty;
 	}
 
-	/** 
-	 * @Title: setName 
-	 * @Description: TODO
-	 * @param parameter
-	 * @return: void
-	 */
+
 	public void setName(String name) {
 		// TODO 自动生成的方法存根
 		this.name = name;

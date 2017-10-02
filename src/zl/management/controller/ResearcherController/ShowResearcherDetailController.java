@@ -1,7 +1,5 @@
 package zl.management.controller.ResearcherController;
 
-import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,7 +17,7 @@ public class ShowResearcherDetailController implements Controller {
 		Researchers r = dao.load(id);
 		request.setAttribute("r", r);
 		
-		return "/WEB-INF/jsp/showResearcherDetail.jsp";
+		return "/WEB-INF/jsp/researchers/showResearcherDetail.jsp";
 	}
 
 }
