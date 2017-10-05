@@ -46,47 +46,66 @@
 				</div>
 				<div>
 					<table>
-					<h3 align="center">科研人员相关操作</h3>
+						<h3 align="center">科研人员相关操作</h3>
 						<thead>
 							<tr>
 								<td>人员名称</td>
-								<td>身份证信息</td>
+								<td>职工号</td>
 								<td>科研单位</td>
 								<td>最后学位</td>
 								<td>职称</td>
-								<td>研究方向</td>
-								<td>行政职务</td>
-								<td>手机</td>
-								<td>Email</td>
-								<td>办公电话</td>
+								<td>一级学科</td>
+								<td>科研详情</td>
+								<td>审核状态</td>
+								<td>操作</td>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${entryList}" var="entry">
 								<tr align="center">
 									<td><a href="showResearcherDetail?id=${entry.id}">${entry.name}</a></td>
-									<td>${entry.idCard}</td>
+									<td>${entry.staffNumber}</td>
 									<td>${entry.researchUnit}</td>
 									<td>${entry.finalDegree}</td>
 									<td>${entry.title}</td>
-									<td>${entry.researchDirection}</td>
-									<td>${entry.administrativeDuty}</td>
-									<td>${entry.phone}</td>
-									<td>${entry.email}</td>
-									<td>${entry.officePhone}</td>
-									<td><a href="editResearchs?id=${entry.id}">编辑</a></td>
-									<td><a href="showDownloadResearchs?id=${entry.id}">下载</a></td>
-									<c:if test="${user.type == 1}">
-										<td><a href="dropResearcher?id=${entry.id}">删除</a></td>
-									</c:if>
+									<td>${entry.firstDiscipline}</td>
+									<td>暂无</td>
+									<td>${entry.approvalStatus}</td>
+									<td><a href="editResearchs?id=${entry.id}">编辑</a> <a
+										href="showDownloadResearchs?id=${entry.id}">下载</a> <c:if
+											test="${user.type == 1}">
+											<a href="dropResearcher?id=${entry.id}">删除</a>
+										</c:if></td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
 					<tfoot>
 						<tr>
-							<td colspan="5"><jsp:include
-									page="/WEB-INF/jsp/paging_footer.jsp"></jsp:include></td>
+							<td colspan="5"><form action="showResearchs" method="post"
+									id="navigatorForm">
+									<a href="showResearchs?pageNumber=${1}">首页</a>
+									<c:if test="${pageNumber>1}">
+										<a href="showResearchs?pageNumber=${pageNumber-1}">上一页</a>
+									</c:if>
+									跳转到第 <select name="pageNumber" onchange="gotoSelectedPage()">
+										<c:forEach begin="1" end="${totalPages}" step="1"
+											var="pageIndex">
+											<c:choose>
+												<c:when test="${pageIndex eq pageNumber}">
+													<option value="${pageIndex}" selected="selected">${pageIndex}</option>
+												</c:when>
+												<c:otherwise>
+													<option value="${pageIndex}">${pageIndex}</option>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+									</select>页
+									<c:if test="${pageNumber<totalPages}">
+										<a href="showResearchs?pageNumber=${pageNumber+1}">下一页</a>
+									</c:if>
+									<a href="showResearchs?pageNumber=${totalPages}">末页</a>
+								</form></td>
 						</tr>
 					</tfoot>
 				</div>
@@ -98,3 +117,9 @@
 	</script>
 </body>
 </html>
+<script type="text/javascript">
+    function gotoSelectedPage() {
+        var x = document.getElementById("navigatorForm");
+        x.submit();
+    }
+</script>

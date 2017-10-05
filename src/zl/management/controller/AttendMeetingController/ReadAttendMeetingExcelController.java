@@ -25,6 +25,7 @@ public class ReadAttendMeetingExcelController implements Controller {
 	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		ControllDeal.readExcel(request, response, dao, AttendMeeting.class, "showAttendMeeting", "参加会议表格", "conferenceName");
 		List<String> paths = UDUtil.upload(request, response);
 		if (paths == null) {
 			ControllDeal.sendMessage(request, response, "导入成功,2秒后为您自动跳到参加会议表格！！", "showAttendMeeting");
@@ -111,6 +112,7 @@ public class ReadAttendMeetingExcelController implements Controller {
 						dao.add(newMap.get(tmpNewKey));
 					}
 				}
+				file.delete();
 			}
 			ControllDeal.sendMessage(request, response, "导入成功,2秒后为您自动跳到参加会议表格！！", "showAttendMeeting");
 		}

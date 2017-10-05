@@ -2,7 +2,7 @@ package zl.management.util;
 
 import java.lang.reflect.Field;
 
-import zl.management.domain.PatentResults;
+import zl.management.domain.Thesis;
 
 public class GetFieldStringUtil {
 	public static String getInsertString(Class<?> clz) {
@@ -123,10 +123,11 @@ public class GetFieldStringUtil {
 	}
 
 	public static void main(String[] args) {
-		String str = "专利名称	第一发明人类型	第一发明人	所属单位	教研室	专利发明人	专利类型	专利范围	专利状态	申请号	申请日期	公开号	公开日期	授权号	授权日期	学校署名	审核状态	备注	是否为职务专利";
-		String[] strings = { "专利名称", "第一发明人类型", "第一发明人", "所属单位", "教研室", "专利发明人", "专利类型", "专利范围", "专利状态", "申请号", "申请日期",
-				"公开号", "公开日期", "授权号", "授权日期", "学校署名", "审核状态", "备注", "是否为职务专利" };
-		System.out.println(dealTrHtml(strings, PatentResults.class));
+		String str = "论文级别	论文类型	论文题目	第一作者类型	第一作者	所属单位	教研室	所有作者	第一作者职工号	发表/出版时间	论文转载	论文收录	发表刊物/论文集	刊物级别	编辑部地址	学科门类	一级学科	项目来源	发表范围	论文集出版单位	卷号	期号	页码范围	个人执笔数	学校署名	关键字	审核状态	备注	版面	是否为译文	ISSN号	CN号";
+		String[] strings = { "论文级别", "论文类型", "论文题目", "第一作者类型", "第一作者", "所属单位", "教研室", "所有作者", "第一作者职工号", "发表/出版时间",
+				"论文转载", "论文收录", "发表刊物/论文集", "刊物级别", "编辑部地址", "学科门类", "一级学科", "项目来源", "发表范围", "论文集出版单位", "卷号", "期号",
+				"页码范围", "个人执笔数", "学校署名", "关键字", "审核状态", "备注", "版面", "是否为译文", "ISSN号", "CN号" };
+		System.out.println(dealTrHtml(strings, Thesis.class));
 	}
 
 }

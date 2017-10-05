@@ -14,8 +14,7 @@ public class ConfirmAddAcademicLectureController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		AcademicLecture al = ControllDeal.createObjByForm(request, response, AcademicLecture.class);
-		dao.add(al);
+		ControllDeal.createObjByForm(request, response, AcademicLecture.class, dao);
 		ControllDeal.sendMessage(request, response, "添加成功！1秒后为您自动跳到主页！！", "showAcademicLecture");
 		
 		return null;

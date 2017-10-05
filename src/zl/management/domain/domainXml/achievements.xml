@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.Achievements">
+	<insert id="add" parameterType="Achievements">
+		insert into achievements(
+		bookName, firstAuthorType, firstAuthor, subordinateUnit, office,
+		participatedAuthor, firstAuthorNumber, thePublisher,
+		publicationUnitType, publicationDate, publishedIn, booksCategories,
+		disciplines, levelOneSubject, projectSource, wordsNumber,
+		foreignLanguage, schoolName, languages, isbn, profile,
+		auditStatus)values(#{bookName}, #{firstAuthorType}, #{firstAuthor},
+		#{subordinateUnit}, #{office}, #{participatedAuthor},
+		#{firstAuthorNumber}, #{thePublisher}, #{publicationUnitType},
+		#{publicationDate}, #{publishedIn}, #{booksCategories},
+		#{disciplines}, #{levelOneSubject}, #{projectSource}, #{wordsNumber},
+		#{foreignLanguage}, #{schoolName}, #{languages}, #{isbn}, #{profile},
+		#{auditStatus})
+	</insert>
+
+	<update id="update" parameterType="Achievements">
+		update achievements set
+		bookName=#{bookName}, firstAuthorType=#{firstAuthorType},
+		firstAuthor=#{firstAuthor}, subordinateUnit=#{subordinateUnit},
+		office=#{office}, participatedAuthor=#{participatedAuthor},
+		firstAuthorNumber=#{firstAuthorNumber}, thePublisher=#{thePublisher},
+		publicationUnitType=#{publicationUnitType},
+		publicationDate=#{publicationDate}, publishedIn=#{publishedIn},
+		booksCategories=#{booksCategories}, disciplines=#{disciplines},
+		levelOneSubject=#{levelOneSubject}, projectSource=#{projectSource},
+		wordsNumber=#{wordsNumber}, foreignLanguage=#{foreignLanguage},
+		schoolName=#{schoolName}, languages=#{languages}, isbn=#{isbn},
+		profile=#{profile}, auditStatus=#{auditStatus}
+		where
+		id
+		= #{id}
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		delete from achievements
+		where
+		id =
+		#{id}
+	</delete>
+
+	<select id="load" parameterType="int" resultType="Achievements">
+		select * from
+		achievements where id = #{id}
+	</select>
+
+	<select id="loadByName" parameterType="String" resultType="Achievements">
+		select * from achievements where bookName = #{bookName}
+	</select>
+
+	<select id="find" parameterType="Map" resultType="Achievements">
+		select * from achievements
+		<where>
+			<if test="bookName != null and bookName != ''">
+				(bookName like #{bookName})
+			</if>
+			<if test="firstAuthor != null and firstAuthor != ''">
+				(firstAuthor = #{firstAuthor})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
+				(firstAuthorNumber = #{firstAuthorNumber})
+			</if>
+			<if test="booksCategories != null and booksCategories != ''">
+				(booksCategories = #{booksCategories})
+			</if>
+		</where>
+		limit #{pageOffset}, #{pageSize}
+	</select>
+
+	<select id="find_count" parameterType="Map" resultType="int">
+		select
+		count(*) from achievements
+	</select>
+
+	<select id="list" parameterType="Map" resultType="Achievements">
+		select * from achievements
+		<!--order by ${sort} ${order} -->
+	</select>
+</mapper>

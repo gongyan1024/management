@@ -23,7 +23,7 @@ public class ConfirmFindAcademicLectureController implements Controller {
 			e.printStackTrace();
 		}
 		
-		String lectureName = request.getParameter("lectureName");
+		String lectureName = "%" + request.getParameter("lectureName") + "%";
 		String subordinateUnit = request.getParameter("subordinateUnit");
 		String speaker = request.getParameter("speaker");
 		String lectureLevel = request.getParameter("lectureLevel");

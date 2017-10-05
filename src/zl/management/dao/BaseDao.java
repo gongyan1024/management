@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import zl.management.domain.filePath.AcademicLecturePath;
 import zl.management.util.MyBatisUtil;
 import zl.management.util.Pager;
 import zl.management.util.SystemContext;
@@ -53,7 +54,7 @@ public class BaseDao<T> {
 			MyBatisUtil.closeSession(session);
 		}
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	public T load(Class<T> clz, int id) {
 		T t = null;
@@ -67,7 +68,22 @@ public class BaseDao<T> {
 
 		return t;
 	}
-
+	
+	//通过文件名路径删除
+	public void delete(String path) {
+		SqlSession session = null;
+		try {
+			session = MyBatisUtil.createSession();
+			session.update(AcademicLecturePath.class.getName() + ".deleteByPath", path);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.rollback();
+		} finally {
+			MyBatisUtil.closeSession(session);
+		}
+	}
+	
 	public List<T> list(Class<T> clz, Map<String, Object> params) {
 		return list(clz.getName() + ".list", params);
 	}

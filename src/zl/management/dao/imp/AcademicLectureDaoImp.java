@@ -7,14 +7,13 @@ import java.util.Map;
 import zl.management.dao.AcademicLectureDao;
 import zl.management.dao.BaseDao;
 import zl.management.domain.AcademicLecture;
-import zl.management.domain.AttendMeeting;
 import zl.management.util.Pager;
 
 public class AcademicLectureDaoImp extends BaseDao<AcademicLecture> implements AcademicLectureDao {
 
 	@Override
-	public void add(AcademicLecture al) {
-		super.add(al);
+	public void add(AcademicLecture obj) {
+		super.add(obj);
 	}
 
 	@Override
@@ -23,8 +22,8 @@ public class AcademicLectureDaoImp extends BaseDao<AcademicLecture> implements A
 	}
 
 	@Override
-	public void update(AcademicLecture al) {
-		super.update(al);
+	public void update(AcademicLecture obj) {
+		super.update(obj);
 	}
 
 	@Override

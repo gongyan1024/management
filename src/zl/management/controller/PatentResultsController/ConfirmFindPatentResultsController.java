@@ -23,7 +23,7 @@ public class ConfirmFindPatentResultsController implements Controller {
 			e.printStackTrace();
 		}
 		
-		String patentName = request.getParameter("patentName");
+		String patentName = "%" + request.getParameter("patentName") + "%";
 		String firstInventor = request.getParameter("firstInventor");
 		String patentInventor = request.getParameter("patentInventor");
 		String applicationNumber = request.getParameter("applicationNumber");

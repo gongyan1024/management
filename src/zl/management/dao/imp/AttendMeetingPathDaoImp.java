@@ -31,7 +31,7 @@ public class AttendMeetingPathDaoImp extends BaseDao<AttendMeetingPath> implemen
 	@Override
 	public List<AttendMeetingPath> list(int id) {
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("atmId", id);
+		params.put("dId", id);
 		return super.list(AttendMeetingPath.class, params);
 	}
 

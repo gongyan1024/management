@@ -5,42 +5,63 @@
 <mapper namespace="zl.management.domain.Researchers">
 	<insert id="add" parameterType="Researchers">
 		insert into Researchers(name,
-		sex, idCard, birth, researchUnit, finalDegree,
-		finalEducation, title,
-		researchDirection, administrativeDuty, country,
-		nation, address,
-		postCode, homePhone, phone, email, officePhone,
-		academicPartTime,
-		academicSpecialty)
-		values(#{name}, #{sex}, #{idCard}, #{birth},
-		#{researchUnit}, #{finalDegree}, #{finalEducation}, #{title},
-		#{researchDirection}, #{administrativeDuty}, #{country}, #{nation},
-		#{address},
-		#{postCode}, #{homePhone}, #{phone},
-		#{email},
-		#{officePhone},
-		#{academicPartTime}, #{academicSpecialty})
+		englishName, staffNumber, sex, birth, researchUnit,
+		researchDepartment, personnelUnits, finalDegree, finalEducation,
+		politicalStatus, title, fixedDate, honoraryTitle, disciplines,
+		statistics, firstDiscipline, secDiscipline, thirdDiscipline,
+		relatedDisciplines, researchDirection, idCard, teacherCategory,
+		tutorCategory, isExpert, appointmentDate, administrativeDuty, country,
+		nation, address, postCode, homePhone, phone, email, officePhone,
+		officeFax, personWeb, jobSituation, firstForeignLanguage,
+		secForeignLanguage, firstForeignLanguageLev, secForeignLanguageLev,
+		trainingSituation, academicPartTime, academicSpecialty,
+		approvalStatus)values(#{name}, #{englishName}, #{staffNumber}, #{sex},
+		#{birth}, #{researchUnit}, #{researchDepartment}, #{personnelUnits},
+		#{finalDegree}, #{finalEducation}, #{politicalStatus}, #{title},
+		#{fixedDate}, #{honoraryTitle}, #{disciplines}, #{statistics},
+		#{firstDiscipline}, #{secDiscipline}, #{thirdDiscipline},
+		#{relatedDisciplines}, #{researchDirection}, #{idCard},
+		#{teacherCategory}, #{tutorCategory}, #{isExpert}, #{appointmentDate},
+		#{administrativeDuty}, #{country}, #{nation}, #{address}, #{postCode},
+		#{homePhone}, #{phone}, #{email}, #{officePhone}, #{officeFax},
+		#{personWeb}, #{jobSituation}, #{firstForeignLanguage},
+		#{secForeignLanguage}, #{firstForeignLanguageLev},
+		#{secForeignLanguageLev}, #{trainingSituation}, #{academicPartTime},
+		#{academicSpecialty}, #{approvalStatus})
+
 	</insert>
 
 	<update id="update" parameterType="Researchers">
 		update Researchers set
-		name=#{name}, sex =#{sex}, idCard =#{idCard}, birth =#{birth},
-		researchUnit =#{researchUnit}, finalDegree
-		=#{finalDegree},
-		finalEducation =#{finalEducation}, title =#{title},
-		researchDirection
-		=#{researchDirection}, administrativeDuty =#{administrativeDuty},
-		country
-		=#{country}, nation =#{nation}, address =#{address}, postCode
-		=#{postCode}, homePhone =#{homePhone}, phone
-		=#{phone}, email
-		=#{email}, officePhone
-		=#{officePhone}, academicPartTime
-		=#{academicPartTime}, academicSpecialty =#{academicSpecialty}
+		name=#{name}, englishName=#{englishName}, staffNumber=#{staffNumber},
+		sex=#{sex}, birth=#{birth}, researchUnit=#{researchUnit},
+		researchDepartment=#{researchDepartment},
+		personnelUnits=#{personnelUnits}, finalDegree=#{finalDegree},
+		finalEducation=#{finalEducation}, politicalStatus=#{politicalStatus},
+		title=#{title}, fixedDate=#{fixedDate},
+		honoraryTitle=#{honoraryTitle}, disciplines=#{disciplines},
+		statistics=#{statistics}, firstDiscipline=#{firstDiscipline},
+		secDiscipline=#{secDiscipline}, thirdDiscipline=#{thirdDiscipline},
+		relatedDisciplines=#{relatedDisciplines},
+		researchDirection=#{researchDirection}, idCard=#{idCard},
+		teacherCategory=#{teacherCategory}, tutorCategory=#{tutorCategory},
+		isExpert=#{isExpert}, appointmentDate=#{appointmentDate},
+		administrativeDuty=#{administrativeDuty}, country=#{country},
+		nation=#{nation}, address=#{address}, postCode=#{postCode},
+		homePhone=#{homePhone}, phone=#{phone}, email=#{email},
+		officePhone=#{officePhone}, officeFax=#{officeFax},
+		personWeb=#{personWeb}, jobSituation=#{jobSituation},
+		firstForeignLanguage=#{firstForeignLanguage},
+		secForeignLanguage=#{secForeignLanguage},
+		firstForeignLanguageLev=#{firstForeignLanguageLev},
+		secForeignLanguageLev=#{secForeignLanguageLev},
+		trainingSituation=#{trainingSituation},
+		academicPartTime=#{academicPartTime},
+		academicSpecialty=#{academicSpecialty},
+		approvalStatus=#{approvalStatus}
 		where id
 		= #{id}
 	</update>
-
 
 	<delete id="delete" parameterType="int">
 		delete from Researchers where
@@ -57,29 +78,30 @@
 		select * from Researchers where name = #{name}
 	</select>
 
+	<select id="loadByStaffNum" parameterType="String" resultType="Researchers">
+		select * from Researchers where staffNumber = #{staffNumber}
+	</select>
+
 	<select id="find" parameterType="Map" resultType="Researchers">
 		select * from Researchers
 		<where>
 			<if test="name != null and name != ''">
 				(name like #{name})
 			</if>
+			<if test="staffNumber != null and staffNumber != ''">
+				(staffNumber = #{staffNumber})
+			</if>
 			<if test="sex != null and sex != ''">
-				(sex = #{name})
+				(sex = #{sex})
 			</if>
-			<if test="idCard != null and idCard != ''">
-				(idCard = #{idCard})
+			<if test="birth != null and birth != ''">
+				(birth = #{birth})
 			</if>
-			<if test="homePhone != null and homePhone != ''">
-				(homePhone = #{homePhone})
+			<if test="finalDegree != null and finalDegree != ''">
+				(finalDegree = #{finalDegree})
 			</if>
-			<if test="phone != null and phone != ''">
-				(phone = #{phone})
-			</if>
-			<if test="email != null and email != ''">
-				(email = #{email})
-			</if>
-			<if test="officePhone != null and officePhone != ''">
-				(officePhone = #{officePhone})
+			<if test="finalEducation != null and finalEducation != ''">
+				(finalEducation = #{finalEducation})
 			</if>
 		</where>
 		limit #{pageOffset}, #{pageSize}
@@ -99,6 +121,5 @@
 				(name like #{name})
 			</if>
 		</where>
-		<!--order by ${sort} ${order} -->
 	</select>
 </mapper>

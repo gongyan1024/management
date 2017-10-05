@@ -30,5 +30,11 @@
 		<mapper resource="zl/management/domain/domainXml/meetingHostPath.xml"></mapper>
 		<mapper resource="zl/management/domain/domainXml/patentResults.xml"></mapper>
 		<mapper resource="zl/management/domain/domainXml/patentResultsPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/achievementAward.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/achievementAwardPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/achievements.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/achievementsPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/thesis.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/thesisPath.xml"></mapper>
 	</mappers>
 </configuration>

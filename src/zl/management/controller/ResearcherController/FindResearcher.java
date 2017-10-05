@@ -24,7 +24,7 @@ public class FindResearcher implements Controller {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		String name = request.getParameter("name");
+		String name = "%" + request.getParameter("name") + "%"; //模糊查询
 		String sex = request.getParameter("sex");
 		String idCard = request.getParameter("idCard");
 		String homePhone = request.getParameter("homePhone");

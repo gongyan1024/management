@@ -36,20 +36,18 @@
 						method="post" class="function">
 						<input type="submit" value="导出" id="lg-form">
 					</form>
-					<form
-						action="${pageContext.request.contextPath}/findPatentResults"
+					<form action="${pageContext.request.contextPath}/findPatentResults"
 						method="post" class="function">
 						<input type="submit" value="查询" id="lg-form">
 					</form>
-					<form
-						action="${pageContext.request.contextPath}/addPatentResults"
+					<form action="${pageContext.request.contextPath}/addPatentResults"
 						method="post" class="function">
 						<input type="submit" value="新增" id="lg-form">
 					</form>
 				</div>
 				<div>
 					<table>
-					<h3 align="center">专利成果相关操作</h3>
+						<h3 align="center">专利成果相关操作</h3>
 						<thead>
 							<tr>
 								<td>专利名称</td>
@@ -81,8 +79,30 @@
 					</table>
 					<tfoot>
 						<tr>
-							<td colspan="5"><jsp:include
-									page="/WEB-INF/jsp/paging_footer.jsp"></jsp:include></td>
+							<td colspan="5"><form action="showPatentResults" method="post"
+									id="navigatorForm">
+									<a href="showPatentResults?pageNumber=${1}">首页</a>
+									<c:if test="${pageNumber>1}">
+										<a href="showPatentResults?pageNumber=${pageNumber-1}">上一页</a>
+									</c:if>
+									跳转到第 <select name="pageNumber" onchange="gotoSelectedPage()">
+										<c:forEach begin="1" end="${totalPages}" step="1"
+											var="pageIndex">
+											<c:choose>
+												<c:when test="${pageIndex eq pageNumber}">
+													<option value="${pageIndex}" selected="selected">${pageIndex}</option>
+												</c:when>
+												<c:otherwise>
+													<option value="${pageIndex}">${pageIndex}</option>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+									</select>页
+									<c:if test="${pageNumber<totalPages}">
+										<a href="showPatentResults?pageNumber=${pageNumber+1}">下一页</a>
+									</c:if>
+									<a href="showPatentResults?pageNumber=${totalPages}">末页</a>
+								</form></td>
 						</tr>
 					</tfoot>
 				</div>
@@ -94,3 +114,9 @@
 	</script>
 </body>
 </html>
+<script type="text/javascript">
+    function gotoSelectedPage() {
+        var x = document.getElementById("navigatorForm");
+        x.submit();
+    }
+</script>

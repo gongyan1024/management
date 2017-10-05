@@ -13,10 +13,16 @@ public class ShowResearcherDetailController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		int id = Integer.parseInt(request.getParameter("id"));
-		Researchers r = dao.load(id);
+		Researchers r = null;
+		if (request.getParameter("id") != null) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			r = dao.load(id);
+		} else {
+			String staffNum = request.getParameter("staffNum"); 
+			r = dao.loadByStaffNum(staffNum);
+		}
 		request.setAttribute("r", r);
-		
+
 		return "/WEB-INF/jsp/researchers/showResearcherDetail.jsp";
 	}
 

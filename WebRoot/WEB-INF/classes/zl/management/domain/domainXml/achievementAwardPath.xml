@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.filePath.AchievementAwardPath">
+	<insert id="add" parameterType="AchievementAwardPath">
+		insert into achievementaward_path(did, path)
+		values(#{did}, #{path})
+	</insert>
+
+	<update id="update" parameterType="AchievementAwardPath">
+		update user set achievementaward_path(path)
+		values(#{path})
+		where did=#{did}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from achievementaward_path where did = #{did}
+	</delete>
+	
+	<delete id="deleteByPath" parameterType="string">
+		delete from achievementaward_path where path = #{path}
+	</delete>
+	
+    <select id="list" parameterType="Map" resultType="AchievementAwardPath">
+        select * from achievementaward_path where did = #{did}
+    </select>
+</mapper>

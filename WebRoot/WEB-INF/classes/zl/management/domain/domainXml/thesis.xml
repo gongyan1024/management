@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.Thesis">
+	<insert id="add" parameterType="Thesis">
+		insert into thesis(
+		thesisLevel,
+		thesisType, thesisName, firstAuthorType, firstAuthorName,
+		affiliatedUnits, researchSection, author, firstAuthorNumber,
+		publishTime, reprint, included, publications, publicationLevel,
+		editorialOfficeAddress, disciplineCategory, firstDiscipline,
+		projectSource, publicationRange, publicationUnit, volumeNumber, issue,
+		pageRange, individualWritersnumber, schoolSignature, keyWord,
+		auditStatus, remarks, page, translation, issNnumber,
+		cnNumber)values(#{thesisLevel}, #{thesisType}, #{thesisName},
+		#{firstAuthorType}, #{firstAuthorName}, #{affiliatedUnits},
+		#{researchSection}, #{author}, #{firstAuthorNumber}, #{publishTime},
+		#{reprint}, #{included}, #{publications}, #{publicationLevel},
+		#{editorialOfficeAddress}, #{disciplineCategory}, #{firstDiscipline},
+		#{projectSource}, #{publicationRange}, #{publicationUnit},
+		#{volumeNumber}, #{issue}, #{pageRange}, #{individualWritersnumber},
+		#{schoolSignature}, #{keyWord}, #{auditStatus}, #{remarks}, #{page},
+		#{translation}, #{issNnumber}, #{cnNumber})
+	</insert>
+
+	<update id="update" parameterType="Thesis">
+		update thesis set
+		thesisLevel=#{thesisLevel}, thesisType=#{thesisType},
+		thesisName=#{thesisName}, firstAuthorType=#{firstAuthorType},
+		firstAuthorName=#{firstAuthorName},
+		affiliatedUnits=#{affiliatedUnits},
+		researchSection=#{researchSection}, author=#{author},
+		firstAuthorNumber=#{firstAuthorNumber}, publishTime=#{publishTime},
+		reprint=#{reprint}, included=#{included},
+		publications=#{publications}, publicationLevel=#{publicationLevel},
+		editorialOfficeAddress=#{editorialOfficeAddress},
+		disciplineCategory=#{disciplineCategory},
+		firstDiscipline=#{firstDiscipline}, projectSource=#{projectSource},
+		publicationRange=#{publicationRange},
+		publicationUnit=#{publicationUnit}, volumeNumber=#{volumeNumber},
+		issue=#{issue}, pageRange=#{pageRange},
+		individualWritersnumber=#{individualWritersnumber},
+		schoolSignature=#{schoolSignature}, keyWord=#{keyWord},
+		auditStatus=#{auditStatus}, remarks=#{remarks}, page=#{page},
+		translation=#{translation}, issNnumber=#{issNnumber},
+		cnNumber=#{cnNumber}
+		where id
+		= #{id}
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		delete from thesis
+		where
+		id =
+		#{id}
+	</delete>
+
+	<select id="load" parameterType="int" resultType="Thesis">
+		select * from
+		thesis where id = #{id}
+	</select>
+
+	<select id="loadByName" parameterType="String" resultType="Thesis">
+		select * from thesis where lectureName = #{lectureName}
+	</select>
+
+	<select id="find" parameterType="Map" resultType="Thesis">
+		select * from thesis
+		<where>
+			<if test="thesisName != null and thesisName != ''">
+				(thesisName like #{thesisName})
+			</if>
+			<if test="firstAuthorName != null and firstAuthorName != ''">
+				(firstAuthorName = #{firstAuthorName})
+			</if>
+			<if test="researchSection != null and researchSection != ''">
+				(researchSection = #{researchSection})
+			</if>
+			<if test="author != null and author != ''">
+				(author like #{author})
+			</if>
+			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
+				(firstAuthorNumber = #{firstAuthorNumber})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+		</where>
+		limit #{pageOffset}, #{pageSize}
+	</select>
+
+	<select id="find_count" parameterType="Map" resultType="int">
+		select
+		count(*) from thesis
+	</select>
+
+	<select id="list" parameterType="Map" resultType="Thesis">
+		select * from thesis
+		<!--order by ${sort} ${order} -->
+	</select>
+</mapper>

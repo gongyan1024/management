@@ -31,7 +31,7 @@ public class ResearchersPathDaoImp extends BaseDao<ResearchersPath> implements R
 	@Override
 	public List<ResearchersPath> list(int id) {
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("reaId", id);
+		params.put("dId", id);
 		return super.list(ResearchersPath.class, params);
 	}
 

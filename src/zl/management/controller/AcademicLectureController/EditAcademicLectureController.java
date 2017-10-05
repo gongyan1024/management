@@ -13,8 +13,8 @@ public class EditAcademicLectureController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));
-		AcademicLecture al = dao.load(id);
-		request.setAttribute("r", al);
+		AcademicLecture obj = dao.load(id);
+		request.setAttribute("r", obj);
 		return "/WEB-INF/jsp/academicLecture/editAcademicLecture.jsp";
 	}
 

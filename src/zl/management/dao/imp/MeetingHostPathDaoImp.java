@@ -31,7 +31,7 @@ public class MeetingHostPathDaoImp extends BaseDao<MeetingHostPath> implements M
 	@Override
 	public List<MeetingHostPath> list(int id) {
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("atmId", id);
+		params.put("dId", id);
 		return super.list(MeetingHostPath.class, params);
 	}
 

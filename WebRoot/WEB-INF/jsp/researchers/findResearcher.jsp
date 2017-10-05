@@ -31,33 +31,28 @@
 					</td>
 				</tr>
 				<tr>
-					<td>身份证信息</td>
-					<td><input type="text" id="lg-form" name="idCard"
+					<td>职工号</td>
+					<td><input type="text" id="lg-form" name="staffNumber"
 						value="">
 					</td>
 				</tr>
 				<tr>
-					<td>住宅电话</td>
-					<td><input type="text" id="lg-form" name="homePhone"
+					<td>出生日期</td>
+					<td><input type="text" id="lg-form" name="birth"
 						value="">
 					</td>
 				</tr>
 				<tr>
-					<td>手机</td>
-					<td><input type="text" id="lg-form" name="phone"
+					<td>最后学位</td>
+					<td><input type="text" id="lg-form" name="finalDegree"
 						value="">
 					</td>
 				</tr>
 				<tr>
-					<td>Email</td>
-					<td><input type="text" id="lg-form" name="email"
+					<td>最后学历</td>
+					<td><input type="text" id="lg-form" name="finalEducation"
 						value="">
 					</td>
-				</tr>
-				<tr>
-					<td>办公电话</td>
-					<td><input type="text" id="lg-form" name="officePhone"
-						value="">
 				</tr>
 				<tr>
 					<td><input type="reset" value="清空"></td>

@@ -28,7 +28,6 @@ function navList(id) {
             $("#nav_dot li").removeClass("selected");
             $(this).parent().addClass("selected");
             $div.slideDown(600);
-
         } else {
             $div.slideUp(600);
         }

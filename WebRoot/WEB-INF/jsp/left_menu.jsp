@@ -45,8 +45,8 @@
 				<span></span>科研成果
 			</h4>
 			<div class="list-item none">
-				<a href="">论文成果</a> <a href="">著作成果</a> <a href="">研究报告</a> <a
-					href="">鉴定成果</a> <a href="">艺术作品</a>
+				<a href="showThesis">论文成果</a> <a href="showAchievements">著作成果</a> <a href="">研究报告</a>
+				<a href="">鉴定成果</a> <a href="">艺术作品</a>
 			</div>
 		</li>
 		<li>
@@ -59,19 +59,19 @@
 		</li>
 		<li>
 			<h4 class="M1">
-				<span></span>成果获奖
+				<span></span>成果获奖
 			</h4>
-			<div class="list-item none">
-				<a href="">暂无</a>
-			</div>
+				<div class="list-item none">
+					<a href="showAchievementAward">成果获奖</a>
+				</div>
 		</li>
 		<li>
 			<h4 class="M1">
 				<span></span>学术活动
 			</h4>
 			<div class="list-item none">
-				<a href="showMeetingHost">主办会议</a> <a href="showAcademicLecture">学术讲座</a> <a
-					href="showAttendMeeting">参加会议</a>
+				<a href="showMeetingHost">主办会议</a> <a href="showAcademicLecture">学术讲座</a>
+				<a href="showAttendMeeting">参加会议</a>
 			</div>
 		</li>
 		<li>

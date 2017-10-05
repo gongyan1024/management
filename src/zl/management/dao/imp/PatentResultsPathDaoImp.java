@@ -31,7 +31,7 @@ public class PatentResultsPathDaoImp extends BaseDao<PatentResultsPath> implemen
 	@Override
 	public List<PatentResultsPath> list(int id) {
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("atmId", id);
+		params.put("dId", id);
 		return super.list(PatentResultsPath.class, params);
 	}
 

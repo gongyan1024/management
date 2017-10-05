@@ -23,8 +23,8 @@ public class ConfirmFindAttendMeetingController implements Controller {
 			e.printStackTrace();
 		}
 		
+		String conferenceName = "%" + request.getParameter("conferenceName") + "%";
 		String attendee = request.getParameter("attendee");
-		String conferenceName = request.getParameter("conferenceName");
 		String sponsor = request.getParameter("sponsor");
 		String participantDate = request.getParameter("participantDate");
 		

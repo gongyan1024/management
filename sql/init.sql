@@ -62,7 +62,7 @@ CREATE TABLE attendMeeting (
 CREATE TABLE attendMeeting_path(
     did INT,
     path VARCHAR(200),
-    CONSTRAINT FOREIGN KEY(did) REFERENCES attendMeeting(did) ON DELETE CASCADE
+    CONSTRAINT FOREIGN KEY(did) REFERENCES attendMeeting(id) ON DELETE CASCADE
 );
 
 CREATE TABLE academicLecture (

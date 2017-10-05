@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.SqlSession;
+
 import zl.management.dao.BaseDao;
 import zl.management.dao.ResearchersDao;
 import zl.management.domain.Researchers;
-import zl.management.domain.filePath.ResearchersPath;
+import zl.management.util.MyBatisUtil;
 import zl.management.util.Pager;
 
 public class ResearchersDaoImp extends BaseDao<Researchers> implements ResearchersDao {
@@ -47,5 +49,19 @@ public class ResearchersDaoImp extends BaseDao<Researchers> implements Researche
 	@Override
 	public Pager<Researchers> find(Map<String, Object> params) {
 		return super.find(Researchers.class, params);
+	}
+
+	@Override
+	public Researchers loadByStaffNum(String StaffNum) {
+		Researchers res = null;
+		SqlSession session = null;
+		try {
+			session = MyBatisUtil.createSession();
+			res = session.selectOne(Researchers.class.getName() + ".loadByStaffNum", StaffNum);
+		} finally {
+			MyBatisUtil.closeSession(session);
+		}
+
+		return res;
 	}
 }

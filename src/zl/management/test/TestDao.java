@@ -11,7 +11,6 @@ public class TestDao {
 	//@Test
 	public void testAdd() {
 		AcademicLecture al = new AcademicLecture();
-		al.setEmecc("小白白");
 		al.setLectureName("学术讲座2");
 		dao.add(al);
 	}

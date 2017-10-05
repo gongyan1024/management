@@ -1,35 +1,20 @@
 package zl.management.controller.PatentResultsController;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import zl.management.controller.ControllDeal;
 import zl.management.controller.Controller;
 import zl.management.dao.DAOFactory;
 import zl.management.dao.imp.PatentResultsPathDaoImp;
+import zl.management.domain.filePath.PatentResultsPath;
 
 public class DeletePatentResultsController implements Controller {
 	private PatentResultsPathDaoImp dao = DAOFactory.getPatentResultsPathDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		String resPath = "showDownloadPatentResults?id=" + request.getParameter("id");
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		String path = request.getParameter("path");
-		File file = new File(path);
-		file.delete();
-		dao.delete(path);
-		try {
-			response.sendRedirect(resPath);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		ControllDeal.deleteFile(request, response, dao, PatentResultsPath.class, resPath);
 		return null;
 	}
 }

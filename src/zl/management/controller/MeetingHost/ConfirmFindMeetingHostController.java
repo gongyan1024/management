@@ -23,7 +23,7 @@ public class ConfirmFindMeetingHostController implements Controller {
 			e.printStackTrace();
 		}
 		
-		String meetingName = request.getParameter("meetingName");
+		String meetingName = "%" + request.getParameter("meetingName") + "%";
 		String theme = request.getParameter("theme");
 		String meetingPlace = request.getParameter("meetingPlace");
 		String meetingContact = request.getParameter("meetingContact");
