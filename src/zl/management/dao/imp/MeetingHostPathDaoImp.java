@@ -4,12 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-
 import zl.management.dao.BaseDao;
 import zl.management.dao.MeetingHostPathDao;
 import zl.management.domain.filePath.MeetingHostPath;
-import zl.management.util.MyBatisUtil;
 
 public class MeetingHostPathDaoImp extends BaseDao<MeetingHostPath> implements MeetingHostPathDao {
 
@@ -37,17 +34,7 @@ public class MeetingHostPathDaoImp extends BaseDao<MeetingHostPath> implements M
 
 	@Override
 	public void delete(String path) {
-		SqlSession session = null;
-		try {
-			session = MyBatisUtil.createSession();
-			session.update(MeetingHostPath.class.getName() + ".deleteByPath", path);
-			session.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			session.rollback();
-		} finally {
-			MyBatisUtil.closeSession(session);
-		}
+		super.delete(MeetingHostPath.class, path);
 	}
 
 }

@@ -4,12 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-
 import zl.management.dao.AchievementAwardPathDao;
 import zl.management.dao.BaseDao;
 import zl.management.domain.filePath.AchievementAwardPath;
-import zl.management.util.MyBatisUtil;
 
 public class AchievementAwardPathDaoImp extends BaseDao<AchievementAwardPath> implements AchievementAwardPathDao {
 
@@ -37,17 +34,7 @@ public class AchievementAwardPathDaoImp extends BaseDao<AchievementAwardPath> im
 
 	@Override
 	public void delete(String path) {
-		SqlSession session = null;
-		try {
-			session = MyBatisUtil.createSession();
-			session.update(AchievementAwardPath.class.getName() + ".deleteByPath", path);
-			session.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			session.rollback();
-		} finally {
-			MyBatisUtil.closeSession(session);
-		}
+		super.delete(AchievementAwardPath.class, path);
 	}
 
 }

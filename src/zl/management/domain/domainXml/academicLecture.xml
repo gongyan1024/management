@@ -57,7 +57,7 @@
 	<select id="find" parameterType="Map" resultType="AcademicLecture">
 		select * from academicLecture
 		<where>
-			<if test="lectureName != null and lectureName != ''">
+			<if test="lectureName != null and lectureName != '%%'">
 				(lectureName like #{lectureName})
 			</if>
 			<if test="subordinateUnit != null and subordinateUnit != ''">

@@ -58,7 +58,7 @@
 	<select id="find" parameterType="Map" resultType="MeetingHost">
 		select * from meetingHost
 		<where>
-			<if test="meetingName != null and meetingName != ''">
+			<if test="meetingName != null and meetingName != '%%'">
 				(meetingName like #{meetingName})
 			</if>
 			<if test="theme != null and theme != ''">

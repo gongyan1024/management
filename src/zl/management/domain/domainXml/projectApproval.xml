@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.ProjectApproval">
+	<insert id="add" parameterType="ProjectApproval">
+		insert into projectApproval(
+		entryName, projectNumber, personInCharge, staffNumber,
+		subordinateUnit, projectNature, projectLevel, projectMembers,
+		projectYear, projectClassification, projectSubclass, projectStatus,
+		isChange, postponed, approvalNumber, projectSourceUnit,
+		rank, projectTime, startTime, plannedCompletionDate,
+		dateOfEntry, gradeOfKnot, actualCompletionTime, formOfAchievement,
+		subTopic, typeOfContract, contractFunds, outlayCardNumber,
+		matchingFunds, matchingCardNumber, fileBox, disciplineCategory,
+		subjectClassification, projectSource, researchCategory,
+		nationalBigEconomy, nationalMiddleEconomy, formOfCooperation,
+		socioEconomicGoals, auditStatus, remarks, titleOfPersonInCharge,
+		startStopTime, arrivalExpenses, expenditure,
+		managementFees)values(#{entryName}, #{projectNumber},
+		#{personInCharge}, #{staffNumber}, #{subordinateUnit},
+		#{projectNature}, #{projectLevel}, #{projectMembers}, #{projectYear},
+		#{projectClassification}, #{projectSubclass}, #{projectStatus},
+		#{isChange}, #{postponed}, #{approvalNumber}, #{projectSourceUnit},
+		#{rank}, #{projectTime}, #{startTime},
+		#{plannedCompletionDate}, #{dateOfEntry}, #{gradeOfKnot},
+		#{actualCompletionTime}, #{formOfAchievement}, #{subTopic},
+		#{typeOfContract}, #{contractFunds}, #{outlayCardNumber},
+		#{matchingFunds}, #{matchingCardNumber}, #{fileBox},
+		#{disciplineCategory}, #{subjectClassification}, #{projectSource},
+		#{researchCategory}, #{nationalBigEconomy}, #{nationalMiddleEconomy},
+		#{formOfCooperation}, #{socioEconomicGoals}, #{auditStatus},
+		#{remarks}, #{titleOfPersonInCharge}, #{startStopTime},
+		#{arrivalExpenses}, #{expenditure}, #{managementFees})
+
+	</insert>
+
+	<update id="update" parameterType="ProjectApproval">
+		update projectApproval set
+		entryName=#{entryName}, projectNumber=#{projectNumber},
+		personInCharge=#{personInCharge}, staffNumber=#{staffNumber},
+		subordinateUnit=#{subordinateUnit}, projectNature=#{projectNature},
+		projectLevel=#{projectLevel}, projectMembers=#{projectMembers},
+		projectYear=#{projectYear},
+		projectClassification=#{projectClassification},
+		projectSubclass=#{projectSubclass}, projectStatus=#{projectStatus},
+		isChange=#{isChange}, postponed=#{postponed},
+		approvalNumber=#{approvalNumber},
+		projectSourceUnit=#{projectSourceUnit},
+		rank=#{rank},
+		projectTime=#{projectTime}, startTime=#{startTime},
+		plannedCompletionDate=#{plannedCompletionDate},
+		dateOfEntry=#{dateOfEntry}, gradeOfKnot=#{gradeOfKnot},
+		actualCompletionTime=#{actualCompletionTime},
+		formOfAchievement=#{formOfAchievement}, subTopic=#{subTopic},
+		typeOfContract=#{typeOfContract}, contractFunds=#{contractFunds},
+		outlayCardNumber=#{outlayCardNumber}, matchingFunds=#{matchingFunds},
+		matchingCardNumber=#{matchingCardNumber}, fileBox=#{fileBox},
+		disciplineCategory=#{disciplineCategory},
+		subjectClassification=#{subjectClassification},
+		projectSource=#{projectSource}, researchCategory=#{researchCategory},
+		nationalBigEconomy=#{nationalBigEconomy},
+		nationalMiddleEconomy=#{nationalMiddleEconomy},
+		formOfCooperation=#{formOfCooperation},
+		socioEconomicGoals=#{socioEconomicGoals}, auditStatus=#{auditStatus},
+		remarks=#{remarks}, titleOfPersonInCharge=#{titleOfPersonInCharge},
+		startStopTime=#{startStopTime}, arrivalExpenses=#{arrivalExpenses},
+		expenditure=#{expenditure}, managementFees=#{managementFees}
+		where id
+		=
+		#{id}
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		delete from projectApproval
+		where
+		id =
+		#{id}
+	</delete>
+
+	<select id="load" parameterType="int" resultType="ProjectApproval">
+		select * from
+		projectApproval where id = #{id}
+	</select>
+
+	<select id="loadByName" parameterType="String" resultType="ProjectApproval">
+		select * from projectApproval where entryName = #{entryName}
+	</select>
+
+	<select id="find" parameterType="Map" resultType="ProjectApproval">
+		select * from projectApproval
+		<where>
+			<if test="entryName != null and entryName != '%%'">
+				(entryName like #{entryName})
+			</if>
+			<if test="projectNumber != null and projectNumber != ''">
+				(projectNumber = #{projectNumber})
+			</if>
+			<if test="personInCharge != null and personInCharge != ''">
+				(personInCharge = #{personInCharge})
+			</if>
+			<if test="projectMembers != null and projectMembers != '%%'">
+				(projectMembers like #{projectMembers})
+			</if>
+			<if test="projectStatus != null and projectStatus != ''">
+				(projectStatus = #{projectStatus})
+			</if>
+			<if test="projectYear != null and projectYear != ''">
+				(projectYear = #{projectYear})
+			</if>
+		</where>
+		limit #{pageOffset}, #{pageSize}
+	</select>
+
+	<select id="find_count" parameterType="Map" resultType="int">
+		select
+		count(*) from projectApproval
+	</select>
+
+	<select id="list" parameterType="Map" resultType="ProjectApproval">
+		select * from projectApproval
+		<!--order by ${sort} ${order} -->
+	</select>
+</mapper>

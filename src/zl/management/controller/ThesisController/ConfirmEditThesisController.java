@@ -13,8 +13,7 @@ public class ConfirmEditThesisController implements Controller {
 	private static ThesisDaoImp dao = DAOFactory.getThesisDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		Thesis obj = ControllDeal.comfirmEditDomain(request, response, dao, Thesis.class);
-		dao.update(obj);
+		ControllDeal.comfirmEditDomain(request, response, dao, Thesis.class);
 		ControllDeal.sendMessage(request, response, "编辑成功！1秒后为您自动跳到主页！！", "showThesis");
 		return null;
 	}

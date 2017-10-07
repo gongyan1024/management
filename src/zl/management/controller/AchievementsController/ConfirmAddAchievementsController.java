@@ -14,10 +14,8 @@ public class ConfirmAddAchievementsController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		Achievements obj = ControllDeal.createObjByForm(request, response, Achievements.class);
-		dao.add(obj);
+		ControllDeal.createObjByForm(request, response, Achievements.class, dao);
 		ControllDeal.sendMessage(request, response, "添加成功！1秒后为您自动跳到主页！！", "showAchievements");
-		
 		return null;
 	}
 

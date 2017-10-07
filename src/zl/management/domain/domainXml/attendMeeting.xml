@@ -35,7 +35,8 @@
 
 
 	<delete id="delete" parameterType="int">
-		delete from attendMeeting where
+		delete from attendMeeting
+		where
 		id =
 		#{id}
 	</delete>
@@ -52,7 +53,7 @@
 	<select id="find" parameterType="Map" resultType="AttendMeeting">
 		select * from attendMeeting
 		<where>
-			<if test="attendee != null and attendee != ''">
+			<if test="attendee != null and attendee != '%%'">
 				(attendee like #{attendee})
 			</if>
 			<if test="conferenceName != null and conferenceName != ''">
@@ -62,14 +63,15 @@
 				(sponsor = #{sponsor})
 			</if>
 			<if test="participantDate != null and participantDate != ''">
-				(sponsor like #{participantDate})
+				(participantDate = #{participantDate})
 			</if>
 		</where>
 		limit #{pageOffset}, #{pageSize}
 	</select>
 
 	<select id="find_count" parameterType="Map" resultType="int">
-		select count(*) from attendMeeting
+		select
+		count(*) from attendMeeting
 	</select>
 
 	<select id="list" parameterType="Map" resultType="AttendMeeting">

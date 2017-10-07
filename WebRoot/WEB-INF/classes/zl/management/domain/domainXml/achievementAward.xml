@@ -62,7 +62,7 @@
 	<select id="find" parameterType="Map" resultType="AchievementAward">
 		select * from achievementAward
 		<where>
-			<if test="bonusName != null and bonusName != ''">
+			<if test="bonusName != null and bonusName != '%%'">
 				(bonusName like #{bonusName})
 			</if>
 			<if test="firstAdult != null and firstAdult != ''">

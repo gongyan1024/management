@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.ResearchReport">
+	<insert id="add" parameterType="ResearchReport">
+		insert into researchReport(
+		remarks, reportTopic, firstAuthorType, firstAuthorName,
+		subordinateUnit, unitType, adoptionUnit, adoptionTime, accepted,
+		cooperativeUnit, forwardingResults, disciplineCategory,
+		firstDiscipline, projectSource, researchSection, author,
+		firstAuthorNumber, schoolSignature, wordsNumber,
+		auditStatus)values(#{remarks}, #{reportTopic}, #{firstAuthorType},
+		#{firstAuthorName}, #{subordinateUnit}, #{unitType}, #{adoptionUnit},
+		#{adoptionTime}, #{accepted}, #{cooperativeUnit},
+		#{forwardingResults}, #{disciplineCategory}, #{firstDiscipline},
+		#{projectSource}, #{researchSection}, #{author}, #{firstAuthorNumber},
+		#{schoolSignature}, #{wordsNumber}, #{auditStatus})
+	</insert>
+
+	<update id="update" parameterType="ResearchReport">
+		update researchReport set
+		remarks=#{remarks}, reportTopic=#{reportTopic},
+		firstAuthorType=#{firstAuthorType},
+		firstAuthorName=#{firstAuthorName},
+		subordinateUnit=#{subordinateUnit}, unitType=#{unitType},
+		adoptionUnit=#{adoptionUnit}, adoptionTime=#{adoptionTime},
+		accepted=#{accepted}, cooperativeUnit=#{cooperativeUnit},
+		forwardingResults=#{forwardingResults},
+		disciplineCategory=#{disciplineCategory},
+		firstDiscipline=#{firstDiscipline}, projectSource=#{projectSource},
+		researchSection=#{researchSection}, author=#{author},
+		firstAuthorNumber=#{firstAuthorNumber},
+		schoolSignature=#{schoolSignature}, wordsNumber=#{wordsNumber},
+		auditStatus=#{auditStatus}
+
+		where id
+		= #{id}
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		delete from researchReport
+		where
+		id =
+		#{id}
+	</delete>
+
+	<select id="load" parameterType="int" resultType="ResearchReport">
+		select * from
+		researchReport where id = #{id}
+	</select>
+
+	<select id="loadByName" parameterType="String" resultType="ResearchReport">
+		select * from researchReport where reportTopic = #{reportTopic}
+	</select>
+
+	<select id="find" parameterType="Map" resultType="ResearchReport">
+		select * from researchReport
+		<where>
+			<if test="reportTopic != null and reportTopic != '%%'">
+				(reportTopic like #{reportTopic})
+			</if>
+            <if test="firstAuthorName != null and firstAuthorName != ''">
+                (firstAuthorName = #{firstAuthorName})
+            </if>
+            <if test="researchSection != null and researchSection != ''">
+                (researchSection = #{researchSection})
+            </if>
+            <if test="author != null and author != '%%'">
+                (author like #{author})
+            </if>
+            <if test="firstAuthorNumber != null and firstAuthorNumber != ''">
+                (firstAuthorNumber = #{firstAuthorNumber})
+            </if>
+            <if test="auditStatus != null and auditStatus != ''">
+                (auditStatus = #{auditStatus})
+            </if>
+		</where>
+		limit #{pageOffset}, #{pageSize}
+	</select>
+
+	<select id="find_count" parameterType="Map" resultType="int">
+		select
+		count(*) from researchReport
+	</select>
+
+	<select id="list" parameterType="Map" resultType="ResearchReport">
+		select * from researchReport
+		<!--order by ${sort} ${order} -->
+	</select>
+</mapper>

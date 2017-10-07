@@ -13,8 +13,7 @@ public class ConfirmEditAchievementAwardController implements Controller {
 	private static AchievementAwardDaoImp dao = DAOFactory.getAchievementAwardDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		AchievementAward obj = ControllDeal.comfirmEditDomain(request, response, dao, AchievementAward.class);
-		dao.update(obj);
+		ControllDeal.comfirmEditDomain(request, response, dao, AchievementAward.class);
 		ControllDeal.sendMessage(request, response, "编辑成功！1秒后为您自动跳到主页！！", "showAchievementAward");
 		return null;
 	}

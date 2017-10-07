@@ -13,8 +13,7 @@ public class ConfirmEditPatentResultsController implements Controller {
 	private static PatentResultsDaoImp dao = DAOFactory.getPatentResultsDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		PatentResults obj = ControllDeal.comfirmEditDomain(request, response, dao, PatentResults.class);
-		dao.update(obj);
+		ControllDeal.comfirmEditDomain(request, response, dao, PatentResults.class);
 		ControllDeal.sendMessage(request, response, "编辑成功！1秒后为您自动跳到主页！！", "showPatentResults");
 		return null;
 	}

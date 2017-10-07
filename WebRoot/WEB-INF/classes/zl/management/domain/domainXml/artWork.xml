@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.ArtWork">
+	<insert id="add" parameterType="ArtWork">
+		insert into artWork(
+		author,
+		resultsName, firstAuthorType, firstAuthorName, subordinateUnit,
+		researchSection, publishedTime, firstAuthorNumber, resultsType,
+		achievementLevel, publications, publicationDate, publicationLevel,
+		schoolSignature, auditStatus, remark)values(#{author}, #{resultsName},
+		#{firstAuthorType}, #{firstAuthorName}, #{subordinateUnit},
+		#{researchSection}, #{publishedTime}, #{firstAuthorNumber},
+		#{resultsType}, #{achievementLevel}, #{publications},
+		#{publicationDate}, #{publicationLevel}, #{schoolSignature},
+		#{auditStatus}, #{remark})
+	</insert>
+
+	<update id="update" parameterType="ArtWork">
+		update artWork set
+		author=#{author}, resultsName=#{resultsName},
+		firstAuthorType=#{firstAuthorType},
+		firstAuthorName=#{firstAuthorName},
+		subordinateUnit=#{subordinateUnit},
+		researchSection=#{researchSection}, publishedTime=#{publishedTime},
+		firstAuthorNumber=#{firstAuthorNumber}, resultsType=#{resultsType},
+		achievementLevel=#{achievementLevel}, publications=#{publications},
+		publicationDate=#{publicationDate},
+		publicationLevel=#{publicationLevel},
+		schoolSignature=#{schoolSignature}, auditStatus=#{auditStatus},
+		remark=#{remark}
+		where id
+		= #{id}
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		delete from artWork
+		where
+		id =
+		#{id}
+	</delete>
+
+	<select id="load" parameterType="int" resultType="ArtWork">
+		select * from
+		artWork where id = #{id}
+	</select>
+
+	<select id="loadByName" parameterType="String" resultType="ArtWork">
+		select * from artWork where resultsName = #{resultsName}
+	</select>
+
+	<select id="find" parameterType="Map" resultType="ArtWork">
+		select * from artWork
+		<where>
+			<if test="resultsName != null and resultsName != '%%'">
+				(resultsName like #{resultsName})
+			</if>
+			<if test="firstAuthorName != null and firstAuthorName != ''">
+				(firstAuthorName = #{firstAuthorName})
+			</if>
+			<if test="researchSection != null and researchSection != ''">
+				(researchSection = #{researchSection})
+			</if>
+			<if test="author != null and author != '%%'">
+				(author like #{author})
+			</if>
+			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
+				(firstAuthorNumber = #{firstAuthorNumber})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="resultsType != null and resultsType != ''">
+				(resultsType = #{resultsType})
+			</if>
+		</where>
+		limit #{pageOffset}, #{pageSize}
+	</select>
+
+	<select id="find_count" parameterType="Map" resultType="int">
+		select
+		count(*) from artWork
+	</select>
+
+	<select id="list" parameterType="Map" resultType="ArtWork">
+		select * from artWork
+		<!--order by ${sort} ${order} -->
+	</select>
+</mapper>

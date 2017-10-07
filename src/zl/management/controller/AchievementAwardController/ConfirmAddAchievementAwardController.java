@@ -14,8 +14,7 @@ public class ConfirmAddAchievementAwardController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		AchievementAward obj = ControllDeal.createObjByForm(request, response, AchievementAward.class);
-		dao.add(obj);
+		ControllDeal.createObjByForm(request, response, AchievementAward.class,dao);
 		ControllDeal.sendMessage(request, response, "添加成功！1秒后为您自动跳到主页！！", "showAchievementAward");
 		
 		return null;

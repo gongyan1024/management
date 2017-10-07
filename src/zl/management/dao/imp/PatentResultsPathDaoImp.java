@@ -4,12 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-
 import zl.management.dao.BaseDao;
 import zl.management.dao.PatentResultsPathDao;
 import zl.management.domain.filePath.PatentResultsPath;
-import zl.management.util.MyBatisUtil;
 
 public class PatentResultsPathDaoImp extends BaseDao<PatentResultsPath> implements PatentResultsPathDao {
 
@@ -37,17 +34,7 @@ public class PatentResultsPathDaoImp extends BaseDao<PatentResultsPath> implemen
 
 	@Override
 	public void delete(String path) {
-		SqlSession session = null;
-		try {
-			session = MyBatisUtil.createSession();
-			session.update(PatentResultsPath.class.getName() + ".deleteByPath", path);
-			session.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			session.rollback();
-		} finally {
-			MyBatisUtil.closeSession(session);
-		}
+		super.delete(PatentResultsPath.class, path);
 	}
 
 }

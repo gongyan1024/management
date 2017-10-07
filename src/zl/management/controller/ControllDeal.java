@@ -425,10 +425,10 @@ public class ControllDeal {
 		String path = request.getParameter("path");
 		File file = new File(path);
 		file.delete();
-		dao.delete(path);
+		dao.delete(clz,path);
 		try {
 			response.sendRedirect(resPath);
-		} catch (IOException e) {
+ 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

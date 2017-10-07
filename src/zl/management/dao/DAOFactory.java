@@ -6,12 +6,20 @@ import zl.management.dao.imp.AchievementAwardDaoImp;
 import zl.management.dao.imp.AchievementAwardPathDaoImp;
 import zl.management.dao.imp.AchievementsDaoImp;
 import zl.management.dao.imp.AchievementsPathDaoImp;
+import zl.management.dao.imp.ArtWorkDaoImp;
+import zl.management.dao.imp.ArtWorkPathDaoImp;
 import zl.management.dao.imp.AttendMeetingDaoImp;
 import zl.management.dao.imp.AttendMeetingPathDaoImp;
+import zl.management.dao.imp.IdentificationResultDaoImp;
+import zl.management.dao.imp.IdentificationResultPathDaoImp;
 import zl.management.dao.imp.MeetingHostDaoImp;
 import zl.management.dao.imp.MeetingHostPathDaoImp;
 import zl.management.dao.imp.PatentResultsDaoImp;
 import zl.management.dao.imp.PatentResultsPathDaoImp;
+import zl.management.dao.imp.ProjectApprovalDaoImp;
+import zl.management.dao.imp.ProjectApprovalPathDaoImp;
+import zl.management.dao.imp.ResearchReportDaoImp;
+import zl.management.dao.imp.ResearchReportPathDaoImp;
 import zl.management.dao.imp.ResearchersDaoImp;
 import zl.management.dao.imp.ResearchersPathDaoImp;
 import zl.management.dao.imp.ThesisDaoImp;
@@ -86,5 +94,37 @@ public class DAOFactory {
 	
 	public static ThesisPathDaoImp getThesisPathDao() {
 		return new ThesisPathDaoImp();
+	}
+	
+	public static IdentificationResultDaoImp getIdentificationResultDao() {
+		return new IdentificationResultDaoImp();
+	}
+	
+	public static IdentificationResultPathDaoImp getIdentificationResultPathDao() {
+		return new IdentificationResultPathDaoImp();
+	}
+	
+	public static ResearchReportDaoImp getResearchReportDao() {
+		return new ResearchReportDaoImp();
+	}
+	
+	public static ResearchReportPathDaoImp getResearchReportPathDao() {
+		return new ResearchReportPathDaoImp();
+	}
+	
+	public static ArtWorkDaoImp getArtWorkDao() {
+		return new ArtWorkDaoImp();
+	}
+	
+	public static ArtWorkPathDaoImp getArtWorkPathDao() {
+		return new ArtWorkPathDaoImp();
+	}
+	
+	public static ProjectApprovalDaoImp getProjectApprovalDao() {
+		return new ProjectApprovalDaoImp();
+	}
+	
+	public static ProjectApprovalPathDaoImp getProjectApprovalPathDao() {
+		return new ProjectApprovalPathDaoImp();
 	}
 }

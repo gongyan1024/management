@@ -14,8 +14,7 @@ public class ConfirmAddAttendMeetingController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		AttendMeeting atm = ControllDeal.createObjByForm(request, response, AttendMeeting.class);
-		dao.add(atm);
+		ControllDeal.createObjByForm(request, response, AttendMeeting.class, dao);
 		ControllDeal.sendMessage(request, response, "添加成功！1秒后为您自动跳到主页！！", "showAttendMeeting");
 		
 		return null;

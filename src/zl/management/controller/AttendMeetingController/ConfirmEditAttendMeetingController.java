@@ -13,8 +13,7 @@ public class ConfirmEditAttendMeetingController implements Controller {
 	private static AttendMeetingDaoImp dao = DAOFactory.getAttendMeetingDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		AttendMeeting atm = ControllDeal.comfirmEditDomain(request, response, dao, AttendMeeting.class);
-		dao.update(atm);
+		ControllDeal.comfirmEditDomain(request, response, dao, AttendMeeting.class);
 		ControllDeal.sendMessage(request, response, "编辑成功！1秒后为您自动跳到主页！！", "showAttendMeeting");
 		return null;
 	}

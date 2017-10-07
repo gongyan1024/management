@@ -28,7 +28,7 @@
 				<span></span>科研项目
 			</h4>
 			<div class="list-item none">
-				<a href="">项目管理</a> <a href="">项目变更</a> <a href="">项目中检</a> <a
+				<a href="showProjectApproval">项目管理</a> <a href="">项目变更</a> <a href="">项目中检</a> <a
 					href="">项目结项</a>
 			</div>
 		</li>
@@ -45,8 +45,9 @@
 				<span></span>科研成果
 			</h4>
 			<div class="list-item none">
-				<a href="showThesis">论文成果</a> <a href="showAchievements">著作成果</a> <a href="">研究报告</a>
-				<a href="">鉴定成果</a> <a href="">艺术作品</a>
+				<a href="showThesis">论文成果</a> <a href="showAchievements">著作成果</a> <a
+					href="showResearchReport">研究报告</a> <a href="showIdentificationResult">鉴定成果</a> <a
+					href="showArtWork">艺术作品</a>
 			</div>
 		</li>
 		<li>
@@ -61,9 +62,9 @@
 			<h4 class="M1">
 				<span></span>成果获奖
 			</h4>
-				<div class="list-item none">
-					<a href="showAchievementAward">成果获奖</a>
-				</div>
+			<div class="list-item none">
+				<a href="showAchievementAward">成果获奖</a>
+			</div>
 		</li>
 		<li>
 			<h4 class="M1">

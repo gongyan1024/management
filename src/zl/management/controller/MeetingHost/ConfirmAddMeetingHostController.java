@@ -14,8 +14,7 @@ public class ConfirmAddMeetingHostController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		MeetingHost obj = ControllDeal.createObjByForm(request, response, MeetingHost.class);
-		dao.add(obj);
+		ControllDeal.createObjByForm(request, response, MeetingHost.class, dao);
 		ControllDeal.sendMessage(request, response, "添加成功！1秒后为您自动跳到主页！！", "showMeetingHost");
 		
 		return null;

@@ -57,7 +57,7 @@
 	<select id="find" parameterType="Map" resultType="Achievements">
 		select * from achievements
 		<where>
-			<if test="bookName != null and bookName != ''">
+			<if test="bookName != null and bookName != '%%'">
 				(bookName like #{bookName})
 			</if>
 			<if test="firstAuthor != null and firstAuthor != ''">

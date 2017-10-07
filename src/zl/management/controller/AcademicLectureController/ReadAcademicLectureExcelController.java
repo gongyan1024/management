@@ -14,7 +14,7 @@ public class ReadAcademicLectureExcelController implements Controller {
 	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		ControllDeal.readExcel(request, response, dao, AcademicLecture.class, "showAcademicLecture", "学术讲座表格", "lectureName");
+		ControllDeal.readExcel(request, response, dao, AcademicLecture.class, "showAcademicLecture", "学术讲座表格", "reportTopic");
 
 		return null;
 	}

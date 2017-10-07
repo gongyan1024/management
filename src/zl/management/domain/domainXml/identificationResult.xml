@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.IdentificationResult">
+	<insert id="add" parameterType="IdentificationResult">
+		insert into identificationResult(
+		outcomeName, firstAuthorType, firstAuthorName, subordinateUnit,
+		researchSection, firstAuthorNumber, author, identificationDepartment,
+		identificationDate, expertConclusion, identificationNumber,
+		completionForm, remarks, firstDiscipline, disciplineCategory,
+		projectSource, schoolSignature, auditStatus)values(#{outcomeName},
+		#{firstAuthorType}, #{firstAuthorName}, #{subordinateUnit},
+		#{researchSection}, #{firstAuthorNumber}, #{author},
+		#{identificationDepartment}, #{identificationDate},
+		#{expertConclusion}, #{identificationNumber}, #{completionForm},
+		#{remarks}, #{firstDiscipline}, #{disciplineCategory},
+		#{projectSource}, #{schoolSignature}, #{auditStatus})
+	</insert>
+
+	<update id="update" parameterType="IdentificationResult">
+		update identificationResult
+		set
+		outcomeName=#{outcomeName}, firstAuthorType=#{firstAuthorType},
+		firstAuthorName=#{firstAuthorName},
+		subordinateUnit=#{subordinateUnit},
+		researchSection=#{researchSection},
+		firstAuthorNumber=#{firstAuthorNumber}, author=#{author},
+		identificationDepartment=#{identificationDepartment},
+		identificationDate=#{identificationDate},
+		expertConclusion=#{expertConclusion},
+		identificationNumber=#{identificationNumber},
+		completionForm=#{completionForm}, remarks=#{remarks},
+		firstDiscipline=#{firstDiscipline},
+		disciplineCategory=#{disciplineCategory},
+		projectSource=#{projectSource}, schoolSignature=#{schoolSignature},
+		auditStatus=#{auditStatus}
+		where id
+		= #{id}
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		delete from
+		identificationResult
+		where
+		id =
+		#{id}
+	</delete>
+
+	<select id="load" parameterType="int" resultType="IdentificationResult">
+		select * from
+		identificationResult where id = #{id}
+	</select>
+
+	<select id="loadByName" parameterType="String" resultType="IdentificationResult">
+		select * from identificationResult where outcomeName = #{outcomeName}
+	</select>
+
+	<select id="find" parameterType="Map" resultType="IdentificationResult">
+		select * from identificationResult
+		<where>
+			<if test="outcomeName != null and outcomeName != '%%'">
+				(outcomeName like #{outcomeName})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if test="firstAuthorType != null and firstAuthorType != ''">
+				(firstAuthorType = #{firstAuthorType})
+			</if>
+			<if test="firstAuthorName != null and firstAuthorName != ''">
+				(firstAuthorName = #{firstAuthorName})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
+				(firstAuthorNumber = #{firstAuthorNumber})
+			</if>
+			<if test="author != null and author != '%%'">
+				(author like #{author})
+			</if>
+		</where>
+		limit #{pageOffset}, #{pageSize}
+	</select>
+
+	<select id="find_count" parameterType="Map" resultType="int">
+		select
+		count(*) from identificationResult
+	</select>
+
+	<select id="list" parameterType="Map" resultType="IdentificationResult">
+		select * from identificationResult
+		<!--order by ${sort} ${order} -->
+	</select>
+</mapper>

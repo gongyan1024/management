@@ -14,8 +14,7 @@ public class ConfirmAddPatentResultsController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		PatentResults obj = ControllDeal.createObjByForm(request, response, PatentResults.class);
-		dao.add(obj);
+		ControllDeal.createObjByForm(request, response, PatentResults.class, dao);
 		ControllDeal.sendMessage(request, response, "添加成功！1秒后为您自动跳到主页！！", "showPatentResults");
 		
 		return null;

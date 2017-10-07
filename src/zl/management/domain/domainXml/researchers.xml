@@ -85,7 +85,7 @@
 	<select id="find" parameterType="Map" resultType="Researchers">
 		select * from Researchers
 		<where>
-			<if test="name != null and name != ''">
+			<if test="name != null and name != '%%'">
 				(name like #{name})
 			</if>
 			<if test="staffNumber != null and staffNumber != ''">

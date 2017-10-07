@@ -36,5 +36,13 @@
 		<mapper resource="zl/management/domain/domainXml/achievementsPath.xml"></mapper>
 		<mapper resource="zl/management/domain/domainXml/thesis.xml"></mapper>
 		<mapper resource="zl/management/domain/domainXml/thesisPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/identificationResult.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/identificationResultPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/researchReport.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/researchReportPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/artWork.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/artWorkPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/projectApproval.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/projectApprovalPath.xml"></mapper>
 	</mappers>
 </configuration>

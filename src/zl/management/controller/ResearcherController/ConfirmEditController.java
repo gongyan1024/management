@@ -14,8 +14,7 @@ public class ConfirmEditController implements Controller {
 	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		Researchers r = ControllDeal.comfirmEditDomain(request, response, dao, Researchers.class);
-		dao.update(r);
+		ControllDeal.comfirmEditDomain(request, response, dao, Researchers.class);
 		ControllDeal.sendMessage(request, response, "编辑成功！1秒后为您自动跳到主页！！", "showResearchs");
 		return null;
 	}

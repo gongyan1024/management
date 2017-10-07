@@ -34,7 +34,6 @@ public class AcademicLecturePathDaoImp extends BaseDao<AcademicLecturePath> impl
 
 	@Override
 	public void delete(String path) {
-		super.delete(path);
+		super.delete(AcademicLecturePath.class, path);
 	}
-
 }
