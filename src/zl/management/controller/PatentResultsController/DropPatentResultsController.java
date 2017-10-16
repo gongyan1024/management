@@ -15,7 +15,7 @@ public class DropPatentResultsController implements Controller {
 	private PatentResultsDaoImp dao = DAOFactory.getPatentResultsDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		String resultPath = "showPatentResults";
+		String resultPath = "showPatentResults?pageNumber=" + request.getParameter("pageNumber") + "&jump=1";
 		ControllDeal.dropDomain(request, response, dao, PatentResults.class);
 		try {
 			response.sendRedirect(resultPath);

@@ -14,4 +14,5 @@ public interface ArtWorkDao {
 	public Pager<ArtWork> find(String name);	//查,通过名字
 	public Pager<ArtWork> find(Map<String, Object> params);	//查,通过名字
 	public List<ArtWork> list();
+	public int cout(Map<String, Object> params);
 }

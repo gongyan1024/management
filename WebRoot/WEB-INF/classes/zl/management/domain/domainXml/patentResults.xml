@@ -53,27 +53,65 @@
 	<select id="find" parameterType="Map" resultType="PatentResults">
 		select * from patentresults
 		<where>
+
 			<if test="patentName != null and patentName != '%%'">
 				(patentName like #{patentName})
+			</if>
+			<if test="firstInventorType != null and firstInventorType != ''">
+				(firstInventorType = #{firstInventorType})
 			</if>
 			<if test="firstInventor != null and firstInventor != ''">
 				(firstInventor = #{firstInventor})
 			</if>
+			<if test="subordinateUnits != null and subordinateUnits != ''">
+				(subordinateUnits = #{subordinateUnits})
+			</if>
+			<if test="office != null and office != ''">
+				(office = #{office})
+			</if>
 			<if test="patentInventor != null and patentInventor != ''">
 				(patentInventor = #{patentInventor})
 			</if>
-			<if test="applicationNumber != null and applicationNumber != ''">
-				(applicationNumber = #{applicationNumber})
+			<if test="patentType != null and patentType != ''">
+				(patentType = #{patentType})
+			</if>
+			<if test="patentscope != null and patentscope != ''">
+				(patentscope = #{patentscope})
 			</if>
 			<if test="patentStatus != null and patentStatus != ''">
 				(patentStatus = #{patentStatus})
 			</if>
+			<if test="applicationNumber != null and applicationNumber != ''">
+				(applicationNumber = #{applicationNumber})
+			</if>
+			<if test="applicationDate != null and applicationDate != ''">
+				(applicationDate = #{applicationDate})
+			</if>
 			<if test="openNo != null and openNo != ''">
 				(openNo = #{openNo})
+			</if>
+			<if test="openDate != null and openDate != ''">
+				(openDate = #{openDate})
 			</if>
 			<if test="licenseNo != null and licenseNo != ''">
 				(licenseNo = #{licenseNo})
 			</if>
+			<if test="licenseDate != null and licenseDate != ''">
+				(licenseDate = #{licenseDate})
+			</if>
+			<if test="theSchoolName != null and theSchoolName != ''">
+				(theSchoolName = #{theSchoolName})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="remark != null and remark != ''">
+				(remark = #{remark})
+			</if>
+			<if test="isPositionPatent != null and isPositionPatent != ''">
+				(isPositionPatent = #{isPositionPatent})
+			</if>
+
 		</where>
 		limit #{pageOffset}, #{pageSize}
 	</select>
@@ -81,6 +119,67 @@
 	<select id="find_count" parameterType="Map" resultType="int">
 		select
 		count(*) from patentresults
+		<where>
+
+			<if test="patentName != null and patentName != '%%'">
+				(patentName like #{patentName})
+			</if>
+			<if test="firstInventorType != null and firstInventorType != ''">
+				(firstInventorType = #{firstInventorType})
+			</if>
+			<if test="firstInventor != null and firstInventor != ''">
+				(firstInventor = #{firstInventor})
+			</if>
+			<if test="subordinateUnits != null and subordinateUnits != ''">
+				(subordinateUnits = #{subordinateUnits})
+			</if>
+			<if test="office != null and office != ''">
+				(office = #{office})
+			</if>
+			<if test="patentInventor != null and patentInventor != ''">
+				(patentInventor = #{patentInventor})
+			</if>
+			<if test="patentType != null and patentType != ''">
+				(patentType = #{patentType})
+			</if>
+			<if test="patentscope != null and patentscope != ''">
+				(patentscope = #{patentscope})
+			</if>
+			<if test="patentStatus != null and patentStatus != ''">
+				(patentStatus = #{patentStatus})
+			</if>
+			<if test="applicationNumber != null and applicationNumber != ''">
+				(applicationNumber = #{applicationNumber})
+			</if>
+			<if test="applicationDate != null and applicationDate != ''">
+				(applicationDate = #{applicationDate})
+			</if>
+			<if test="openNo != null and openNo != ''">
+				(openNo = #{openNo})
+			</if>
+			<if test="openDate != null and openDate != ''">
+				(openDate = #{openDate})
+			</if>
+			<if test="licenseNo != null and licenseNo != ''">
+				(licenseNo = #{licenseNo})
+			</if>
+			<if test="licenseDate != null and licenseDate != ''">
+				(licenseDate = #{licenseDate})
+			</if>
+			<if test="theSchoolName != null and theSchoolName != ''">
+				(theSchoolName = #{theSchoolName})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="remark != null and remark != ''">
+				(remark = #{remark})
+			</if>
+			<if test="isPositionPatent != null and isPositionPatent != ''">
+				(isPositionPatent = #{isPositionPatent})
+			</if>
+
+		</where>
 	</select>
 
 	<select id="list" parameterType="Map" resultType="PatentResults">

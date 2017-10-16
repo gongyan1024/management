@@ -23,13 +23,13 @@ public class ConfirmFindArtWorkController implements Controller {
 			e.printStackTrace();
 		}
 		
-		String resultsName = "%" + request.getParameter("resultsName") + "%";
-		String firstAuthorName = request.getParameter("firstAuthorName");
-		String researchSection = request.getParameter("researchSection");
-		String author = "%" + request.getParameter("author") + "%";
-		String firstAuthorNumber = request.getParameter("firstAuthorNumber");
-		String auditStatus = request.getParameter("auditStatus");
-		String resultsType = request.getParameter("resultsType");
+		String resultsName = "%" + request.getParameter("resultsName").trim() + "%";
+		String firstAuthorName = request.getParameter("firstAuthorName").trim();
+		String researchSection = request.getParameter("researchSection").trim();
+		String author = "%" + request.getParameter("author").trim() + "%";
+		String firstAuthorNumber = request.getParameter("firstAuthorNumber").trim();
+		String auditStatus = request.getParameter("auditStatus").trim();
+		String resultsType = request.getParameter("resultsType").trim();
 		
 		Map<String, Object> params = new HashMap<String, Object> ();
 		params.put("resultsName", resultsName);
@@ -39,7 +39,8 @@ public class ConfirmFindArtWorkController implements Controller {
 		params.put("firstAuthorNumber", firstAuthorNumber);
 		params.put("auditStatus", auditStatus);
 		params.put("resultsType", resultsType);
-		
+		request.getSession().setAttribute("isFind", "1");
+		request.getSession().setAttribute("findParams", params);
 		ControllDeal.showDomain(request, response, dao, ArtWork.class, params);
 		return "/WEB-INF/jsp/artWork/showArtWork.jsp";
 	}

@@ -57,21 +57,69 @@
 	<select id="find" parameterType="Map" resultType="AcademicLecture">
 		select * from academicLecture
 		<where>
+
 			<if test="lectureName != null and lectureName != '%%'">
 				(lectureName like #{lectureName})
 			</if>
 			<if test="subordinateUnit != null and subordinateUnit != ''">
 				(subordinateUnit = #{subordinateUnit})
 			</if>
-			<if test="speaker != null and speaker != ''">
-				(speaker = #{speaker})
-			</if>
-			<if test="lectureLevel != null and lectureLevel != ''">
-				(lectureLevel = #{lectureLevel})
+			<if
+				test="teachingAndResearchSection != null and teachingAndResearchSection != ''">
+				(teachingAndResearchSection = #{teachingAndResearchSection})
 			</if>
 			<if test="lectureType != null and lectureType != ''">
 				(lectureType = #{lectureType})
 			</if>
+			<if test="lectureDate != null and lectureDate != ''">
+				(lectureDate = #{lectureDate})
+			</if>
+			<if test="lectureLevel != null and lectureLevel != ''">
+				(lectureLevel = #{lectureLevel})
+			</if>
+			<if test="lectureAssignment != null and lectureAssignment != ''">
+				(lectureAssignment = #{lectureAssignment})
+			</if>
+			<if test="speaker != null and speaker != ''">
+				(speaker = #{speaker})
+			</if>
+			<if test="speakerUnit != null and speakerUnit != ''">
+				(speakerUnit = #{speakerUnit})
+			</if>
+			<if test="keynoteHolder != null and keynoteHolder != ''">
+				(keynoteHolder = #{keynoteHolder})
+			</if>
+			<if test="titleOfSpeaker != null and titleOfSpeaker != ''">
+				(titleOfSpeaker = #{titleOfSpeaker})
+			</if>
+			<if test="venue != null and venue != ''">
+				(venue = #{venue})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="attendanceAtLectures != null and attendanceAtLectures != ''">
+				(attendanceAtLectures = #{attendanceAtLectures})
+			</if>
+			<if test="relatedDisciplines != null and relatedDisciplines != ''">
+				(relatedDisciplines = #{relatedDisciplines})
+			</if>
+			<if test="lectureObjects != null and lectureObjects != ''">
+				(lectureObjects = #{lectureObjects})
+			</if>
+			<if test="emcee != null and emcee != ''">
+				(emcee = #{emcee})
+			</if>
+			<if test="distinguishedGuest != null and distinguishedGuest != ''">
+				(distinguishedGuest = #{distinguishedGuest})
+			</if>
+			<if test="moderatorResume != null and moderatorResume != ''">
+				(moderatorResume = #{moderatorResume})
+			</if>
+			<if test="viewSummary != null and viewSummary != ''">
+				(viewSummary = #{viewSummary})
+			</if>
+
 		</where>
 		limit #{pageOffset}, #{pageSize}
 	</select>
@@ -79,6 +127,70 @@
 	<select id="find_count" parameterType="Map" resultType="int">
 		select
 		count(*) from academicLecture
+		<where>
+			<if test="lectureName != null and lectureName != '%%'">
+				(lectureName like #{lectureName})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if
+				test="teachingAndResearchSection != null and teachingAndResearchSection != ''">
+				(teachingAndResearchSection = #{teachingAndResearchSection})
+			</if>
+			<if test="lectureType != null and lectureType != ''">
+				(lectureType = #{lectureType})
+			</if>
+			<if test="lectureDate != null and lectureDate != ''">
+				(lectureDate = #{lectureDate})
+			</if>
+			<if test="lectureLevel != null and lectureLevel != ''">
+				(lectureLevel = #{lectureLevel})
+			</if>
+			<if test="lectureAssignment != null and lectureAssignment != ''">
+				(lectureAssignment = #{lectureAssignment})
+			</if>
+			<if test="speaker != null and speaker != ''">
+				(speaker = #{speaker})
+			</if>
+			<if test="speakerUnit != null and speakerUnit != ''">
+				(speakerUnit = #{speakerUnit})
+			</if>
+			<if test="keynoteHolder != null and keynoteHolder != ''">
+				(keynoteHolder = #{keynoteHolder})
+			</if>
+			<if test="titleOfSpeaker != null and titleOfSpeaker != ''">
+				(titleOfSpeaker = #{titleOfSpeaker})
+			</if>
+			<if test="venue != null and venue != ''">
+				(venue = #{venue})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="attendanceAtLectures != null and attendanceAtLectures != ''">
+				(attendanceAtLectures = #{attendanceAtLectures})
+			</if>
+			<if test="relatedDisciplines != null and relatedDisciplines != ''">
+				(relatedDisciplines = #{relatedDisciplines})
+			</if>
+			<if test="lectureObjects != null and lectureObjects != ''">
+				(lectureObjects = #{lectureObjects})
+			</if>
+			<if test="emcee != null and emcee != ''">
+				(emcee = #{emcee})
+			</if>
+			<if test="distinguishedGuest != null and distinguishedGuest != ''">
+				(distinguishedGuest = #{distinguishedGuest})
+			</if>
+			<if test="moderatorResume != null and moderatorResume != ''">
+				(moderatorResume = #{moderatorResume})
+			</if>
+			<if test="viewSummary != null and viewSummary != ''">
+				(viewSummary = #{viewSummary})
+			</if>
+
+		</where>
 	</select>
 
 	<select id="list" parameterType="Map" resultType="AcademicLecture">

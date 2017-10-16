@@ -49,5 +49,10 @@ public class ArtWorkDaoImp extends BaseDao<ArtWork> implements ArtWorkDao {
 		return super.list(ArtWork.class, params);
 	}
 
+	@Override
+	public int cout(Map<String, Object> params) {
+		return super.cout(ArtWork.class, params);
+	}
+
 
 }

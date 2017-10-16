@@ -14,4 +14,5 @@ public interface ProjectApprovalDao {
 	public Pager<ProjectApproval> find(String name);	//查,通过名字
 	public Pager<ProjectApproval> find(Map<String, Object> params);	//查,通过名字
 	public List<ProjectApproval> list();
+	public int cout(Map<String, Object> params);
 }

@@ -14,4 +14,5 @@ public interface ResearchReportDao {
 	public Pager<ResearchReport> find(String name);	//查,通过名字
 	public Pager<ResearchReport> find(Map<String, Object> params);	//查,通过名字
 	public List<ResearchReport> list();
+	public int cout(Map<String, Object> params);
 }

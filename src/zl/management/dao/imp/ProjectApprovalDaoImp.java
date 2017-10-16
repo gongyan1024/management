@@ -48,4 +48,9 @@ public class ProjectApprovalDaoImp extends BaseDao<ProjectApproval> implements P
 		Map<String, Object> params = new HashMap<String, Object>();
 		return super.list(ProjectApproval.class, params);
 	}
+
+	@Override
+	public int cout(Map<String, Object> params) {
+		return super.cout(ProjectApproval.class, params);
+	}
 }

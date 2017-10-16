@@ -14,4 +14,5 @@ public interface AchievementsDao {
 	public Pager<Achievements> find(String name);	//查,通过名字
 	public Pager<Achievements> find(Map<String, Object> params);	//查,通过名字
 	public List<Achievements> list();
+	public int cout(Map<String, Object> params);
 }

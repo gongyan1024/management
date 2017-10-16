@@ -1,5 +1,7 @@
 ﻿package zl.management.domain;
 
+import java.sql.Date;
+
 //参加会议
 public class AttendMeeting {
 	 private int id;
@@ -11,7 +13,7 @@ public class AttendMeeting {
      private String meetingType;   //会议类型
      private String disciplineCategory;   //学科门类
      private String participantAddress;   //参会地址
-     private String participantDate;   //参会日期
+     private Date participantDate;   //参会日期
      private String submitThesis;   //是否提交论文
      private String thesisTitle;   //论文题目
      private String invitedReport;   //是否特邀报告
@@ -71,10 +73,10 @@ public class AttendMeeting {
 	public void setParticipantAddress(String participantAddress) {
 		this.participantAddress = participantAddress;
 	}
-	public String getParticipantDate() {
+	public Date getParticipantDate() {
 		return participantDate;
 	}
-	public void setParticipantDate(String participantDate) {
+	public void setParticipantDate(Date participantDate) {
 		this.participantDate = participantDate;
 	}
 	public String getSubmitThesis() {

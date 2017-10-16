@@ -49,5 +49,10 @@ public class ThesisDaoImp extends BaseDao<Thesis> implements ThesisDao {
 		return super.list(Thesis.class, params);
 	}
 
+	@Override
+	public int cout(Map<String, Object> params) {
+		return super.cout(Thesis.class, params);
+	}
+
 
 }

@@ -1,4 +1,7 @@
 ﻿package zl.management.domain;
+
+import java.sql.Date;
+
 //主办会议
 public class MeetingHost {
 	private int id;
@@ -10,16 +13,16 @@ public class MeetingHost {
 	private String level1Subject; //一级学科
 	private String meetingPlace; //会议地点
 	private String meetingType; //会议类型
-	private String startDate; //开始日期
-	private String endDate; //结束日期
-	private String publications; //论文数量
-	private String numberOfForeignRepresentatives; //国外代表数量
-	private String delegates; //代表人数
+	private Date startDate; //开始日期
+	private Date endDate; //结束日期
+	private int publications; //论文数量
+	private int numberOfForeignRepresentatives; //国外代表数量
+	private int delegates; //代表人数
 	private String meetingContact; //会议联系人
 	private String telephone; //电话
 	private String email; //电邮
 	private String formAComprehensiveReport; //是否形成综合报告或建议
-	private String meetingFor; //会议经费
+	private double meetingFor; //会议经费
 	private String sourcesOfFunds; //经费来源
 	private String sessionDescription; //会议简介
 	
@@ -77,34 +80,34 @@ public class MeetingHost {
 	public void setMeetingType(String meetingType) {
 		this.meetingType = meetingType;
 	}
-	public String getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	public String getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(String endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	public String getPublications() {
+	public int getPublications() {
 		return publications;
 	}
-	public void setPublications(String publications) {
+	public void setPublications(int publications) {
 		this.publications = publications;
 	}
-	public String getNumberOfForeignRepresentatives() {
+	public int getNumberOfForeignRepresentatives() {
 		return numberOfForeignRepresentatives;
 	}
-	public void setNumberOfForeignRepresentatives(String numberOfForeignRepresentatives) {
+	public void setNumberOfForeignRepresentatives(int numberOfForeignRepresentatives) {
 		this.numberOfForeignRepresentatives = numberOfForeignRepresentatives;
 	}
-	public String getDelegates() {
+	public int getDelegates() {
 		return delegates;
 	}
-	public void setDelegates(String delegates) {
+	public void setDelegates(int delegates) {
 		this.delegates = delegates;
 	}
 	public String getMeetingContact() {
@@ -131,10 +134,10 @@ public class MeetingHost {
 	public void setFormAComprehensiveReport(String formAComprehensiveReport) {
 		this.formAComprehensiveReport = formAComprehensiveReport;
 	}
-	public String getMeetingFor() {
+	public double getMeetingFor() {
 		return meetingFor;
 	}
-	public void setMeetingFor(String meetingFor) {
+	public void setMeetingFor(double meetingFor) {
 		this.meetingFor = meetingFor;
 	}
 	public String getSourcesOfFunds() {

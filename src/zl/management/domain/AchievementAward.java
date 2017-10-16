@@ -1,5 +1,7 @@
 ﻿package zl.management.domain;
 
+import java.sql.Date;
+
 //成就获奖
 public class AchievementAward {
 	private int id;
@@ -11,12 +13,12 @@ public class AchievementAward {
 	private String scientificResearchOffice;   //科研室
 	private String firstAuthorNumber;   //第一作者职工号
 	private String winningAuthor;   //获奖作者
-	private String numberOfWinners;   //获奖者人数
+	private int numberOfWinners;   //获奖者人数
 	private String issuingAuthority;   //发证机关
-	private String dateOfAward;   //获奖日期
+	private Date dateOfAward;   //获奖日期
 	private String awardLevel;   //获奖级别
 	private String awardGrade;   //获奖等级
-	private String totalNumberOfParticipants;   //总参加单位数
+	private int totalNumberOfParticipants;   //总参加单位数
 	private String unitRanking;   //单位排名
 	private String awardApprovalnumber;   //奖励批准号
 	private String disciplineCategory;   //学科门类
@@ -89,10 +91,10 @@ public class AchievementAward {
 	public void setWinningAuthor(String winningAuthor) {
 		this.winningAuthor = winningAuthor;
 	}
-	public String getNumberOfWinners() {
+	public int getNumberOfWinners() {
 		return numberOfWinners;
 	}
-	public void setNumberOfWinners(String numberOfWinners) {
+	public void setNumberOfWinners(int numberOfWinners) {
 		this.numberOfWinners = numberOfWinners;
 	}
 	public String getIssuingAuthority() {
@@ -101,10 +103,10 @@ public class AchievementAward {
 	public void setIssuingAuthority(String issuingAuthority) {
 		this.issuingAuthority = issuingAuthority;
 	}
-	public String getDateOfAward() {
+	public Date getDateOfAward() {
 		return dateOfAward;
 	}
-	public void setDateOfAward(String dateOfAward) {
+	public void setDateOfAward(Date dateOfAward) {
 		this.dateOfAward = dateOfAward;
 	}
 	public String getAwardLevel() {
@@ -119,10 +121,10 @@ public class AchievementAward {
 	public void setAwardGrade(String awardGrade) {
 		this.awardGrade = awardGrade;
 	}
-	public String getTotalNumberOfParticipants() {
+	public int getTotalNumberOfParticipants() {
 		return totalNumberOfParticipants;
 	}
-	public void setTotalNumberOfParticipants(String totalNumberOfParticipants) {
+	public void setTotalNumberOfParticipants(int totalNumberOfParticipants) {
 		this.totalNumberOfParticipants = totalNumberOfParticipants;
 	}
 	public String getUnitRanking() {

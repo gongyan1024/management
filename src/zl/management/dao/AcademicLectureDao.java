@@ -14,4 +14,5 @@ public interface AcademicLectureDao {
 	public Pager<AcademicLecture> find(String name);	//查,通过名字
 	public Pager<AcademicLecture> find(Map<String, Object> params);	//查,通过名字
 	public List<AcademicLecture> list();
+	public int cout(Map<String, Object> params);
 }

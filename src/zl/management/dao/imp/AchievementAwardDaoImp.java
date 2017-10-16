@@ -49,5 +49,10 @@ public class AchievementAwardDaoImp extends BaseDao<AchievementAward> implements
 		return super.list(AchievementAward.class, params);
 	}
 
+	@Override
+	public int cout(Map<String, Object> params) {
+		return super.cout(AchievementAward.class, params);
+	}
+
 
 }

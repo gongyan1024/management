@@ -23,10 +23,10 @@ public class ConfirmFindAttendMeetingController implements Controller {
 			e.printStackTrace();
 		}
 		
-		String conferenceName = "%" + request.getParameter("conferenceName") + "%";
-		String attendee = request.getParameter("attendee");
-		String sponsor = request.getParameter("sponsor");
-		String participantDate = request.getParameter("participantDate");
+		String conferenceName = "%" + request.getParameter("conferenceName").trim() + "%";
+		String attendee = request.getParameter("attendee").trim();
+		String sponsor = request.getParameter("sponsor").trim();
+		String participantDate = request.getParameter("participantDate").trim();
 		
 		Map<String, Object> params = new HashMap<String, Object> ();
 		params.put("attendee", attendee);
@@ -34,6 +34,8 @@ public class ConfirmFindAttendMeetingController implements Controller {
 		params.put("sponsor", sponsor);
 		params.put("participantDate", participantDate);
 		
+		request.getSession().setAttribute("isFind", "1");
+		request.getSession().setAttribute("findParams", params);
 		ControllDeal.showDomain(request, response, dao, AttendMeeting.class, params);
 		return "/WEB-INF/jsp/attendMeeting/showAttendMeeting.jsp";
 	}

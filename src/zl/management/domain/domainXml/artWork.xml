@@ -54,27 +54,56 @@
 	<select id="find" parameterType="Map" resultType="ArtWork">
 		select * from artWork
 		<where>
+
+			<if test="author != null and author != '%%'">
+				(author like #{author})
+			</if>
 			<if test="resultsName != null and resultsName != '%%'">
 				(resultsName like #{resultsName})
+			</if>
+			<if test="firstAuthorType != null and firstAuthorType != ''">
+				(firstAuthorType = #{firstAuthorType})
 			</if>
 			<if test="firstAuthorName != null and firstAuthorName != ''">
 				(firstAuthorName = #{firstAuthorName})
 			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
 			<if test="researchSection != null and researchSection != ''">
 				(researchSection = #{researchSection})
 			</if>
-			<if test="author != null and author != '%%'">
-				(author like #{author})
+			<if test="publishedTime != null and publishedTime != ''">
+				(publishedTime = #{publishedTime})
 			</if>
 			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
 				(firstAuthorNumber = #{firstAuthorNumber})
 			</if>
-			<if test="auditStatus != null and auditStatus != ''">
-				(auditStatus = #{auditStatus})
-			</if>
 			<if test="resultsType != null and resultsType != ''">
 				(resultsType = #{resultsType})
 			</if>
+			<if test="achievementLevel != null and achievementLevel != ''">
+				(achievementLevel = #{achievementLevel})
+			</if>
+			<if test="publications != null and publications != ''">
+				(publications = #{publications})
+			</if>
+			<if test="publicationDate != null and publicationDate != ''">
+				(publicationDate = #{publicationDate})
+			</if>
+			<if test="publicationLevel != null and publicationLevel != ''">
+				(publicationLevel = #{publicationLevel})
+			</if>
+			<if test="schoolSignature != null and schoolSignature != ''">
+				(schoolSignature = #{schoolSignature})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="remark != null and remark != ''">
+				(remark = #{remark})
+			</if>
+
 		</where>
 		limit #{pageOffset}, #{pageSize}
 	</select>
@@ -82,6 +111,57 @@
 	<select id="find_count" parameterType="Map" resultType="int">
 		select
 		count(*) from artWork
+		<where>
+
+			<if test="author != null and author != '%%'">
+				(author like #{author})
+			</if>
+			<if test="resultsName != null and resultsName != '%%'">
+				(resultsName like #{resultsName})
+			</if>
+			<if test="firstAuthorType != null and firstAuthorType != ''">
+				(firstAuthorType = #{firstAuthorType})
+			</if>
+			<if test="firstAuthorName != null and firstAuthorName != ''">
+				(firstAuthorName = #{firstAuthorName})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if test="researchSection != null and researchSection != ''">
+				(researchSection = #{researchSection})
+			</if>
+			<if test="publishedTime != null and publishedTime != ''">
+				(publishedTime = #{publishedTime})
+			</if>
+			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
+				(firstAuthorNumber = #{firstAuthorNumber})
+			</if>
+			<if test="resultsType != null and resultsType != ''">
+				(resultsType = #{resultsType})
+			</if>
+			<if test="achievementLevel != null and achievementLevel != ''">
+				(achievementLevel = #{achievementLevel})
+			</if>
+			<if test="publications != null and publications != ''">
+				(publications = #{publications})
+			</if>
+			<if test="publicationDate != null and publicationDate != ''">
+				(publicationDate = #{publicationDate})
+			</if>
+			<if test="publicationLevel != null and publicationLevel != ''">
+				(publicationLevel = #{publicationLevel})
+			</if>
+			<if test="schoolSignature != null and schoolSignature != ''">
+				(schoolSignature = #{schoolSignature})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="remark != null and remark != ''">
+				(remark = #{remark})
+			</if>
+		</where>
 	</select>
 
 	<select id="list" parameterType="Map" resultType="ArtWork">

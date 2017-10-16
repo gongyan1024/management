@@ -58,24 +58,68 @@
 	<select id="find" parameterType="Map" resultType="ResearchReport">
 		select * from researchReport
 		<where>
+
+			<if test="remarks != null and remarks != ''">
+				(remarks = #{remarks})
+			</if>
 			<if test="reportTopic != null and reportTopic != '%%'">
 				(reportTopic like #{reportTopic})
 			</if>
-            <if test="firstAuthorName != null and firstAuthorName != ''">
-                (firstAuthorName = #{firstAuthorName})
-            </if>
-            <if test="researchSection != null and researchSection != ''">
-                (researchSection = #{researchSection})
-            </if>
-            <if test="author != null and author != '%%'">
-                (author like #{author})
-            </if>
-            <if test="firstAuthorNumber != null and firstAuthorNumber != ''">
-                (firstAuthorNumber = #{firstAuthorNumber})
-            </if>
-            <if test="auditStatus != null and auditStatus != ''">
-                (auditStatus = #{auditStatus})
-            </if>
+			<if test="firstAuthorType != null and firstAuthorType != ''">
+				(firstAuthorType = #{firstAuthorType})
+			</if>
+			<if test="firstAuthorName != null and firstAuthorName != ''">
+				(firstAuthorName = #{firstAuthorName})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if test="unitType != null and unitType != ''">
+				(unitType = #{unitType})
+			</if>
+			<if test="adoptionUnit != null and adoptionUnit != ''">
+				(adoptionUnit = #{adoptionUnit})
+			</if>
+			<if test="adoptionTime != null and adoptionTime != ''">
+				(adoptionTime = #{adoptionTime})
+			</if>
+			<if test="accepted != null and accepted != ''">
+				(accepted = #{accepted})
+			</if>
+			<if test="cooperativeUnit != null and cooperativeUnit != ''">
+				(cooperativeUnit = #{cooperativeUnit})
+			</if>
+			<if test="forwardingResults != null and forwardingResults != ''">
+				(forwardingResults = #{forwardingResults})
+			</if>
+			<if test="disciplineCategory != null and disciplineCategory != ''">
+				(disciplineCategory = #{disciplineCategory})
+			</if>
+			<if test="firstDiscipline != null and firstDiscipline != ''">
+				(firstDiscipline = #{firstDiscipline})
+			</if>
+			<if test="projectSource != null and projectSource != ''">
+				(projectSource = #{projectSource})
+			</if>
+			<if test="researchSection != null and researchSection != ''">
+				(researchSection = #{researchSection})
+			</if>
+			<if test="author != null and author != '%%'">
+				(author like #{author})
+			</if>
+			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
+				(firstAuthorNumber = #{firstAuthorNumber})
+			</if>
+			<if test="schoolSignature != null and schoolSignature != ''">
+				(schoolSignature = #{schoolSignature})
+			</if>
+			<if test="wordsNumber != null and wordsNumber != ''">
+				(wordsNumber = #{wordsNumber})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+
 		</where>
 		limit #{pageOffset}, #{pageSize}
 	</select>
@@ -83,6 +127,70 @@
 	<select id="find_count" parameterType="Map" resultType="int">
 		select
 		count(*) from researchReport
+		<where>
+
+			<if test="remarks != null and remarks != ''">
+				(remarks = #{remarks})
+			</if>
+			<if test="reportTopic != null and reportTopic != '%%'">
+				(reportTopic like #{reportTopic})
+			</if>
+			<if test="firstAuthorType != null and firstAuthorType != ''">
+				(firstAuthorType = #{firstAuthorType})
+			</if>
+			<if test="firstAuthorName != null and firstAuthorName != ''">
+				(firstAuthorName = #{firstAuthorName})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if test="unitType != null and unitType != ''">
+				(unitType = #{unitType})
+			</if>
+			<if test="adoptionUnit != null and adoptionUnit != ''">
+				(adoptionUnit = #{adoptionUnit})
+			</if>
+			<if test="adoptionTime != null and adoptionTime != ''">
+				(adoptionTime = #{adoptionTime})
+			</if>
+			<if test="accepted != null and accepted != ''">
+				(accepted = #{accepted})
+			</if>
+			<if test="cooperativeUnit != null and cooperativeUnit != ''">
+				(cooperativeUnit = #{cooperativeUnit})
+			</if>
+			<if test="forwardingResults != null and forwardingResults != ''">
+				(forwardingResults = #{forwardingResults})
+			</if>
+			<if test="disciplineCategory != null and disciplineCategory != ''">
+				(disciplineCategory = #{disciplineCategory})
+			</if>
+			<if test="firstDiscipline != null and firstDiscipline != ''">
+				(firstDiscipline = #{firstDiscipline})
+			</if>
+			<if test="projectSource != null and projectSource != ''">
+				(projectSource = #{projectSource})
+			</if>
+			<if test="researchSection != null and researchSection != ''">
+				(researchSection = #{researchSection})
+			</if>
+			<if test="author != null and author != '%%'">
+				(author like #{author})
+			</if>
+			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
+				(firstAuthorNumber = #{firstAuthorNumber})
+			</if>
+			<if test="schoolSignature != null and schoolSignature != ''">
+				(schoolSignature = #{schoolSignature})
+			</if>
+			<if test="wordsNumber != null and wordsNumber != ''">
+				(wordsNumber = #{wordsNumber})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+
+		</where>
 	</select>
 
 	<select id="list" parameterType="Map" resultType="ResearchReport">

@@ -1,5 +1,7 @@
 package zl.management.controller.AttendMeetingController;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,7 +16,8 @@ public class ShowAttendMeetingController implements Controller {
 	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		ControllDeal.showDomain(request, response, dao, AttendMeeting.class, null);
+		Map<String, Object> params = ControllDeal.judgeIsFind(request, response);
+		ControllDeal.showDomain(request, response, dao, AttendMeeting.class, params);
 		return "/WEB-INF/jsp/attendMeeting/showAttendMeeting.jsp";
 	}
 

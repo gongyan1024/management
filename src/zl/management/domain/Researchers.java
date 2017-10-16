@@ -1,5 +1,7 @@
 package zl.management.domain;
 
+import java.sql.Date;
+
 //科研人士类
 public class Researchers {
 	private int id;
@@ -15,7 +17,7 @@ public class Researchers {
 	private String finalEducation; // 最后学历
 	private String politicalStatus;//政治面貌
 	private String title; // 职称
-	private String fixedDate;//定职日期
+	private Date fixedDate;//定职日期
 	private String honoraryTitle; //荣誉称号
 	private String disciplines; //学科门类
 	private String statistics;	 //是否统计
@@ -28,7 +30,7 @@ public class Researchers {
 	private String teacherCategory; // 教师类型
 	private String tutorCategory; // 导师类型
 	private String isExpert; // 是否为专家
-	private String appointmentDate; // 聘任日期
+	private Date appointmentDate; // 聘任日期
 	private String administrativeDuty; // 行政职务
 	private String country;
 	private String nation;
@@ -128,10 +130,10 @@ public class Researchers {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getFixedDate() {
+	public Date getFixedDate() {
 		return fixedDate;
 	}
-	public void setFixedDate(String fixedDate) {
+	public void setFixedDate(Date fixedDate) {
 		this.fixedDate = fixedDate;
 	}
 	public String getHonoraryTitle() {
@@ -206,10 +208,10 @@ public class Researchers {
 	public void setIsExpert(String isExpert) {
 		this.isExpert = isExpert;
 	}
-	public String getAppointmentDate() {
+	public Date getAppointmentDate() {
 		return appointmentDate;
 	}
-	public void setAppointmentDate(String appointmentDate) {
+	public void setAppointmentDate(Date appointmentDate) {
 		this.appointmentDate = appointmentDate;
 	}
 	public String getAdministrativeDuty() {

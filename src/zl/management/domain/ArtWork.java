@@ -1,4 +1,7 @@
 ﻿package zl.management.domain;
+
+import java.sql.Date;
+
 //艺术作品
 public class ArtWork {
 	private int id;
@@ -8,12 +11,12 @@ public class ArtWork {
 	private String firstAuthorName; //第一作者
 	private String subordinateUnit; //所属单位
 	private String researchSection; //教研室
-	private String publishedTime; //发表时间
+	private Date publishedTime; //发表时间
 	private String firstAuthorNumber; //第一作者职工号
 	private String resultsType; //成果类型
 	private String achievementLevel; //成果认定级别
 	private String publications; //发表刊物/论文集
-	private String publicationDate; //出版时间
+	private Date publicationDate; //出版时间
 	private String publicationLevel; //刊物级别
 	private String schoolSignature; //学校署名
 	private String auditStatus; //审核状态
@@ -60,10 +63,10 @@ public class ArtWork {
 	public void setResearchSection(String researchSection) {
 		this.researchSection = researchSection;
 	}
-	public String getPublishedTime() {
+	public Date getPublishedTime() {
 		return publishedTime;
 	}
-	public void setPublishedTime(String publishedTime) {
+	public void setPublishedTime(Date publishedTime) {
 		this.publishedTime = publishedTime;
 	}
 	public String getFirstAuthorNumber() {
@@ -90,10 +93,10 @@ public class ArtWork {
 	public void setPublications(String publications) {
 		this.publications = publications;
 	}
-	public String getPublicationDate() {
+	public Date getPublicationDate() {
 		return publicationDate;
 	}
-	public void setPublicationDate(String publicationDate) {
+	public void setPublicationDate(Date publicationDate) {
 		this.publicationDate = publicationDate;
 	}
 	public String getPublicationLevel() {

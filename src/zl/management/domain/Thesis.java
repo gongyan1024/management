@@ -1,5 +1,7 @@
 package zl.management.domain;
 
+import java.sql.Date;
+
 public class Thesis {
 	private int id;
 	private String thesisLevel;	//论文级别
@@ -11,7 +13,7 @@ public class Thesis {
 	private String researchSection;	//教研室
 	private String author; 	//所有作者的名字
 	private String firstAuthorNumber; //第一作者的职工号
-	private String publishTime; //出版时间
+	private Date publishTime; //出版时间
 	private String reprint;	//论文转载
 	private String included; //论文收录
 	private String publications; //发表刊物
@@ -88,10 +90,10 @@ public class Thesis {
 	public void setFirstAuthorNumber(String firstAuthorNumber) {
 		this.firstAuthorNumber = firstAuthorNumber;
 	}
-	public String getPublishTime() {
+	public Date getPublishTime() {
 		return publishTime;
 	}
-	public void setPublishTime(String publishTime) {
+	public void setPublishTime(Date publishTime) {
 		this.publishTime = publishTime;
 	}
 	public String getReprint() {

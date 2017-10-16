@@ -44,5 +44,6 @@
 		<mapper resource="zl/management/domain/domainXml/artWorkPath.xml"></mapper>
 		<mapper resource="zl/management/domain/domainXml/projectApproval.xml"></mapper>
 		<mapper resource="zl/management/domain/domainXml/projectApprovalPath.xml"></mapper>
+		<package name="zl/management/domain/domainXml"/>
 	</mappers>
 </configuration>

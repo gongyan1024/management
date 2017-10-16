@@ -24,13 +24,13 @@ public class ConfirmFindIdentificationResultController implements Controller {
 			e.printStackTrace();
 		}
 
-		String outcomeName = "%" + request.getParameter("outcomeName") + "%";
-		String subordinateUnit = request.getParameter("subordinateUnit");
-		String firstAuthorType = request.getParameter("firstAuthorType");
-		String firstAuthorName = request.getParameter("firstAuthorName");
-		String auditStatus = request.getParameter("auditStatus");
-		String firstAuthorNumber = request.getParameter("firstAuthorNumber");
-		String author = "%" + request.getParameter("author") + "%";
+		String outcomeName = "%" + request.getParameter("outcomeName").trim() + "%";
+		String subordinateUnit = request.getParameter("subordinateUnit").trim();
+		String firstAuthorType = request.getParameter("firstAuthorType").trim();
+		String firstAuthorName = request.getParameter("firstAuthorName").trim();
+		String auditStatus = request.getParameter("auditStatus").trim();
+		String firstAuthorNumber = request.getParameter("firstAuthorNumber").trim();
+		String author = "%" + request.getParameter("author").trim() + "%";
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("outcomeName", outcomeName);
@@ -40,7 +40,9 @@ public class ConfirmFindIdentificationResultController implements Controller {
 		params.put("auditStatus", auditStatus);
 		params.put("firstAuthorNumber", firstAuthorNumber);
 		params.put("author", author);
-
+		
+		request.getSession().setAttribute("isFind", "1");
+		request.getSession().setAttribute("findParams", params);
 		ControllDeal.showDomain(request, response, dao, IdentificationResult.class, params);
 		return "/WEB-INF/jsp/identificationResult/showIdentificationResult.jsp";
 	}

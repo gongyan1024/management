@@ -13,10 +13,11 @@ import zl.management.controller.ResearcherController.AddResearcher;
 import zl.management.controller.ResearcherController.ConfirmEditController;
 import zl.management.controller.ResearcherController.DeteleResearcherController;
 import zl.management.controller.ResearcherController.DownloadResController;
+import zl.management.controller.ResearcherController.DropResearcher;
 import zl.management.controller.ResearcherController.EditResearcherController;
+import zl.management.controller.ResearcherController.ExportResearcherController;
 import zl.management.controller.ResearcherController.FindResearcher;
 import zl.management.controller.ResearcherController.ReadResearcherController;
-import zl.management.controller.ResearcherController.ExportResearcherController;
 import zl.management.controller.ResearcherController.ShowDownloadResController;
 import zl.management.controller.ResearcherController.ShowResearcherControll;
 import zl.management.controller.ResearcherController.ShowResearcherDetailController;
@@ -25,7 +26,7 @@ import zl.management.controller.ResearcherController.UploadResPathController;
 @WebServlet(name = "ResearcherDispatcherServlet", urlPatterns = { "/showResearchs", "/exportResearchs",
 		"/confirmEditResearchs", "/editResearchs", "/uploadResearchs", "/showDownloadResearchs", "/downloadResearchs",
 		"/showResearcherDetail", "/readExcelResearchs", "/deleteResearchs", "/findResearcher",
-		"/confrimFindResearcher", "/addResearcher", "/confrimAddResearcher", "/dropResearcher" })
+		"/confrimFindResearcher", "/addResearcher", "/confrimAddResearcher", "/dropResearcher"})
 
 public class ResearcherDispatcherServlet extends HttpServlet {
 
@@ -78,7 +79,7 @@ public class ResearcherDispatcherServlet extends HttpServlet {
 			dispatchUrl = new AddResearcher().handleRequest(req, resp);
 		} else if("dropResearcher".equals(action)) {
 			dispatchUrl = new DropResearcher().handleRequest(req, resp);
-		}
+		} 
 
 		if (null != dispatchUrl) {
 			RequestDispatcher rd = req.getRequestDispatcher(dispatchUrl);

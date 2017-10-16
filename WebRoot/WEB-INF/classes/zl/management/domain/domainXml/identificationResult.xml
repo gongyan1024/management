@@ -60,11 +60,9 @@
 	<select id="find" parameterType="Map" resultType="IdentificationResult">
 		select * from identificationResult
 		<where>
+
 			<if test="outcomeName != null and outcomeName != '%%'">
 				(outcomeName like #{outcomeName})
-			</if>
-			<if test="subordinateUnit != null and subordinateUnit != ''">
-				(subordinateUnit = #{subordinateUnit})
 			</if>
 			<if test="firstAuthorType != null and firstAuthorType != ''">
 				(firstAuthorType = #{firstAuthorType})
@@ -72,8 +70,11 @@
 			<if test="firstAuthorName != null and firstAuthorName != ''">
 				(firstAuthorName = #{firstAuthorName})
 			</if>
-			<if test="auditStatus != null and auditStatus != ''">
-				(auditStatus = #{auditStatus})
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if test="researchSection != null and researchSection != ''">
+				(researchSection = #{researchSection})
 			</if>
 			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
 				(firstAuthorNumber = #{firstAuthorNumber})
@@ -81,6 +82,41 @@
 			<if test="author != null and author != '%%'">
 				(author like #{author})
 			</if>
+			<if
+				test="identificationDepartment != null and identificationDepartment != ''">
+				(identificationDepartment = #{identificationDepartment})
+			</if>
+			<if test="identificationDate != null and identificationDate != ''">
+				(identificationDate = #{identificationDate})
+			</if>
+			<if test="expertConclusion != null and expertConclusion != ''">
+				(expertConclusion = #{expertConclusion})
+			</if>
+			<if test="identificationNumber != null and identificationNumber != ''">
+				(identificationNumber = #{identificationNumber})
+			</if>
+			<if test="completionForm != null and completionForm != ''">
+				(completionForm = #{completionForm})
+			</if>
+			<if test="remarks != null and remarks != ''">
+				(remarks = #{remarks})
+			</if>
+			<if test="firstDiscipline != null and firstDiscipline != ''">
+				(firstDiscipline = #{firstDiscipline})
+			</if>
+			<if test="disciplineCategory != null and disciplineCategory != ''">
+				(disciplineCategory = #{disciplineCategory})
+			</if>
+			<if test="projectSource != null and projectSource != ''">
+				(projectSource = #{projectSource})
+			</if>
+			<if test="schoolSignature != null and schoolSignature != ''">
+				(schoolSignature = #{schoolSignature})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+
 		</where>
 		limit #{pageOffset}, #{pageSize}
 	</select>
@@ -88,6 +124,64 @@
 	<select id="find_count" parameterType="Map" resultType="int">
 		select
 		count(*) from identificationResult
+		<where>
+
+			<if test="outcomeName != null and outcomeName != '%%'">
+				(outcomeName like #{outcomeName})
+			</if>
+			<if test="firstAuthorType != null and firstAuthorType != ''">
+				(firstAuthorType = #{firstAuthorType})
+			</if>
+			<if test="firstAuthorName != null and firstAuthorName != ''">
+				(firstAuthorName = #{firstAuthorName})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if test="researchSection != null and researchSection != ''">
+				(researchSection = #{researchSection})
+			</if>
+			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
+				(firstAuthorNumber = #{firstAuthorNumber})
+			</if>
+			<if test="author != null and author != '%%'">
+				(author like #{author})
+			</if>
+			<if
+				test="identificationDepartment != null and identificationDepartment != ''">
+				(identificationDepartment = #{identificationDepartment})
+			</if>
+			<if test="identificationDate != null and identificationDate != ''">
+				(identificationDate = #{identificationDate})
+			</if>
+			<if test="expertConclusion != null and expertConclusion != ''">
+				(expertConclusion = #{expertConclusion})
+			</if>
+			<if test="identificationNumber != null and identificationNumber != ''">
+				(identificationNumber = #{identificationNumber})
+			</if>
+			<if test="completionForm != null and completionForm != ''">
+				(completionForm = #{completionForm})
+			</if>
+			<if test="remarks != null and remarks != ''">
+				(remarks = #{remarks})
+			</if>
+			<if test="firstDiscipline != null and firstDiscipline != ''">
+				(firstDiscipline = #{firstDiscipline})
+			</if>
+			<if test="disciplineCategory != null and disciplineCategory != ''">
+				(disciplineCategory = #{disciplineCategory})
+			</if>
+			<if test="projectSource != null and projectSource != ''">
+				(projectSource = #{projectSource})
+			</if>
+			<if test="schoolSignature != null and schoolSignature != ''">
+				(schoolSignature = #{schoolSignature})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+		</where>
 	</select>
 
 	<select id="list" parameterType="Map" resultType="IdentificationResult">

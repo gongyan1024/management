@@ -49,5 +49,10 @@ public class PatentResultsDaoImp extends BaseDao<PatentResults> implements Paten
 		return super.list(PatentResults.class, params);
 	}
 
+	@Override
+	public int cout(Map<String, Object> params) {
+		return super.cout(PatentResults.class, params);
+	}
+
 
 }

@@ -49,5 +49,10 @@ public class IdentificationResultDaoImp extends BaseDao<IdentificationResult> im
 		return super.list(IdentificationResult.class, params);
 	}
 
+	@Override
+	public int cout(Map<String, Object> params) {
+		return super.cout(IdentificationResult.class, params);
+	}
+
 
 }

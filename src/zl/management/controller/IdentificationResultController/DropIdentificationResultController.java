@@ -15,7 +15,7 @@ public class DropIdentificationResultController implements Controller {
 	private IdentificationResultDaoImp dao = DAOFactory.getIdentificationResultDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		String resultPath = "showIdentificationResult";
+		String resultPath = "showIdentificationResult?pageNumber=" + request.getParameter("pageNumber") + "&jump=1";
 		ControllDeal.dropDomain(request, response, dao, IdentificationResult.class);
 		try {
 			response.sendRedirect(resultPath);

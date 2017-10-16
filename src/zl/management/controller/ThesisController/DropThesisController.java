@@ -15,7 +15,7 @@ public class DropThesisController implements Controller {
 	private ThesisDaoImp dao = DAOFactory.getThesisDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		String resultPath = "showThesis";
+		String resultPath = "showThesis?pageNumber=" + request.getParameter("pageNumber") + "&jump=1";
 		ControllDeal.dropDomain(request, response, dao, Thesis.class);
 		try {
 			response.sendRedirect(resultPath);

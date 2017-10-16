@@ -23,12 +23,12 @@ public class ConfirmFindThesisController implements Controller {
 			e.printStackTrace();
 		}
 		
-		String thesisName = "%" + request.getParameter("thesisName") + "%";
-		String firstAuthorName = request.getParameter("firstAuthorName");
-		String researchSection = request.getParameter("researchSection");
-		String author = "%" + request.getParameter("author") + "%";
-		String firstAuthorNumber = request.getParameter("firstAuthorNumber");
-		String auditStatus = request.getParameter("auditStatus");
+		String thesisName = "%" + request.getParameter("thesisName").trim() + "%";
+		String firstAuthorName = request.getParameter("firstAuthorName").trim();
+		String researchSection = request.getParameter("researchSection").trim();
+		String author = "%" + request.getParameter("author").trim() + "%";
+		String firstAuthorNumber = request.getParameter("firstAuthorNumber").trim();
+		String auditStatus = request.getParameter("auditStatus").trim();
 		
 		Map<String, Object> params = new HashMap<String, Object> ();
 		params.put("thesisName", thesisName);
@@ -38,6 +38,8 @@ public class ConfirmFindThesisController implements Controller {
 		params.put("firstAuthorNumber", firstAuthorNumber);
 		params.put("auditStatus", auditStatus);
 		
+		request.getSession().setAttribute("isFind", "1");
+		request.getSession().setAttribute("findParams", params);
 		ControllDeal.showDomain(request, response, dao, Thesis.class, params);
 		return "/WEB-INF/jsp/thesis/showThesis.jsp";
 	}

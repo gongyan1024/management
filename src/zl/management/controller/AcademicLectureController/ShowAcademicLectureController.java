@@ -1,5 +1,7 @@
 package zl.management.controller.AcademicLectureController;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,7 +16,8 @@ public class ShowAcademicLectureController implements Controller {
 	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		ControllDeal.showDomain(request, response, dao, AcademicLecture.class, null);
+		Map<String, Object> params = ControllDeal.judgeIsFind(request, response);
+		ControllDeal.showDomain(request, response, dao, AcademicLecture.class, params);
 		return "/WEB-INF/jsp/academicLecture/showAcademicLecture.jsp";
 	}
 

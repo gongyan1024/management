@@ -22,11 +22,11 @@ public class ConfirmFindAchievementsController implements Controller {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		String bookName = "%" + request.getParameter("bookName") + "%";
-		String firstAuthor = request.getParameter("firstAuthor");
-		String subordinateUnit = request.getParameter("subordinateUnit");
-		String firstAuthorNumber = request.getParameter("firstAuthorNumber");
-		String booksCategories = request.getParameter("booksCategories");
+		String bookName = "%" + request.getParameter("bookName").trim() + "%";
+		String firstAuthor = request.getParameter("firstAuthor").trim();
+		String subordinateUnit = request.getParameter("subordinateUnit").trim();
+		String firstAuthorNumber = request.getParameter("firstAuthorNumber").trim();
+		String booksCategories = request.getParameter("booksCategories").trim();
 		
 		Map<String, Object> params = new HashMap<String, Object> ();
 		params.put("bookName", bookName);
@@ -35,6 +35,8 @@ public class ConfirmFindAchievementsController implements Controller {
 		params.put("firstAuthorNumber", firstAuthorNumber);
 		params.put("booksCategories", booksCategories);
 		
+		request.getSession().setAttribute("isFind", "1");
+		request.getSession().setAttribute("findParams", params);
 		ControllDeal.showDomain(request, response, dao, Achievements.class, params);
 		return "/WEB-INF/jsp/achievements/showAchievements.jsp";
 	}

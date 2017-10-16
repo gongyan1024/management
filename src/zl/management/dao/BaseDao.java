@@ -83,7 +83,7 @@ public class BaseDao<T> {
 		}
 	}
 	
-	public List<T> list(Class<T> clz, Map<String, Object> params) {
+	public List<T> list(Class<?> clz, Map<String, Object> params) {
 		return list(clz.getName() + ".list", params);
 	}
 
@@ -126,10 +126,6 @@ public class BaseDao<T> {
 			pages.setDatas(list);
 			pages.setPageOffset(pageOffset);
 			pages.setPageSize(pageSize);
-			int totalRecord = session.selectOne(sqlId + "_count", params);
-			pages.setTotalRecord(totalRecord);
-			pages.setTotalPage((pages.getTotalRecord() % pages.getPageSize() == 0)
-					? pages.getTotalRecord() / pages.getPageSize() : pages.getTotalRecord() / pages.getPageSize() + 1);
 		} finally {
 			MyBatisUtil.closeSession(session);
 		}
@@ -162,5 +158,17 @@ public class BaseDao<T> {
 		}
 
 		return t;
+	}
+	
+	public int cout(Class<T> clz, Object params) {
+		int cout = 0;
+		SqlSession session = null;
+		try {
+			session = MyBatisUtil.createSession();
+			cout =  session.selectOne(clz.getName() + ".find_count", params);
+		} finally {
+			MyBatisUtil.closeSession(session);
+		}
+		return cout;
 	}
 }

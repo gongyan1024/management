@@ -49,6 +49,12 @@
 					</td>
 				</tr>
 				<tr>
+					<td>讲座日期</td>
+					<td><input type="text" id="lg-form" name="lectureDate"
+						value="">
+					</td>
+				</tr>
+				<tr>
 					<td><input type="reset" value="清空"></td>
 					<td><input type="submit" value="确认"></td>
 				</tr>

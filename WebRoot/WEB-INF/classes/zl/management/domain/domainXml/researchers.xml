@@ -88,6 +88,9 @@
 			<if test="name != null and name != '%%'">
 				(name like #{name})
 			</if>
+			<if test="englishName != null and englishName != '%%'">
+				(englishName like #{englishName})
+			</if>
 			<if test="staffNumber != null and staffNumber != ''">
 				(staffNumber = #{staffNumber})
 			</if>
@@ -97,29 +100,282 @@
 			<if test="birth != null and birth != ''">
 				(birth = #{birth})
 			</if>
+			<if test="researchUnit != null and researchUnit != ''">
+				(researchUnit = #{researchUnit})
+			</if>
+			<if test="researchDepartment != null and researchDepartment != ''">
+				(researchDepartment = #{researchDepartment})
+			</if>
+			<if test="personnelUnits != null and personnelUnits != ''">
+				(personnelUnits = #{personnelUnits})
+			</if>
 			<if test="finalDegree != null and finalDegree != ''">
 				(finalDegree = #{finalDegree})
 			</if>
 			<if test="finalEducation != null and finalEducation != ''">
 				(finalEducation = #{finalEducation})
 			</if>
+			<if test="politicalStatus != null and politicalStatus != ''">
+				(politicalStatus = #{politicalStatus})
+			</if>
+			<if test="title != null and title != ''">
+				(title = #{title})
+			</if>
+			<if test="fixedDate != null and fixedDate != ''">
+				(fixedDate = #{fixedDate})
+			</if>
+			<if test="honoraryTitle != null and honoraryTitle != ''">
+				(honoraryTitle = #{honoraryTitle})
+			</if>
+			<if test="disciplines != null and disciplines != ''">
+				(disciplines = #{disciplines})
+			</if>
+			<if test="statistics != null and statistics != ''">
+				(statistics = #{statistics})
+			</if>
+			<if test="firstDiscipline != null and firstDiscipline != ''">
+				(firstDiscipline = #{firstDiscipline})
+			</if>
+			<if test="secDiscipline != null and secDiscipline != ''">
+				(secDiscipline = #{secDiscipline})
+			</if>
+			<if test="thirdDiscipline != null and thirdDiscipline != ''">
+				(thirdDiscipline = #{thirdDiscipline})
+			</if>
+			<if test="relatedDisciplines != null and relatedDisciplines != ''">
+				(relatedDisciplines = #{relatedDisciplines})
+			</if>
+			<if test="researchDirection != null and researchDirection != ''">
+				(researchDirection = #{researchDirection})
+			</if>
+			<if test="idCard != null and idCard != ''">
+				(idCard = #{idCard})
+			</if>
+			<if test="teacherCategory != null and teacherCategory != ''">
+				(teacherCategory = #{teacherCategory})
+			</if>
+			<if test="tutorCategory != null and tutorCategory != ''">
+				(tutorCategory = #{tutorCategory})
+			</if>
+			<if test="isExpert != null and isExpert != ''">
+				(isExpert = #{isExpert})
+			</if>
+			<if test="appointmentDate != null and appointmentDate != ''">
+				(appointmentDate = #{appointmentDate})
+			</if>
+			<if test="administrativeDuty != null and administrativeDuty != ''">
+				(administrativeDuty = #{administrativeDuty})
+			</if>
+			<if test="country != null and country != ''">
+				(country = #{country})
+			</if>
+			<if test="nation != null and nation != ''">
+				(nation = #{nation})
+			</if>
+			<if test="address != null and address != ''">
+				(address = #{address})
+			</if>
+			<if test="postCode != null and postCode != ''">
+				(postCode = #{postCode})
+			</if>
+			<if test="homePhone != null and homePhone != ''">
+				(homePhone = #{homePhone})
+			</if>
+			<if test="phone != null and phone != ''">
+				(phone = #{phone})
+			</if>
+			<if test="email != null and email != ''">
+				(email = #{email})
+			</if>
+			<if test="officePhone != null and officePhone != ''">
+				(officePhone = #{officePhone})
+			</if>
+			<if test="officeFax != null and officeFax != ''">
+				(officeFax = #{officeFax})
+			</if>
+			<if test="personWeb != null and personWeb != ''">
+				(personWeb = #{personWeb})
+			</if>
+			<if test="jobSituation != null and jobSituation != ''">
+				(jobSituation = #{jobSituation})
+			</if>
+			<if test="firstForeignLanguage != null and firstForeignLanguage != ''">
+				(firstForeignLanguage = #{firstForeignLanguage})
+			</if>
+			<if test="secForeignLanguage != null and secForeignLanguage != ''">
+				(secForeignLanguage = #{secForeignLanguage})
+			</if>
+			<if
+				test="firstForeignLanguageLev != null and firstForeignLanguageLev != ''">
+				(firstForeignLanguageLev = #{firstForeignLanguageLev})
+			</if>
+			<if test="secForeignLanguageLev != null and secForeignLanguageLev != ''">
+				(secForeignLanguageLev = #{secForeignLanguageLev})
+			</if>
+			<if test="trainingSituation != null and trainingSituation != ''">
+				(trainingSituation = #{trainingSituation})
+			</if>
+			<if test="academicPartTime != null and academicPartTime != ''">
+				(academicPartTime = #{academicPartTime})
+			</if>
+			<if test="academicSpecialty != null and academicSpecialty != ''">
+				(academicSpecialty = #{academicSpecialty})
+			</if>
+			<if test="approvalStatus != null and approvalStatus != ''">
+				(approvalStatus = #{approvalStatus})
+			</if>
+
 		</where>
 		limit #{pageOffset}, #{pageSize}
 	</select>
 
 	<select id="find_count" parameterType="Map" resultType="int">
 		select count(*) from Researchers
-		<if test="name != null">
-			where (name like #{name})
-		</if>
-	</select>
-
-	<select id="list" parameterType="Map" resultType="Researchers">
-		select * from Researchers
 		<where>
-			<if test="name != null">
+			<if test="name != null and name != '%%'">
 				(name like #{name})
 			</if>
+			<if test="englishName != null and englishName != '%%'">
+				(englishName like #{englishName})
+			</if>
+			<if test="staffNumber != null and staffNumber != ''">
+				(staffNumber = #{staffNumber})
+			</if>
+			<if test="sex != null and sex != ''">
+				(sex = #{sex})
+			</if>
+			<if test="birth != null and birth != ''">
+				(birth = #{birth})
+			</if>
+			<if test="researchUnit != null and researchUnit != ''">
+				(researchUnit = #{researchUnit})
+			</if>
+			<if test="researchDepartment != null and researchDepartment != ''">
+				(researchDepartment = #{researchDepartment})
+			</if>
+			<if test="personnelUnits != null and personnelUnits != ''">
+				(personnelUnits = #{personnelUnits})
+			</if>
+			<if test="finalDegree != null and finalDegree != ''">
+				(finalDegree = #{finalDegree})
+			</if>
+			<if test="finalEducation != null and finalEducation != ''">
+				(finalEducation = #{finalEducation})
+			</if>
+			<if test="politicalStatus != null and politicalStatus != ''">
+				(politicalStatus = #{politicalStatus})
+			</if>
+			<if test="title != null and title != ''">
+				(title = #{title})
+			</if>
+			<if test="fixedDate != null and fixedDate != ''">
+				(fixedDate = #{fixedDate})
+			</if>
+			<if test="honoraryTitle != null and honoraryTitle != ''">
+				(honoraryTitle = #{honoraryTitle})
+			</if>
+			<if test="disciplines != null and disciplines != ''">
+				(disciplines = #{disciplines})
+			</if>
+			<if test="statistics != null and statistics != ''">
+				(statistics = #{statistics})
+			</if>
+			<if test="firstDiscipline != null and firstDiscipline != ''">
+				(firstDiscipline = #{firstDiscipline})
+			</if>
+			<if test="secDiscipline != null and secDiscipline != ''">
+				(secDiscipline = #{secDiscipline})
+			</if>
+			<if test="thirdDiscipline != null and thirdDiscipline != ''">
+				(thirdDiscipline = #{thirdDiscipline})
+			</if>
+			<if test="relatedDisciplines != null and relatedDisciplines != ''">
+				(relatedDisciplines = #{relatedDisciplines})
+			</if>
+			<if test="researchDirection != null and researchDirection != ''">
+				(researchDirection = #{researchDirection})
+			</if>
+			<if test="idCard != null and idCard != ''">
+				(idCard = #{idCard})
+			</if>
+			<if test="teacherCategory != null and teacherCategory != ''">
+				(teacherCategory = #{teacherCategory})
+			</if>
+			<if test="tutorCategory != null and tutorCategory != ''">
+				(tutorCategory = #{tutorCategory})
+			</if>
+			<if test="isExpert != null and isExpert != ''">
+				(isExpert = #{isExpert})
+			</if>
+			<if test="appointmentDate != null and appointmentDate != ''">
+				(appointmentDate = #{appointmentDate})
+			</if>
+			<if test="administrativeDuty != null and administrativeDuty != ''">
+				(administrativeDuty = #{administrativeDuty})
+			</if>
+			<if test="country != null and country != ''">
+				(country = #{country})
+			</if>
+			<if test="nation != null and nation != ''">
+				(nation = #{nation})
+			</if>
+			<if test="address != null and address != ''">
+				(address = #{address})
+			</if>
+			<if test="postCode != null and postCode != ''">
+				(postCode = #{postCode})
+			</if>
+			<if test="homePhone != null and homePhone != ''">
+				(homePhone = #{homePhone})
+			</if>
+			<if test="phone != null and phone != ''">
+				(phone = #{phone})
+			</if>
+			<if test="email != null and email != ''">
+				(email = #{email})
+			</if>
+			<if test="officePhone != null and officePhone != ''">
+				(officePhone = #{officePhone})
+			</if>
+			<if test="officeFax != null and officeFax != ''">
+				(officeFax = #{officeFax})
+			</if>
+			<if test="personWeb != null and personWeb != ''">
+				(personWeb = #{personWeb})
+			</if>
+			<if test="jobSituation != null and jobSituation != ''">
+				(jobSituation = #{jobSituation})
+			</if>
+			<if test="firstForeignLanguage != null and firstForeignLanguage != ''">
+				(firstForeignLanguage = #{firstForeignLanguage})
+			</if>
+			<if test="secForeignLanguage != null and secForeignLanguage != ''">
+				(secForeignLanguage = #{secForeignLanguage})
+			</if>
+			<if
+				test="firstForeignLanguageLev != null and firstForeignLanguageLev != ''">
+				(firstForeignLanguageLev = #{firstForeignLanguageLev})
+			</if>
+			<if test="secForeignLanguageLev != null and secForeignLanguageLev != ''">
+				(secForeignLanguageLev = #{secForeignLanguageLev})
+			</if>
+			<if test="trainingSituation != null and trainingSituation != ''">
+				(trainingSituation = #{trainingSituation})
+			</if>
+			<if test="academicPartTime != null and academicPartTime != ''">
+				(academicPartTime = #{academicPartTime})
+			</if>
+			<if test="academicSpecialty != null and academicSpecialty != ''">
+				(academicSpecialty = #{academicSpecialty})
+			</if>
+			<if test="approvalStatus != null and approvalStatus != ''">
+				(approvalStatus = #{approvalStatus})
+			</if>
 		</where>
+	</select>
+
+	<select id="list" resultType="Researchers">
+		select * from Researchers
+		<!--order by ${sort} ${order} -->
 	</select>
 </mapper>

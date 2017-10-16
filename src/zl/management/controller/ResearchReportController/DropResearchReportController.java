@@ -15,7 +15,7 @@ public class DropResearchReportController implements Controller {
 	private ResearchReportDaoImp dao = DAOFactory.getResearchReportDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		String resultPath = "showResearchReport";
+		String resultPath = "showResearchReport?pageNumber="+ request.getParameter("pageNumber") + "&jump=1";
 		ControllDeal.dropDomain(request, response, dao, ResearchReport.class);
 		try {
 			response.sendRedirect(resultPath);

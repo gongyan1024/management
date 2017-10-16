@@ -7,7 +7,6 @@ import java.util.Map;
 import zl.management.dao.AttendMeetingDao;
 import zl.management.dao.BaseDao;
 import zl.management.domain.AttendMeeting;
-import zl.management.domain.Researchers;
 import zl.management.util.Pager;
 
 public class AttendMeetingDaoImp extends BaseDao<AttendMeeting> implements AttendMeetingDao {
@@ -47,6 +46,11 @@ public class AttendMeetingDaoImp extends BaseDao<AttendMeeting> implements Atten
 	@Override
 	public Pager<AttendMeeting> find(Map<String, Object> params) {
 		return super.find(AttendMeeting.class, params);
+	}
+
+	@Override
+	public int cout(Map<String, Object> params) {
+		return super.cout(AttendMeeting.class, params);
 	}
 
 }

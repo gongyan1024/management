@@ -64,4 +64,9 @@ public class ResearchersDaoImp extends BaseDao<Researchers> implements Researche
 
 		return res;
 	}
+
+	@Override
+	public int cout(Map<String, Object> params) {
+		return super.cout(Researchers.class, params);
+	}
 }

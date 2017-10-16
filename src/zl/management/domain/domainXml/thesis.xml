@@ -69,11 +69,24 @@
 	<select id="find" parameterType="Map" resultType="Thesis">
 		select * from thesis
 		<where>
+
+			<if test="thesisLevel != null and thesisLevel != '%%'">
+				(thesisLevel like #{thesisLevel})
+			</if>
+			<if test="thesisType != null and thesisType != ''">
+				(thesisType = #{thesisType})
+			</if>
 			<if test="thesisName != null and thesisName != '%%'">
 				(thesisName like #{thesisName})
 			</if>
+			<if test="firstAuthorType != null and firstAuthorType != ''">
+				(firstAuthorType = #{firstAuthorType})
+			</if>
 			<if test="firstAuthorName != null and firstAuthorName != ''">
 				(firstAuthorName = #{firstAuthorName})
+			</if>
+			<if test="affiliatedUnits != null and affiliatedUnits != ''">
+				(affiliatedUnits = #{affiliatedUnits})
 			</if>
 			<if test="researchSection != null and researchSection != ''">
 				(researchSection = #{researchSection})
@@ -84,9 +97,77 @@
 			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
 				(firstAuthorNumber = #{firstAuthorNumber})
 			</if>
+			<if test="publishTime != null and publishTime != ''">
+				(publishTime = #{publishTime})
+			</if>
+			<if test="reprint != null and reprint != ''">
+				(reprint = #{reprint})
+			</if>
+			<if test="included != null and included != ''">
+				(included = #{included})
+			</if>
+			<if test="publications != null and publications != ''">
+				(publications = #{publications})
+			</if>
+			<if test="publicationLevel != null and publicationLevel != ''">
+				(publicationLevel = #{publicationLevel})
+			</if>
+			<if test="editorialOfficeAddress != null and editorialOfficeAddress != ''">
+				(editorialOfficeAddress = #{editorialOfficeAddress})
+			</if>
+			<if test="disciplineCategory != null and disciplineCategory != ''">
+				(disciplineCategory = #{disciplineCategory})
+			</if>
+			<if test="firstDiscipline != null and firstDiscipline != ''">
+				(firstDiscipline = #{firstDiscipline})
+			</if>
+			<if test="projectSource != null and projectSource != ''">
+				(projectSource = #{projectSource})
+			</if>
+			<if test="publicationRange != null and publicationRange != ''">
+				(publicationRange = #{publicationRange})
+			</if>
+			<if test="publicationUnit != null and publicationUnit != ''">
+				(publicationUnit = #{publicationUnit})
+			</if>
+			<if test="volumeNumber != null and volumeNumber != ''">
+				(volumeNumber = #{volumeNumber})
+			</if>
+			<if test="issue != null and issue != ''">
+				(issue = #{issue})
+			</if>
+			<if test="pageRange != null and pageRange != ''">
+				(pageRange = #{pageRange})
+			</if>
+			<if
+				test="individualWritersnumber != null and individualWritersnumber != ''">
+				(individualWritersnumber = #{individualWritersnumber})
+			</if>
+			<if test="schoolSignature != null and schoolSignature != ''">
+				(schoolSignature = #{schoolSignature})
+			</if>
+			<if test="keyWord != null and keyWord != ''">
+				(keyWord = #{keyWord})
+			</if>
 			<if test="auditStatus != null and auditStatus != ''">
 				(auditStatus = #{auditStatus})
 			</if>
+			<if test="remarks != null and remarks != ''">
+				(remarks = #{remarks})
+			</if>
+			<if test="page != null and page != ''">
+				(page = #{page})
+			</if>
+			<if test="translation != null and translation != ''">
+				(translation = #{translation})
+			</if>
+			<if test="issNnumber != null and issNnumber != ''">
+				(issNnumber = #{issNnumber})
+			</if>
+			<if test="cnNumber != null and cnNumber != ''">
+				(cnNumber = #{cnNumber})
+			</if>
+
 		</where>
 		limit #{pageOffset}, #{pageSize}
 	</select>
@@ -94,6 +175,107 @@
 	<select id="find_count" parameterType="Map" resultType="int">
 		select
 		count(*) from thesis
+		<where>
+
+			<if test="thesisLevel != null and thesisLevel != ''">
+				(thesisLevel = #{thesisLevel})
+			</if>
+			<if test="thesisType != null and thesisType != ''">
+				(thesisType = #{thesisType})
+			</if>
+			<if test="thesisName != null and thesisName != '%%'">
+				(thesisName like #{thesisName})
+			</if>
+			<if test="firstAuthorType != null and firstAuthorType != ''">
+				(firstAuthorType = #{firstAuthorType})
+			</if>
+			<if test="firstAuthorName != null and firstAuthorName != ''">
+				(firstAuthorName = #{firstAuthorName})
+			</if>
+			<if test="affiliatedUnits != null and affiliatedUnits != ''">
+				(affiliatedUnits = #{affiliatedUnits})
+			</if>
+			<if test="researchSection != null and researchSection != ''">
+				(researchSection = #{researchSection})
+			</if>
+			<if test="author != null and author != '%%'">
+				(author like #{author})
+			</if>
+			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
+				(firstAuthorNumber = #{firstAuthorNumber})
+			</if>
+			<if test="publishTime != null and publishTime != ''">
+				(publishTime = #{publishTime})
+			</if>
+			<if test="reprint != null and reprint != ''">
+				(reprint = #{reprint})
+			</if>
+			<if test="included != null and included != ''">
+				(included = #{included})
+			</if>
+			<if test="publications != null and publications != ''">
+				(publications = #{publications})
+			</if>
+			<if test="publicationLevel != null and publicationLevel != ''">
+				(publicationLevel = #{publicationLevel})
+			</if>
+			<if test="editorialOfficeAddress != null and editorialOfficeAddress != ''">
+				(editorialOfficeAddress = #{editorialOfficeAddress})
+			</if>
+			<if test="disciplineCategory != null and disciplineCategory != ''">
+				(disciplineCategory = #{disciplineCategory})
+			</if>
+			<if test="firstDiscipline != null and firstDiscipline != ''">
+				(firstDiscipline = #{firstDiscipline})
+			</if>
+			<if test="projectSource != null and projectSource != ''">
+				(projectSource = #{projectSource})
+			</if>
+			<if test="publicationRange != null and publicationRange != ''">
+				(publicationRange = #{publicationRange})
+			</if>
+			<if test="publicationUnit != null and publicationUnit != ''">
+				(publicationUnit = #{publicationUnit})
+			</if>
+			<if test="volumeNumber != null and volumeNumber != ''">
+				(volumeNumber = #{volumeNumber})
+			</if>
+			<if test="issue != null and issue != ''">
+				(issue = #{issue})
+			</if>
+			<if test="pageRange != null and pageRange != ''">
+				(pageRange = #{pageRange})
+			</if>
+			<if
+				test="individualWritersnumber != null and individualWritersnumber != ''">
+				(individualWritersnumber = #{individualWritersnumber})
+			</if>
+			<if test="schoolSignature != null and schoolSignature != ''">
+				(schoolSignature = #{schoolSignature})
+			</if>
+			<if test="keyWord != null and keyWord != ''">
+				(keyWord = #{keyWord})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="remarks != null and remarks != ''">
+				(remarks = #{remarks})
+			</if>
+			<if test="page != null and page != ''">
+				(page = #{page})
+			</if>
+			<if test="translation != null and translation != ''">
+				(translation = #{translation})
+			</if>
+			<if test="issNnumber != null and issNnumber != ''">
+				(issNnumber = #{issNnumber})
+			</if>
+			<if test="cnNumber != null and cnNumber != ''">
+				(cnNumber = #{cnNumber})
+			</if>
+
+		</where>
 	</select>
 
 	<select id="list" parameterType="Map" resultType="Thesis">

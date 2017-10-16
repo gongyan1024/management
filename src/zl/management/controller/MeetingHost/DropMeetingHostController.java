@@ -15,7 +15,7 @@ public class DropMeetingHostController implements Controller {
 	private MeetingHostDaoImp dao = DAOFactory.getMeetingHostDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		String resultPath = "showMeetingHost";
+		String resultPath = "showMeetingHost?pageNumber=" + request.getParameter("pageNumber") + "&jump=1";
 		ControllDeal.dropDomain(request, response, dao, MeetingHost.class);
 		try {
 			response.sendRedirect(resultPath);

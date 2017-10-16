@@ -14,4 +14,5 @@ public interface PatentResultsDao {
 	public Pager<PatentResults> find(String name);	//查,通过名字
 	public Pager<PatentResults> find(Map<String, Object> params);	//查,通过名字
 	public List<PatentResults> list();
+	public int cout(Map<String, Object> params);
 }

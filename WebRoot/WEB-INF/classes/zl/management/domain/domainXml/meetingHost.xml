@@ -58,27 +58,148 @@
 	<select id="find" parameterType="Map" resultType="MeetingHost">
 		select * from meetingHost
 		<where>
+
 			<if test="meetingName != null and meetingName != '%%'">
 				(meetingName like #{meetingName})
 			</if>
 			<if test="theme != null and theme != ''">
 				(theme = #{theme})
 			</if>
+			<if test="undertakeDepartment != null and undertakeDepartment != ''">
+				(undertakeDepartment = #{undertakeDepartment})
+			</if>
+			<if test="office != null and office != ''">
+				(office = #{office})
+			</if>
+			<if test="disciplines != null and disciplines != ''">
+				(disciplines = #{disciplines})
+			</if>
+			<if test="level1Subject != null and level1Subject != ''">
+				(level1Subject = #{level1Subject})
+			</if>
 			<if test="meetingPlace != null and meetingPlace != ''">
 				(meetingPlace = #{meetingPlace})
+			</if>
+			<if test="meetingType != null and meetingType != ''">
+				(meetingType = #{meetingType})
+			</if>
+			<if test="startDate != null and startDate != ''">
+				(startDate = #{startDate})
+			</if>
+			<if test="endDate != null and endDate != ''">
+				(endDate = #{endDate})
+			</if>
+			<if test="publications != null and publications != ''">
+				(publications = #{publications})
+			</if>
+			<if
+				test="numberOfForeignRepresentatives != null and numberOfForeignRepresentatives != ''">
+				(numberOfForeignRepresentatives =
+				#{numberOfForeignRepresentatives})
+			</if>
+			<if test="delegates != null and delegates != ''">
+				(delegates = #{delegates})
 			</if>
 			<if test="meetingContact != null and meetingContact != ''">
 				(meetingContact = #{meetingContact})
 			</if>
+			<if test="telephone != null and telephone != ''">
+				(telephone = #{telephone})
+			</if>
+			<if test="email != null and email != ''">
+				(email = #{email})
+			</if>
+			<if
+				test="formAComprehensiveReport != null and formAComprehensiveReport != ''">
+				(formAComprehensiveReport = #{formAComprehensiveReport})
+			</if>
+			<if test="meetingFor != null and meetingFor != ''">
+				(meetingFor = #{meetingFor})
+			</if>
+			<if test="sourcesOfFunds != null and sourcesOfFunds != ''">
+				(sourcesOfFunds = #{sourcesOfFunds})
+			</if>
+			<if test="sessionDescription != null and sessionDescription != ''">
+				(sessionDescription = #{sessionDescription})
+			</if>
+
 		</where>
 		limit #{pageOffset}, #{pageSize}
 	</select>
 
 	<select id="find_count" parameterType="Map" resultType="int">
-		select count(*) from meetingHost
+		select
+		count(*) from meetingHost
+		<where>
+
+			<if test="meetingName != null and meetingName != '%%'">
+				(meetingName like #{meetingName})
+			</if>
+			<if test="theme != null and theme != ''">
+				(theme = #{theme})
+			</if>
+			<if test="undertakeDepartment != null and undertakeDepartment != ''">
+				(undertakeDepartment = #{undertakeDepartment})
+			</if>
+			<if test="office != null and office != ''">
+				(office = #{office})
+			</if>
+			<if test="disciplines != null and disciplines != ''">
+				(disciplines = #{disciplines})
+			</if>
+			<if test="level1Subject != null and level1Subject != ''">
+				(level1Subject = #{level1Subject})
+			</if>
+			<if test="meetingPlace != null and meetingPlace != ''">
+				(meetingPlace = #{meetingPlace})
+			</if>
+			<if test="meetingType != null and meetingType != ''">
+				(meetingType = #{meetingType})
+			</if>
+			<if test="startDate != null and startDate != ''">
+				(startDate = #{startDate})
+			</if>
+			<if test="endDate != null and endDate != ''">
+				(endDate = #{endDate})
+			</if>
+			<if test="publications != null and publications != ''">
+				(publications = #{publications})
+			</if>
+			<if
+				test="numberOfForeignRepresentatives != null and numberOfForeignRepresentatives != ''">
+				(numberOfForeignRepresentatives = #{numberOfForeignRepresentatives})
+			</if>
+			<if test="delegates != null and delegates != ''">
+				(delegates = #{delegates})
+			</if>
+			<if test="meetingContact != null and meetingContact != ''">
+				(meetingContact = #{meetingContact})
+			</if>
+			<if test="telephone != null and telephone != ''">
+				(telephone = #{telephone})
+			</if>
+			<if test="email != null and email != ''">
+				(email = #{email})
+			</if>
+			<if
+				test="formAComprehensiveReport != null and formAComprehensiveReport != ''">
+				(formAComprehensiveReport = #{formAComprehensiveReport})
+			</if>
+			<if test="meetingFor != null and meetingFor != ''">
+				(meetingFor = #{meetingFor})
+			</if>
+			<if test="sourcesOfFunds != null and sourcesOfFunds != ''">
+				(sourcesOfFunds = #{sourcesOfFunds})
+			</if>
+			<if test="sessionDescription != null and sessionDescription != ''">
+				(sessionDescription = #{sessionDescription})
+			</if>
+
+		</where>
 	</select>
 
 	<select id="list" parameterType="Map" resultType="MeetingHost">
-		select * from meetingHost
+		select * from
+		meetingHost
 	</select>
 </mapper>

@@ -49,5 +49,10 @@ public class ResearchReportDaoImp extends BaseDao<ResearchReport> implements Res
 		return super.list(ResearchReport.class, params);
 	}
 
+	@Override
+	public int cout(Map<String, Object> params) {
+		return super.cout(ResearchReport.class, params);
+	}
+
 
 }

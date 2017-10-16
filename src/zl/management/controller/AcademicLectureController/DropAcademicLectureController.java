@@ -13,9 +13,10 @@ import zl.management.domain.AcademicLecture;
 
 public class DropAcademicLectureController implements Controller {
 	private AcademicLectureDaoImp dao = DAOFactory.getAcademicLectureDao();
+
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		String resultPath = "showAcademicLecture";
+		String resultPath = "showAcademicLecture?pageNumber=" + request.getParameter("pageNumber") + "&jump=1";
 		ControllDeal.dropDomain(request, response, dao, AcademicLecture.class);
 		try {
 			response.sendRedirect(resultPath);

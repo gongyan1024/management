@@ -23,11 +23,12 @@ public class ConfirmFindAcademicLectureController implements Controller {
 			e.printStackTrace();
 		}
 		
-		String lectureName = "%" + request.getParameter("lectureName") + "%";
-		String subordinateUnit = request.getParameter("subordinateUnit");
-		String speaker = request.getParameter("speaker");
-		String lectureLevel = request.getParameter("lectureLevel");
-		String lectureType = request.getParameter("lectureType");
+		String lectureName = "%" + request.getParameter("lectureName").trim() + "%";
+		String subordinateUnit = request.getParameter("subordinateUnit").trim();
+		String speaker = request.getParameter("speaker").trim();
+		String lectureLevel = request.getParameter("lectureLevel").trim();
+		String lectureType = request.getParameter("lectureType").trim();
+		String lectureDate = request.getParameter("lectureDate").trim();
 		
 		Map<String, Object> params = new HashMap<String, Object> ();
 		params.put("lectureName", lectureName);
@@ -35,7 +36,10 @@ public class ConfirmFindAcademicLectureController implements Controller {
 		params.put("speaker", speaker);
 		params.put("lectureLevel", lectureLevel);
 		params.put("lectureType", lectureType);
+		params.put("lectureDate", lectureDate);
 		
+		request.getSession().setAttribute("isFind", "1");
+		request.getSession().setAttribute("findParams", params);
 		ControllDeal.showDomain(request, response, dao, AcademicLecture.class, params);
 		return "/WEB-INF/jsp/academicLecture/showAcademicLecture.jsp";
 	}

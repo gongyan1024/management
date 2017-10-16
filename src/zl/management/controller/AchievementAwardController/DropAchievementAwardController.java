@@ -15,7 +15,7 @@ public class DropAchievementAwardController implements Controller {
 	private AchievementAwardDaoImp dao = DAOFactory.getAchievementAwardDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		String resultPath = "showAchievementAward";
+		String resultPath = "showAchievementAward?pageNumber=" + request.getParameter("pageNumber") + "&jump=1";
 		ControllDeal.dropDomain(request, response, dao, AchievementAward.class);
 		try {
 			response.sendRedirect(resultPath);

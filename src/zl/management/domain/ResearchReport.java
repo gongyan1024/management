@@ -1,5 +1,7 @@
 ﻿package zl.management.domain;
 
+import java.sql.Date;
+
 public class ResearchReport {
 	private int id;
 	private String remarks;   //备注
@@ -9,7 +11,7 @@ public class ResearchReport {
 	private String subordinateUnit;   //所属单位
 	private String unitType;   //单位类型
 	private String adoptionUnit;   //采纳单位
-	private String adoptionTime;   //采纳时间
+	private Date adoptionTime;   //采纳时间
 	private String accepted;   //是否被采纳
 	private String cooperativeUnit;   //合作单位
 	private String forwardingResults;   //转发成果
@@ -20,7 +22,7 @@ public class ResearchReport {
 	private String author;   //所有作者
 	private String firstAuthorNumber;   //第一作者职工号
 	private String schoolSignature;   //学校署名
-	private String wordsNumber;   //字数
+	private double wordsNumber;   //字数
 	private String auditStatus;   //审核状态
 	public int getId() {
 		return id;
@@ -71,10 +73,10 @@ public class ResearchReport {
 	public void setAdoptionUnit(String adoptionUnit) {
 		this.adoptionUnit = adoptionUnit;
 	}
-	public String getAdoptionTime() {
+	public Date getAdoptionTime() {
 		return adoptionTime;
 	}
-	public void setAdoptionTime(String adoptionTime) {
+	public void setAdoptionTime(Date adoptionTime) {
 		this.adoptionTime = adoptionTime;
 	}
 	public String getAccepted() {
@@ -137,10 +139,10 @@ public class ResearchReport {
 	public void setSchoolSignature(String schoolSignature) {
 		this.schoolSignature = schoolSignature;
 	}
-	public String getWordsNumber() {
+	public double getWordsNumber() {
 		return wordsNumber;
 	}
-	public void setWordsNumber(String wordsNumber) {
+	public void setWordsNumber(double wordsNumber) {
 		this.wordsNumber = wordsNumber;
 	}
 	public String getAuditStatus() {

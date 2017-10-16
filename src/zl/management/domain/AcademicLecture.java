@@ -1,5 +1,7 @@
 ﻿package zl.management.domain;
 
+import java.sql.Date;
+
 //学术讲座
 public class AcademicLecture {
 	private int id;
@@ -7,7 +9,7 @@ public class AcademicLecture {
 	private String subordinateUnit;   //所属单位
 	private String teachingAndResearchSection;   //教研室
 	private String lectureType;   //讲座类型
-	private String lectureDate;   //讲座日期
+	private Date lectureDate;   //讲座日期
 	private String lectureLevel;   //讲座级别
 	private String lectureAssignment;   //讲座归属
 	private String speaker;   //主讲人
@@ -16,7 +18,7 @@ public class AcademicLecture {
 	private String titleOfSpeaker;   //主讲人职称
 	private String venue;   //讲座地点
 	private String auditStatus;   //审核状态
-	private String attendanceAtLectures;   //参加讲座人数
+	private int attendanceAtLectures;   //参加讲座人数
 	private String relatedDisciplines;   //相关学科
 	private String lectureObjects;   //讲座对象
 	private String emcee;   //主持人
@@ -53,10 +55,10 @@ public class AcademicLecture {
 	public void setLectureType(String lectureType) {
 		this.lectureType = lectureType;
 	}
-	public String getLectureDate() {
+	public Date getLectureDate() {
 		return lectureDate;
 	}
-	public void setLectureDate(String lectureDate) {
+	public void setLectureDate(Date lectureDate) {
 		this.lectureDate = lectureDate;
 	}
 	public String getLectureLevel() {
@@ -107,10 +109,10 @@ public class AcademicLecture {
 	public void setAuditStatus(String auditStatus) {
 		this.auditStatus = auditStatus;
 	}
-	public String getAttendanceAtLectures() {
+	public int getAttendanceAtLectures() {
 		return attendanceAtLectures;
 	}
-	public void setAttendanceAtLectures(String attendanceAtLectures) {
+	public void setAttendanceAtLectures(int attendanceAtLectures) {
 		this.attendanceAtLectures = attendanceAtLectures;
 	}
 	public String getRelatedDisciplines() {

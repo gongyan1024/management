@@ -53,18 +53,51 @@
 	<select id="find" parameterType="Map" resultType="AttendMeeting">
 		select * from attendMeeting
 		<where>
-			<if test="attendee != null and attendee != '%%'">
-				(attendee like #{attendee})
+
+			<if test="attendee != null and attendee != ''">
+				(attendee = #{attendee})
 			</if>
-			<if test="conferenceName != null and conferenceName != ''">
-				(conferenceName = #{conferenceName})
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if
+				test="teachingResearchSection != null and teachingResearchSection != ''">
+				(teachingResearchSection = #{teachingResearchSection})
+			</if>
+			<if test="conferenceName != null and conferenceName != '%%'">
+				(conferenceName like #{conferenceName})
 			</if>
 			<if test="sponsor != null and sponsor != ''">
 				(sponsor = #{sponsor})
 			</if>
+			<if test="meetingType != null and meetingType != ''">
+				(meetingType = #{meetingType})
+			</if>
+			<if test="disciplineCategory != null and disciplineCategory != ''">
+				(disciplineCategory = #{disciplineCategory})
+			</if>
+			<if test="participantAddress != null and participantAddress != ''">
+				(participantAddress = #{participantAddress})
+			</if>
 			<if test="participantDate != null and participantDate != ''">
 				(participantDate = #{participantDate})
 			</if>
+			<if test="submitThesis != null and submitThesis != ''">
+				(submitThesis = #{submitThesis})
+			</if>
+			<if test="thesisTitle != null and thesisTitle != ''">
+				(thesisTitle = #{thesisTitle})
+			</if>
+			<if test="invitedReport != null and invitedReport != ''">
+				(invitedReport = #{invitedReport})
+			</if>
+			<if test="reportTopic != null and reportTopic != ''">
+				(reportTopic = #{reportTopic})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+
 		</where>
 		limit #{pageOffset}, #{pageSize}
 	</select>
@@ -72,6 +105,53 @@
 	<select id="find_count" parameterType="Map" resultType="int">
 		select
 		count(*) from attendMeeting
+		<where>
+
+			<if test="attendee != null and attendee != ''">
+				(attendee = #{attendee})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if
+				test="teachingResearchSection != null and teachingResearchSection != ''">
+				(teachingResearchSection = #{teachingResearchSection})
+			</if>
+			<if test="conferenceName != null and conferenceName != '%%'">
+				(conferenceName like #{conferenceName})
+			</if>
+			<if test="sponsor != null and sponsor != ''">
+				(sponsor = #{sponsor})
+			</if>
+			<if test="meetingType != null and meetingType != ''">
+				(meetingType = #{meetingType})
+			</if>
+			<if test="disciplineCategory != null and disciplineCategory != ''">
+				(disciplineCategory = #{disciplineCategory})
+			</if>
+			<if test="participantAddress != null and participantAddress != ''">
+				(participantAddress = #{participantAddress})
+			</if>
+			<if test="participantDate != null and participantDate != ''">
+				(participantDate = #{participantDate})
+			</if>
+			<if test="submitThesis != null and submitThesis != ''">
+				(submitThesis = #{submitThesis})
+			</if>
+			<if test="thesisTitle != null and thesisTitle != ''">
+				(thesisTitle = #{thesisTitle})
+			</if>
+			<if test="invitedReport != null and invitedReport != ''">
+				(invitedReport = #{invitedReport})
+			</if>
+			<if test="reportTopic != null and reportTopic != ''">
+				(reportTopic = #{reportTopic})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+
+		</where>
 	</select>
 
 	<select id="list" parameterType="Map" resultType="AttendMeeting">

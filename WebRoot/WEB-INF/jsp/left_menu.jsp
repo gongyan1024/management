@@ -4,40 +4,18 @@
 	<ul id="nav_dot">
 		<li>
 			<h4 class="M1">
-				<span></span>科研办公
-			</h4>
-			<div class="list-item none">
-				<a href="">暂无</a>
-			</div>
-		</li>
-		<li>
-			<h4 class="M1">
 				<span></span>科研队伍
 			</h4>
 			<div class="list-item none">
-				<a href="showResearchs">科研人员</a> <a href="">单位资料</a> <a href="">下属科室</a>
+				<a href="showResearchs">科研人员</a>
 			</div>
-		</li>
-		<li>
-			<h4 class="M1">
-				<span></span>科研平台
-			</h4>
 		</li>
 		<li>
 			<h4 class="M1">
 				<span></span>科研项目
 			</h4>
 			<div class="list-item none">
-				<a href="showProjectApproval">项目管理</a> <a href="">项目变更</a> <a href="">项目中检</a> <a
-					href="">项目结项</a>
-			</div>
-		</li>
-		<li>
-			<h4 class="M1">
-				<span></span>科研经费
-			</h4>
-			<div class="list-item none">
-				<a href="">暂无</a>
+				<a href="showProjectApproval">项目管理</a> 
 			</div>
 		</li>
 		<li>

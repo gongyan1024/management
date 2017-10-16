@@ -15,4 +15,5 @@ public interface AttendMeetingDao {
 	public Pager<AttendMeeting> find(String name);	//查,通过名字
 	public Pager<AttendMeeting> find(Map<String, Object> params);	//查,通过名字
 	public List<AttendMeeting> list();
+	public int cout(Map<String, Object> params);
 }

@@ -49,5 +49,10 @@ public class MeetingHostDaoImp extends BaseDao<MeetingHost> implements MeetingHo
 		return super.list(MeetingHost.class, params);
 	}
 
+	@Override
+	public int cout(Map<String, Object> params) {
+		return super.cout(MeetingHost.class, params);
+	}
+
 
 }

@@ -1,5 +1,7 @@
 ﻿package zl.management.domain;
 
+import java.sql.Date;
+
 //著作成果
 public class Achievements {
 	private int id;
@@ -12,13 +14,13 @@ public class Achievements {
 	private String firstAuthorNumber; //第一作者职工号
 	private String thePublisher; //出版单位
 	private String publicationUnitType; //出版单位类型
-	private String publicationDate; //出版时间
+	private Date publicationDate; //出版时间
 	private String publishedIn; //出版地
 	private String booksCategories; //著作类别
 	private String disciplines; //学科门类
 	private String levelOneSubject; //一级学科
 	private String projectSource; //项目来源
-	private String wordsNumber; //总字数
+	private double wordsNumber; //总字数
 	private String foreignLanguage; //是否译成外文电话
 	private String schoolName; //学校署名
 	private String languages; //语种
@@ -86,10 +88,10 @@ public class Achievements {
 	public void setPublicationUnitType(String publicationUnitType) {
 		this.publicationUnitType = publicationUnitType;
 	}
-	public String getPublicationDate() {
+	public Date getPublicationDate() {
 		return publicationDate;
 	}
-	public void setPublicationDate(String publicationDate) {
+	public void setPublicationDate(Date publicationDate) {
 		this.publicationDate = publicationDate;
 	}
 	public String getPublishedIn() {
@@ -122,10 +124,10 @@ public class Achievements {
 	public void setProjectSource(String projectSource) {
 		this.projectSource = projectSource;
 	}
-	public String getWordsNumber() {
+	public double getWordsNumber() {
 		return wordsNumber;
 	}
-	public void setWordsNumber(String wordsNumber) {
+	public void setWordsNumber(double wordsNumber) {
 		this.wordsNumber = wordsNumber;
 	}
 	public String getForeignLanguage() {

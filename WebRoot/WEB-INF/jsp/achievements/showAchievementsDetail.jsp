@@ -94,7 +94,7 @@
 					value="${requestScope.r.projectSource}">
 			</tr>
 			<tr>
-				<td>总字数</td>
+				<td>总字数(万字)</td>
 				<td><input type="text" id="lg-form" name="wordsNumber"
 					value="${requestScope.r.wordsNumber}">
 			</tr>

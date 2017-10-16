@@ -14,4 +14,5 @@ public interface IdentificationResultDao {
 	public Pager<IdentificationResult> find(String name);	//查,通过名字
 	public Pager<IdentificationResult> find(Map<String, Object> params);	//查,通过名字
 	public List<IdentificationResult> list();
+	public int cout(Map<String, Object> params);
 }

@@ -1,5 +1,7 @@
 package zl.management.controller.PatentResultsController;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,7 +16,8 @@ public class ShowPatentResultsController implements Controller {
 	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		ControllDeal.showDomain(request, response, dao, PatentResults.class, null);
+		Map<String, Object> params = ControllDeal.judgeIsFind(request, response);
+		ControllDeal.showDomain(request, response, dao, PatentResults.class, params);
 		return "/WEB-INF/jsp/patentResults/showPatentResults.jsp";
 	}
 }

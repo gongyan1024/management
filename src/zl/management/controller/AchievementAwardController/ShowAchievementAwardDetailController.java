@@ -1,8 +1,11 @@
 package zl.management.controller.AchievementAwardController;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import zl.management.controller.ControllDeal;
 import zl.management.controller.Controller;
 import zl.management.dao.DAOFactory;
 import zl.management.dao.imp.AchievementAwardDaoImp;
@@ -12,9 +15,8 @@ public class ShowAchievementAwardDetailController implements Controller {
 	private AchievementAwardDaoImp dao = DAOFactory.getAchievementAwardDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		int id = Integer.parseInt(request.getParameter("id"));
-		AchievementAward obj = dao.load(id);
-		request.setAttribute("r", obj);
+		Map<String, Object> params = ControllDeal.judgeIsFind(request, response);
+		ControllDeal.showDomain(request, response, dao, AchievementAward.class, params);
 		return "/WEB-INF/jsp/achievementAward/showAchievementAwardDetail.jsp";
 	}
 }

@@ -23,13 +23,13 @@ public class ConfirmFindPatentResultsController implements Controller {
 			e.printStackTrace();
 		}
 		
-		String patentName = "%" + request.getParameter("patentName") + "%";
-		String firstInventor = request.getParameter("firstInventor");
-		String patentInventor = request.getParameter("patentInventor");
-		String applicationNumber = request.getParameter("applicationNumber");
-		String patentStatus = request.getParameter("patentStatus");
-		String openNo = request.getParameter("openNo");
-		String licenseNo = request.getParameter("licenseNo");
+		String patentName = "%" + request.getParameter("patentName").trim() + "%";
+		String firstInventor = request.getParameter("firstInventor").trim();
+		String patentInventor = request.getParameter("patentInventor").trim();
+		String applicationNumber = request.getParameter("applicationNumber").trim();
+		String patentStatus = request.getParameter("patentStatus").trim();
+		String openNo = request.getParameter("openNo").trim();
+		String licenseNo = request.getParameter("licenseNo").trim();
 		
 		Map<String, Object> params = new HashMap<String, Object> ();
 		params.put("patentName", patentName);
@@ -40,6 +40,8 @@ public class ConfirmFindPatentResultsController implements Controller {
 		params.put("openNo", openNo);
 		params.put("licenseNo", licenseNo);
 		
+		request.getSession().setAttribute("isFind", "1");
+		request.getSession().setAttribute("findParams", params);
 		ControllDeal.showDomain(request, response, dao, PatentResults.class, params);
 		return "/WEB-INF/jsp/patentResults/showPatentResults.jsp";
 	}

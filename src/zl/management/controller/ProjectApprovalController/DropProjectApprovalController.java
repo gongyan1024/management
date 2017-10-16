@@ -15,7 +15,7 @@ public class DropProjectApprovalController implements Controller {
 	private ProjectApprovalDaoImp dao = DAOFactory.getProjectApprovalDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		String resultPath = "showProjectApproval";
+		String resultPath = "showProjectApproval?pageNumber=" + request.getParameter("pageNumber") + "&jump=1";
 		ControllDeal.dropDomain(request, response, dao, ProjectApproval.class);
 		try {
 			response.sendRedirect(resultPath);

@@ -1,5 +1,7 @@
 ﻿package zl.management.domain;
 
+import java.sql.Date;
+
 //项目立项
 public class ProjectApproval {
 	private int id;
@@ -20,12 +22,12 @@ public class ProjectApproval {
 	private String approvalNumber;   //批准号
 	private String projectSourceUnit;   //项目来源单位
 	private String rank;   //承担单位排名
-	private String projectTime;   //立项日期
-	private String startTime;   //开始时间
-	private String plannedCompletionDate;   //计划完成日期
-	private String dateOfEntry;   //结项日期
+	private Date projectTime;   //立项日期
+	private Date startTime;   //开始时间
+	private Date plannedCompletionDate;   //计划完成日期
+	private Date dateOfEntry;   //结项日期
 	private String gradeOfKnot;   //结项等级
-	private String actualCompletionTime;   //实际完成时间
+	private Date actualCompletionTime;   //实际完成时间
 	private String formOfAchievement;   //成果形式
 	private String subTopic;   //是否为子课题
 	private String typeOfContract;   //合同类型
@@ -45,7 +47,7 @@ public class ProjectApproval {
 	private String auditStatus;   //审核状态
 	private String remarks;   //备注
 	private String titleOfPersonInCharge;   //负责人职称号
-	private String startStopTime;   //起止时间
+	private Date startStopTime;   //起止时间
 	private String arrivalExpenses;   //到账经费
 	private String expenditure;   //支出经费
 	private String managementFees;   //已提管理费
@@ -157,28 +159,28 @@ public class ProjectApproval {
 	public void setRank(String rank) {
 		this.rank = rank;
 	}
-	public String getProjectTime() {
+	public Date getProjectTime() {
 		return projectTime;
 	}
-	public void setProjectTime(String projectDate) {
+	public void setProjectTime(Date projectDate) {
 		this.projectTime = projectDate;
 	}
-	public String getStartTime() {
+	public Date getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(String startTime) {
+	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
-	public String getPlannedCompletionDate() {
+	public Date getPlannedCompletionDate() {
 		return plannedCompletionDate;
 	}
-	public void setPlannedCompletionDate(String plannedCompletionDate) {
+	public void setPlannedCompletionDate(Date plannedCompletionDate) {
 		this.plannedCompletionDate = plannedCompletionDate;
 	}
-	public String getDateOfEntry() {
+	public Date getDateOfEntry() {
 		return dateOfEntry;
 	}
-	public void setDateOfEntry(String dateOfEntry) {
+	public void setDateOfEntry(Date dateOfEntry) {
 		this.dateOfEntry = dateOfEntry;
 	}
 	public String getGradeOfKnot() {
@@ -187,10 +189,10 @@ public class ProjectApproval {
 	public void setGradeOfKnot(String gradeOfKnot) {
 		this.gradeOfKnot = gradeOfKnot;
 	}
-	public String getActualCompletionTime() {
+	public Date getActualCompletionTime() {
 		return actualCompletionTime;
 	}
-	public void setActualCompletionTime(String actualCompletionTime) {
+	public void setActualCompletionTime(Date actualCompletionTime) {
 		this.actualCompletionTime = actualCompletionTime;
 	}
 	public String getFormOfAchievement() {
@@ -307,10 +309,10 @@ public class ProjectApproval {
 	public void setTitleOfPersonInCharge(String titleOfPersonInCharge) {
 		this.titleOfPersonInCharge = titleOfPersonInCharge;
 	}
-	public String getStartStopTime() {
+	public Date getStartStopTime() {
 		return startStopTime;
 	}
-	public void setStartStopTime(String startStopTime) {
+	public void setStartStopTime(Date startStopTime) {
 		this.startStopTime = startStopTime;
 	}
 	public String getArrivalExpenses() {

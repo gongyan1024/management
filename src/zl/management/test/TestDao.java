@@ -5,6 +5,7 @@ import org.junit.Test;
 import zl.management.dao.DAOFactory;
 import zl.management.dao.imp.AcademicLectureDaoImp;
 import zl.management.domain.AcademicLecture;
+import zl.management.domain.User;
 
 public class TestDao {
 	private static AcademicLectureDaoImp dao = DAOFactory.getAcademicLectureDao();
@@ -22,5 +23,6 @@ public class TestDao {
 	
 	@Test
 	public void testUpdate() {
+		System.out.println(User.class.getName());
 	}
 }

@@ -1,5 +1,7 @@
 package zl.management.controller.ArtWorkController;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,7 +16,8 @@ public class ShowArtWorkController implements Controller {
 	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		ControllDeal.showDomain(request, response, dao, ArtWork.class, null);
+		Map<String, Object> params = ControllDeal.judgeIsFind(request, response);
+		ControllDeal.showDomain(request, response, dao, ArtWork.class, params);
 		return "/WEB-INF/jsp/artWork/showArtWork.jsp";
 	}
 

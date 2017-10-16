@@ -23,12 +23,12 @@ public class ConfirmFindResearchReportController implements Controller {
 			e.printStackTrace();
 		}
 		
-		String reportTopic = "%" + request.getParameter("reportTopic") + "%";
-		String firstAuthorName = request.getParameter("firstAuthorName");
-		String researchSection = request.getParameter("researchSection");
-		String author = "%" + request.getParameter("author") + "%";
-		String firstAuthorNumber = request.getParameter("firstAuthorNumber");
-		String auditStatus = request.getParameter("auditStatus");
+		String reportTopic = "%" + request.getParameter("reportTopic").trim() + "%";
+		String firstAuthorName = request.getParameter("firstAuthorName").trim();
+		String researchSection = request.getParameter("researchSection").trim();
+		String author = "%" + request.getParameter("author").trim() + "%";
+		String firstAuthorNumber = request.getParameter("firstAuthorNumber").trim();
+		String auditStatus = request.getParameter("auditStatus").trim();
 		
 		Map<String, Object> params = new HashMap<String, Object> ();
 		params.put("reportTopic", reportTopic);
@@ -38,6 +38,8 @@ public class ConfirmFindResearchReportController implements Controller {
 		params.put("firstAuthorNumber", firstAuthorNumber);
 		params.put("auditStatus", auditStatus);
 		
+		request.getSession().setAttribute("isFind", "1");
+		request.getSession().setAttribute("findParams", params);
 		ControllDeal.showDomain(request, response, dao, ResearchReport.class, params);
 		return "/WEB-INF/jsp/researchReport/showResearchReport.jsp";
 	}

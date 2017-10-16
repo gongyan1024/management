@@ -15,7 +15,7 @@ public class DropArtWorkController implements Controller {
 	private ArtWorkDaoImp dao = DAOFactory.getArtWorkDao();
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		String resultPath = "showArtWork";
+		String resultPath = "showArtWork?pageNumber=" + request.getParameter("pageNumber") + "&jump=1";
 		ControllDeal.dropDomain(request, response, dao, ArtWork.class);
 		try {
 			response.sendRedirect(resultPath);

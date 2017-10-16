@@ -30,11 +30,15 @@
 								type="submit" value="导入" id="lg-form">
 						</form>
 					</c:if>
-
 					<form
-						action="${pageContext.request.contextPath}/exportAcademicLecture"
+						action="${pageContext.request.contextPath}/exportAcademicLecture?type=0"
 						method="post" class="function">
-						<input type="submit" value="导出" id="lg-form">
+						<input type="submit" value="导出(当前查询)" id="lg-form">
+					</form>
+					<form
+						action="${pageContext.request.contextPath}/exportAcademicLecture?type=1"
+						method="post" class="function">
+						<input type="submit" value="导出(全)" id="lg-form">
 					</form>
 					<form
 						action="${pageContext.request.contextPath}/findAcademicLecture"
@@ -48,44 +52,56 @@
 					</form>
 				</div>
 				<div>
-					<table>
+					<div>
 						<h3 align="center">学术讲座相关操作</h3>
-						<thead>
-							<tr>
-								<td>讲座名称</td>
-								<td>所属单位</td>
-								<td>讲座类型</td>
-								<td>讲座日期</td>
-								<td>主讲人</td>
-								<td>审核状态</td>
+					</div>
+					<form
+						action="${pageContext.request.contextPath}/dropAcademicLecture?pageNumber=${pageNumber}&jump=1"
+						method="post">
+						<input type="submit" value="删除" id="lg-form"
+							style='color: Red; width: 53px; height: auto; position: absolute; left:20.1%; top:10.1%'
+							onclick="return confirm('确定删除选择项？')">
+						<table>
+
+							<thead>
+								<tr>
 								<td>操作</td>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${entryList}" var="entry">
-								<tr align="center">
-									<td><a href="showAcademicLectureDetail?id=${entry.id}">${entry.lectureName}</a></td>
-									<td>${entry.subordinateUnit}</td>
-									<td>${entry.lectureType}</td>
-									<td>${entry.lectureDate}</td>
-									<td>${entry.speaker}</td>
-									<td>${entry.auditStatus}</td>
-									<td><a href="editAcademicLecture?id=${entry.id}">编辑</a> <a
-										href="showDownloadAcademicLecture?id=${entry.id}">下载</a> <c:if
-											test="${user.type == 1}">
-											<a href="dropAcademicLecture?id=${entry.id}">删除</a>
-										</c:if></td>
+									<td>讲座名称</td>
+									<td>所属单位</td>
+									<td>讲座类型</td>
+									<td>讲座日期</td>
+									<td>主讲人</td>
+									<td>审核状态</td>
+									<td>操作</td>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach items="${entryList}" var="entry">
+									<tr align="center">
+										<td><input type="checkbox" name="check" id="check"
+											value="${entry.id}" /></td>
+										<td><a href="showAcademicLectureDetail?id=${entry.id}">${entry.lectureName}
+										</a></td>
+										<td>${entry.subordinateUnit}</td>
+										<td>${entry.lectureType}</td>
+										<td>${entry.lectureDate}</td>
+										<td>${entry.speaker}</td>
+										<td>${entry.auditStatus}</td>
+										<td><a href="editAcademicLecture?id=${entry.id}">编辑</a> <a
+											href="showDownloadAcademicLecture?id=${entry.id}">下载</a>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</form>
 					<tfoot>
 						<tr>
-							<td colspan="5"><form action="showAcademicLecture" method="post"
-									id="navigatorForm">
-									<a href="showAcademicLecture?pageNumber=${1}">首页</a>
+							<td colspan="5"><form action="showAcademicLecture"
+									method="post" id="navigatorForm">
+									<a href="showAcademicLecture?pageNumber=${1}&jump=1">首页</a>
 									<c:if test="${pageNumber>1}">
-										<a href="showAcademicLecture?pageNumber=${pageNumber-1}">上一页</a>
+										<a
+											href="showAcademicLecture?pageNumber=${pageNumber-1}&jump=1">上一页</a>
 									</c:if>
 									跳转到第 <select name="pageNumber" onchange="gotoSelectedPage()">
 										<c:forEach begin="1" end="${totalPages}" step="1"
@@ -95,15 +111,16 @@
 													<option value="${pageIndex}" selected="selected">${pageIndex}</option>
 												</c:when>
 												<c:otherwise>
-													<option value="${pageIndex}">${pageIndex}</option>
+													<option value="${pageIndex}&jump=1">${pageIndex}</option>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>
 									</select>页
 									<c:if test="${pageNumber<totalPages}">
-										<a href="showAcademicLecture?pageNumber=${pageNumber+1}">下一页</a>
+										<a
+											href="showAcademicLecture?pageNumber=${pageNumber+1}&jump=1">下一页</a>
 									</c:if>
-									<a href="showAcademicLecture?pageNumber=${totalPages}">末页</a>
+									<a href="showAcademicLecture?pageNumber=${totalPages}&jump=1">末页</a>
 								</form></td>
 						</tr>
 					</tfoot>
@@ -113,7 +130,7 @@
 	</div>
 	<div class="bottom"></div>
 	<script>navList(12);
-	</script>
+    </script>
 </body>
 </html>
 <script type="text/javascript">

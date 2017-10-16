@@ -49,5 +49,18 @@ public class AchievementsDaoImp extends BaseDao<Achievements> implements Achieve
 		return super.list(Achievements.class, params);
 	}
 
+	/* (non Javadoc) 
+	 * @Title: cout
+	 * @Description: TODO
+	 * @param params
+	 * @return 
+	 * @see zl.management.dao.AchievementsDao#cout(java.util.Map) 
+	 */
+	@Override
+	public int cout(Map<String, Object> params) {
+		// TODO 自动生成的方法存根
+		return 0;
+	}
+
 
 }

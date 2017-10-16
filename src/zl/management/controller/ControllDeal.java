@@ -6,6 +6,8 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,50 +30,68 @@ import zl.management.util.UDUtil;
  * @author: zhenlin
  * @date: 2017年10月5日 下午9:34:35  
  */
-/** 
- * @ClassName: ControllDeal 
+/**
+ * @ClassName: ControllDeal
  * @Description: TODO
  * @author: zhenlin
- * @date: 2017年10月5日 下午9:39:54  
+ * @date: 2017年10月5日 下午9:39:54
  */
 public class ControllDeal {
 
-	/** 
-	 * @Title: showDomain 
+	/**
+	 * @Title: showDomain
 	 * @Description: 将数据库的数据以表格的形式展示
-	 * @param request	 
+	 * @param request
 	 * @param response
-	 * @param dao 
+	 * @param dao
 	 * @param clz
-	 * @param params 这里是筛选条件
-	 * @return: void	 
+	 * @param params
+	 *            这里是筛选条件
+	 * @return: void
 	 */
 	public static <T> void showDomain(HttpServletRequest request, HttpServletResponse response, BaseDao<T> dao,
 			Class<T> clz, Map<String, Object> params) {
-		SystemContext.setPageSize(8);
 
+		SystemContext.setPageSize(8);
 		int index = 1;
 		String indexStr = request.getParameter("pageNumber");
+		
+		int indexOfJump = -1;
+		if (indexStr != null)
+			indexOfJump = indexStr.indexOf("&jump=");
+
 		if (indexStr != null && !"".equals(indexStr) && !"0".equals(indexStr)) {
-			index = Integer.parseInt(indexStr);
+			if (indexOfJump == -1)
+				index = Integer.parseInt(indexStr);
+			else
+				index = Integer.parseInt(indexStr.substring(0, indexOfJump));
+		}
+
+		if (params == null)
+			params = new HashMap<String, Object>();
+		int totalRec = dao.cout(clz, params);
+		int pageNumber = (totalRec % SystemContext.getPageSize() == 0) ? totalRec / SystemContext.getPageSize()
+				: totalRec / SystemContext.getPageSize() + 1;
+
+		if (index > pageNumber && pageNumber != 0) {
+			index = pageNumber;
 		}
 
 		SystemContext.setPageIndex(index);
 		SystemContext.setPageOffset((index - 1) * SystemContext.getPageSize());
-		if (params == null)
-			params = new HashMap<String, Object>();
 		Pager<T> page = dao.find(clz, params);
+		page.setTotalRecord(totalRec);
+		page.setTotalPage(pageNumber);
 		page.setPageIndex(index);
 		List<T> entryList = page.getDatas();
 
-		request.setAttribute("entryList", entryList);
+		request.getSession().setAttribute("entryList", entryList);
 		request.setAttribute("totalPages", page.getTotalPage());
 		request.setAttribute("pageNumber", index);
 	}
-	
-	
-	/** 
-	 * @Title: createObjByForm 
+
+	/**
+	 * @Title: createObjByForm
 	 * @Description: 根据新增表格来创建对象, 并存取在数据库
 	 * @param request
 	 * @param response
@@ -79,7 +99,8 @@ public class ControllDeal {
 	 * @param dao
 	 * @return: void
 	 */
-	public static <T> void createObjByForm(HttpServletRequest request, HttpServletResponse response, Class<T> clz, BaseDao<T> dao) {
+	public static <T> void createObjByForm(HttpServletRequest request, HttpServletResponse response, Class<T> clz,
+			BaseDao<T> dao) {
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e1) {
@@ -96,15 +117,17 @@ public class ControllDeal {
 		Field[] fields = clz.getDeclaredFields();
 		String fieldName = null;
 		for (int i = 0; i < fields.length; ++i) {
-			fieldName = fields[i].getName();
+			Field tmpField = fields[i];
+			Class<?> paramClz = tmpField.getType();
+			fieldName = tmpField.getName();
 			if ("evidences".equals(fieldName) || "id".equals(fieldName))
 				continue;
 
 			String methodName = "set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
 			Method method = null;
 			try {
-				method = clz.getMethod(methodName, new Class[] { String.class });
-				method.invoke(t, new Object[] { request.getParameter(fieldName) });
+				method = clz.getMethod(methodName, new Class[] { paramClz });
+				convertParamType(paramClz, method, t, request.getParameter(fieldName));
 			} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e) {
 				e.printStackTrace();
@@ -113,8 +136,8 @@ public class ControllDeal {
 		dao.add(t);
 	}
 
-	/** 
-	 * @Title: sendMessage 
+	/**
+	 * @Title: sendMessage
 	 * @Description: 跳转页面
 	 * @param request
 	 * @param response
@@ -133,8 +156,8 @@ public class ControllDeal {
 		}
 	}
 
-	/** 
-	 * @Title: comfirmEditDomain 
+	/**
+	 * @Title: comfirmEditDomain
 	 * @Description: 编辑信息更新到数据库
 	 * @param request
 	 * @param response
@@ -154,15 +177,17 @@ public class ControllDeal {
 		Field[] fields = clz.getDeclaredFields();
 		String fieldName = null;
 		for (int i = 0; i < fields.length; ++i) {
+			Field tmpField = fields[i];
+			Class<?> paramClz = tmpField.getType();
 			fieldName = fields[i].getName();
-			if ("evidences".equals(fieldName) || "id".equals(fieldName))
+			if ("id".equals(fieldName))
 				continue;
 
 			String methodName = "set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
 			Method method = null;
 			try {
-				method = clz.getMethod(methodName, new Class[] { String.class });
-				method.invoke(t, new Object[] { request.getParameter(fieldName) });
+				method = clz.getMethod(methodName, new Class[] { paramClz });
+				convertParamType(paramClz, method, t, request.getParameter(fieldName));
 			} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e) {
 				e.printStackTrace();
@@ -172,8 +197,8 @@ public class ControllDeal {
 		dao.update(t);
 	}
 
-	/** 
-	 * @Title: uploadFile 
+	/**
+	 * @Title: uploadFile
 	 * @Description: 上传文件佐证,将文件上传到数据库
 	 * @param request
 	 * @param response
@@ -219,8 +244,8 @@ public class ControllDeal {
 		}
 	}
 
-	/** 
-	 * @Title: showDownload 
+	/**
+	 * @Title: showDownload
 	 * @Description: 将佐证文件列表传给页面
 	 * @param request
 	 * @param response
@@ -256,8 +281,8 @@ public class ControllDeal {
 		}
 	}
 
-	/** 
-	 * @Title: dropDomain 
+	/**
+	 * @Title: dropDomain
 	 * @Description: 删除单行记录
 	 * @param request
 	 * @param response
@@ -267,12 +292,21 @@ public class ControllDeal {
 	 */
 	public static <T> void dropDomain(HttpServletRequest request, HttpServletResponse response, BaseDao<T> dao,
 			Class<T> clz) {
-		int id = Integer.parseInt(request.getParameter("id"));
-		dao.delete(clz, id);
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String[] ids = request.getParameterValues("check");
+		if(ids == null) return;
+		for (int i = 0; i < ids.length; ++i) {
+			int id = Integer.parseInt(ids[i]);
+			dao.delete(clz, id);
+		}
 	}
 
-	/** 
-	 * @Title: readExcel 
+	/**
+	 * @Title: readExcel
 	 * @Description: 读取excel文件并将数据存到数据库
 	 * @param request
 	 * @param response
@@ -319,23 +353,25 @@ public class ControllDeal {
 					List<Object> row = sheet.get(i);
 					int fieldIndex = 0;
 					for (int j = 0; j < row.size(); ++j) {
+
 						// 这里可能取到excel表中没有但是实体类存在的字段,比如id
 						fieldName = fields[fieldIndex].getName();
 						if ("id".equals(fieldName)) {
 							fieldName = fields[++fieldIndex].getName();
 						}
-
-						fieldIndex++;
+						Field tmpField = fields[fieldIndex];
+						Class<?> paramClz = tmpField.getType();
 
 						String methodName = "set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
 						Method method = null;
 						try {
-							method = clz.getMethod(methodName, new Class[] { String.class });
-							method.invoke(obj, new Object[] { (row.get(j)) });
+							method = clz.getMethod(methodName, new Class[] { paramClz });
+							convertParamType(paramClz, method, obj, (String) row.get(j));
 						} catch (NoSuchMethodException | SecurityException | IllegalAccessException
 								| IllegalArgumentException | InvocationTargetException e) {
 							e.printStackTrace();
 						}
+						fieldIndex++;
 					}
 					newInfo.add(obj);
 				}
@@ -414,7 +450,7 @@ public class ControllDeal {
 			sendMessage(request, response, "导入成功,1秒后为您自动跳到" + info, showPath);
 		}
 	}
-	
+
 	public static <T> void deleteFile(HttpServletRequest request, HttpServletResponse response, BaseDao<T> dao,
 			Class<T> clz, String resPath) {
 		try {
@@ -425,11 +461,90 @@ public class ControllDeal {
 		String path = request.getParameter("path");
 		File file = new File(path);
 		file.delete();
-		dao.delete(clz,path);
+		dao.delete(clz, path);
 		try {
 			response.sendRedirect(resPath);
- 		} catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private static <T> void convertParamType(Class<?> paramClz, Method method, T t, String value)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		Object resParam = value;
+		Date date = null;
+		if (paramClz == Date.class) {
+			if (!value.equals("")) {
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				java.util.Date d = null;
+				try {
+					d = format.parse(value);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				date = new Date(d.getTime());
+			}
+			resParam = date;
+		} else if (paramClz == Integer.class || paramClz == int.class) {
+			Integer num = 0;
+			if (value != null || value != "") {
+				num = Integer.parseInt(value);
+			}
+			resParam = num;
+		} else if (paramClz == Boolean.class) {
+			// TODO
+		} else if (paramClz == Double.class || paramClz == double.class) {
+			Double num = 0.0;
+			if (value != null || value != "") {
+				num = Double.parseDouble(value);
+			}
+			resParam = num;
+		}
+		method.invoke(t, new Object[] { resParam });
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T> void exportExcel(HttpServletRequest request, HttpServletResponse response, BaseDao<T> dao,
+			String fileName, Class<?> clz, String[] headers) {
+		List<T> list = null;
+		int type = Integer.parseInt(request.getParameter("type"));
+		if (type == 0) {
+			list = (List<T>) request.getSession().getAttribute("entryList");
+		} else if (type == 1) {
+			Map<String, Object> params = new HashMap<String, Object>();
+			list = (List<T>) dao.list(clz, params);
+		}
+		try {
+			response.setContentType("application/x-download");
+			response.setCharacterEncoding("utf-8");
+			response.setHeader("Content-disposition",
+					"attachment;filename=" + new String(fileName.getBytes("utf-8"), "iso8859-1") + ".xls");
+			ExcelUtil.exportExcel(fileName, headers, list, response.getOutputStream());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static Map<String, Object> judgeIsFind(HttpServletRequest request, HttpServletResponse response) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		String index = request.getParameter("pageNumber");
+		String jump = null;
+		if (index != null && index.contains("&jump=1"))
+			jump = "1";
+		else {
+			jump = request.getParameter("jump");
+		}
+
+		if (jump == null) {
+			request.getSession().setAttribute("isFind", "0");
+			request.getSession().setAttribute("findParams", params);
+		} else if ("1".equals(jump)) {
+			String flag = (String) request.getSession().getAttribute("isFind");
+			if ("1".equals(flag)) {
+				params = (HashMap<String, Object>) request.getSession().getAttribute("findParams");
+			}
+		}
+		return params;
 	}
 }

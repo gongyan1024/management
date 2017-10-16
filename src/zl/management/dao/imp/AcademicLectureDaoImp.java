@@ -49,5 +49,10 @@ public class AcademicLectureDaoImp extends BaseDao<AcademicLecture> implements A
 		return super.list(AcademicLecture.class, params);
 	}
 
+	@Override
+	public int cout(Map<String, Object> params) {
+		return super.cout(AcademicLecture.class, params);
+	}
+
 
 }

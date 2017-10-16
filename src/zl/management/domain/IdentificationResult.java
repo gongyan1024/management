@@ -1,5 +1,7 @@
 ﻿package zl.management.domain;
 
+import java.sql.Date;
+
 //鉴定成果
 public class IdentificationResult {
 	private int id;
@@ -11,7 +13,7 @@ public class IdentificationResult {
 	private String firstAuthorNumber;   //第一作者职工号
 	private String author;   //成果作者
 	private String identificationDepartment;   //鉴定部门
-	private String identificationDate;   //鉴定日期
+	private Date identificationDate;   //鉴定日期
 	private String expertConclusion;   //鉴定结论
 	private String identificationNumber;   //鉴定号
 	private String completionForm;   //完成形式
@@ -83,10 +85,10 @@ public class IdentificationResult {
 	public void setIdentificationDepartment(String identificationDepartment) {
 		this.identificationDepartment = identificationDepartment;
 	}
-	public String getIdentificationDate() {
+	public Date getIdentificationDate() {
 		return identificationDate;
 	}
-	public void setIdentificationDate(String identificationDate) {
+	public void setIdentificationDate(Date identificationDate) {
 		this.identificationDate = identificationDate;
 	}
 	public String getExpertConclusion() {

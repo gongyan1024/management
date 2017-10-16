@@ -14,4 +14,5 @@ public interface ThesisDao {
 	public Pager<Thesis> find(String name);	//查,通过名字
 	public Pager<Thesis> find(Map<String, Object> params);	//查,通过名字
 	public List<Thesis> list();
+	public int cout(Map<String, Object> params);
 }

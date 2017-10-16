@@ -1,4 +1,7 @@
 ﻿package zl.management.domain;
+
+import java.sql.Date;
+
 //专利成果
 public class PatentResults {
 	private int id;
@@ -12,11 +15,11 @@ public class PatentResults {
 	private String patentscope; //专利范围
 	private String patentStatus; //专利状态
 	private String applicationNumber; //申请号
-	private String applicationDate; //申请日期
+	private Date applicationDate; //申请日期
 	private String openNo; //公开号
-	private String openDate; //公开日期
+	private Date openDate; //公开日期
 	private String licenseNo; //授权号
-	private String licenseDate; //授权日期
+	private Date licenseDate; //授权日期
 	private String theSchoolName; //学校署名
 	private String auditStatus; //审核状态
 	private String remark; //备注
@@ -88,10 +91,10 @@ public class PatentResults {
 	public void setApplicationNumber(String applicationNumber) {
 		this.applicationNumber = applicationNumber;
 	}
-	public String getApplicationDate() {
+	public Date getApplicationDate() {
 		return applicationDate;
 	}
-	public void setApplicationDate(String applicationDate) {
+	public void setApplicationDate(Date applicationDate) {
 		this.applicationDate = applicationDate;
 	}
 	public String getOpenNo() {
@@ -100,10 +103,10 @@ public class PatentResults {
 	public void setOpenNo(String openNo) {
 		this.openNo = openNo;
 	}
-	public String getOpenDate() {
+	public Date getOpenDate() {
 		return openDate;
 	}
-	public void setOpenDate(String openDate) {
+	public void setOpenDate(Date openDate) {
 		this.openDate = openDate;
 	}
 	public String getLicenseNo() {
@@ -112,10 +115,10 @@ public class PatentResults {
 	public void setLicenseNo(String licenseNo) {
 		this.licenseNo = licenseNo;
 	}
-	public String getLicenseDate() {
+	public Date getLicenseDate() {
 		return licenseDate;
 	}
-	public void setLicenseDate(String licenseDate) {
+	public void setLicenseDate(Date licenseDate) {
 		this.licenseDate = licenseDate;
 	}
 	public String getTheSchoolName() {

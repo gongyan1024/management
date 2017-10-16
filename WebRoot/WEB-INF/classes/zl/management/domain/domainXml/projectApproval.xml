@@ -9,10 +9,14 @@
 		subordinateUnit, projectNature, projectLevel, projectMembers,
 		projectYear, projectClassification, projectSubclass, projectStatus,
 		isChange, postponed, approvalNumber, projectSourceUnit,
-		rank, projectTime, startTime, plannedCompletionDate,
-		dateOfEntry, gradeOfKnot, actualCompletionTime, formOfAchievement,
-		subTopic, typeOfContract, contractFunds, outlayCardNumber,
-		matchingFunds, matchingCardNumber, fileBox, disciplineCategory,
+		rank,
+		projectTime, startTime, plannedCompletionDate,
+		dateOfEntry,
+		gradeOfKnot, actualCompletionTime, formOfAchievement,
+		subTopic,
+		typeOfContract, contractFunds, outlayCardNumber,
+		matchingFunds,
+		matchingCardNumber, fileBox, disciplineCategory,
 		subjectClassification, projectSource, researchCategory,
 		nationalBigEconomy, nationalMiddleEconomy, formOfCooperation,
 		socioEconomicGoals, auditStatus, remarks, titleOfPersonInCharge,
@@ -23,13 +27,20 @@
 		#{projectClassification}, #{projectSubclass}, #{projectStatus},
 		#{isChange}, #{postponed}, #{approvalNumber}, #{projectSourceUnit},
 		#{rank}, #{projectTime}, #{startTime},
-		#{plannedCompletionDate}, #{dateOfEntry}, #{gradeOfKnot},
-		#{actualCompletionTime}, #{formOfAchievement}, #{subTopic},
-		#{typeOfContract}, #{contractFunds}, #{outlayCardNumber},
-		#{matchingFunds}, #{matchingCardNumber}, #{fileBox},
-		#{disciplineCategory}, #{subjectClassification}, #{projectSource},
-		#{researchCategory}, #{nationalBigEconomy}, #{nationalMiddleEconomy},
-		#{formOfCooperation}, #{socioEconomicGoals}, #{auditStatus},
+		#{plannedCompletionDate},
+		#{dateOfEntry}, #{gradeOfKnot},
+		#{actualCompletionTime},
+		#{formOfAchievement}, #{subTopic},
+		#{typeOfContract}, #{contractFunds},
+		#{outlayCardNumber},
+		#{matchingFunds}, #{matchingCardNumber},
+		#{fileBox},
+		#{disciplineCategory}, #{subjectClassification},
+		#{projectSource},
+		#{researchCategory}, #{nationalBigEconomy},
+		#{nationalMiddleEconomy},
+		#{formOfCooperation}, #{socioEconomicGoals},
+		#{auditStatus},
 		#{remarks}, #{titleOfPersonInCharge}, #{startStopTime},
 		#{arrivalExpenses}, #{expenditure}, #{managementFees})
 
@@ -100,15 +111,136 @@
 			<if test="personInCharge != null and personInCharge != ''">
 				(personInCharge = #{personInCharge})
 			</if>
+			<if test="staffNumber != null and staffNumber != ''">
+				(staffNumber = #{staffNumber})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if test="projectNature != null and projectNature != ''">
+				(projectNature = #{projectNature})
+			</if>
+			<if test="projectLevel != null and projectLevel != ''">
+				(projectLevel = #{projectLevel})
+			</if>
 			<if test="projectMembers != null and projectMembers != '%%'">
 				(projectMembers like #{projectMembers})
-			</if>
-			<if test="projectStatus != null and projectStatus != ''">
-				(projectStatus = #{projectStatus})
 			</if>
 			<if test="projectYear != null and projectYear != ''">
 				(projectYear = #{projectYear})
 			</if>
+			<if test="projectClassification != null and projectClassification != ''">
+				(projectClassification = #{projectClassification})
+			</if>
+			<if test="projectSubclass != null and projectSubclass != ''">
+				(projectSubclass = #{projectSubclass})
+			</if>
+			<if test="projectStatus != null and projectStatus != ''">
+				(projectStatus = #{projectStatus})
+			</if>
+			<if test="isChange != null and isChange != ''">
+				(isChange = #{isChange})
+			</if>
+			<if test="postponed != null and postponed != ''">
+				(postponed = #{postponed})
+			</if>
+			<if test="approvalNumber != null and approvalNumber != ''">
+				(approvalNumber = #{approvalNumber})
+			</if>
+			<if test="projectSourceUnit != null and projectSourceUnit != ''">
+				(projectSourceUnit = #{projectSourceUnit})
+			</if>
+			<if test="rank != null and rank != ''">
+				(rank = #{rank})
+			</if>
+			<if test="projectTime != null and projectTime != ''">
+				(projectTime = #{projectTime})
+			</if>
+			<if test="startTime != null and startTime != ''">
+				(startTime = #{startTime})
+			</if>
+			<if test="plannedCompletionDate != null and plannedCompletionDate != ''">
+				(plannedCompletionDate = #{plannedCompletionDate})
+			</if>
+			<if test="dateOfEntry != null and dateOfEntry != ''">
+				(dateOfEntry = #{dateOfEntry})
+			</if>
+			<if test="gradeOfKnot != null and gradeOfKnot != ''">
+				(gradeOfKnot = #{gradeOfKnot})
+			</if>
+			<if test="actualCompletionTime != null and actualCompletionTime != ''">
+				(actualCompletionTime = #{actualCompletionTime})
+			</if>
+			<if test="formOfAchievement != null and formOfAchievement != ''">
+				(formOfAchievement = #{formOfAchievement})
+			</if>
+			<if test="subTopic != null and subTopic != ''">
+				(subTopic = #{subTopic})
+			</if>
+			<if test="typeOfContract != null and typeOfContract != ''">
+				(typeOfContract = #{typeOfContract})
+			</if>
+			<if test="contractFunds != null and contractFunds != ''">
+				(contractFunds = #{contractFunds})
+			</if>
+			<if test="outlayCardNumber != null and outlayCardNumber != ''">
+				(outlayCardNumber = #{outlayCardNumber})
+			</if>
+			<if test="matchingFunds != null and matchingFunds != ''">
+				(matchingFunds = #{matchingFunds})
+			</if>
+			<if test="matchingCardNumber != null and matchingCardNumber != ''">
+				(matchingCardNumber = #{matchingCardNumber})
+			</if>
+			<if test="fileBox != null and fileBox != ''">
+				(fileBox = #{fileBox})
+			</if>
+			<if test="disciplineCategory != null and disciplineCategory != ''">
+				(disciplineCategory = #{disciplineCategory})
+			</if>
+			<if test="subjectClassification != null and subjectClassification != ''">
+				(subjectClassification = #{subjectClassification})
+			</if>
+			<if test="projectSource != null and projectSource != ''">
+				(projectSource = #{projectSource})
+			</if>
+			<if test="researchCategory != null and researchCategory != ''">
+				(researchCategory = #{researchCategory})
+			</if>
+			<if test="nationalBigEconomy != null and nationalBigEconomy != ''">
+				(nationalBigEconomy = #{nationalBigEconomy})
+			</if>
+			<if test="nationalMiddleEconomy != null and nationalMiddleEconomy != ''">
+				(nationalMiddleEconomy = #{nationalMiddleEconomy})
+			</if>
+			<if test="formOfCooperation != null and formOfCooperation != ''">
+				(formOfCooperation = #{formOfCooperation})
+			</if>
+			<if test="socioEconomicGoals != null and socioEconomicGoals != ''">
+				(socioEconomicGoals = #{socioEconomicGoals})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="remarks != null and remarks != ''">
+				(remarks = #{remarks})
+			</if>
+			<if test="titleOfPersonInCharge != null and titleOfPersonInCharge != ''">
+				(titleOfPersonInCharge = #{titleOfPersonInCharge})
+			</if>
+			<if test="startStopTime != null and startStopTime != ''">
+				(startStopTime = #{startStopTime})
+			</if>
+			<if test="arrivalExpenses != null and arrivalExpenses != ''">
+				(arrivalExpenses = #{arrivalExpenses})
+			</if>
+			<if test="expenditure != null and expenditure != ''">
+				(expenditure = #{expenditure})
+			</if>
+			<if test="managementFees != null and managementFees != ''">
+				(managementFees = #{managementFees})
+			</if>
+
 		</where>
 		limit #{pageOffset}, #{pageSize}
 	</select>
@@ -116,6 +248,147 @@
 	<select id="find_count" parameterType="Map" resultType="int">
 		select
 		count(*) from projectApproval
+		<where>
+
+			<if test="entryName != null and entryName != '%%'">
+				(entryName like #{entryName})
+			</if>
+			<if test="projectNumber != null and projectNumber != ''">
+				(projectNumber = #{projectNumber})
+			</if>
+			<if test="personInCharge != null and personInCharge != ''">
+				(personInCharge = #{personInCharge})
+			</if>
+			<if test="staffNumber != null and staffNumber != ''">
+				(staffNumber = #{staffNumber})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if test="projectNature != null and projectNature != ''">
+				(projectNature = #{projectNature})
+			</if>
+			<if test="projectLevel != null and projectLevel != ''">
+				(projectLevel = #{projectLevel})
+			</if>
+			<if test="projectMembers != null and projectMembers != '%%'">
+				(projectMembers like #{projectMembers})
+			</if>
+			<if test="projectYear != null and projectYear != ''">
+				(projectYear = #{projectYear})
+			</if>
+			<if test="projectClassification != null and projectClassification != ''">
+				(projectClassification = #{projectClassification})
+			</if>
+			<if test="projectSubclass != null and projectSubclass != ''">
+				(projectSubclass = #{projectSubclass})
+			</if>
+			<if test="projectStatus != null and projectStatus != ''">
+				(projectStatus = #{projectStatus})
+			</if>
+			<if test="isChange != null and isChange != ''">
+				(isChange = #{isChange})
+			</if>
+			<if test="postponed != null and postponed != ''">
+				(postponed = #{postponed})
+			</if>
+			<if test="approvalNumber != null and approvalNumber != ''">
+				(approvalNumber = #{approvalNumber})
+			</if>
+			<if test="projectSourceUnit != null and projectSourceUnit != ''">
+				(projectSourceUnit = #{projectSourceUnit})
+			</if>
+			<if test="rank != null and rank != ''">
+				(rank = #{rank})
+			</if>
+			<if test="projectTime != null and projectTime != ''">
+				(projectTime = #{projectTime})
+			</if>
+			<if test="startTime != null and startTime != ''">
+				(startTime = #{startTime})
+			</if>
+			<if test="plannedCompletionDate != null and plannedCompletionDate != ''">
+				(plannedCompletionDate = #{plannedCompletionDate})
+			</if>
+			<if test="dateOfEntry != null and dateOfEntry != ''">
+				(dateOfEntry = #{dateOfEntry})
+			</if>
+			<if test="gradeOfKnot != null and gradeOfKnot != ''">
+				(gradeOfKnot = #{gradeOfKnot})
+			</if>
+			<if test="actualCompletionTime != null and actualCompletionTime != ''">
+				(actualCompletionTime = #{actualCompletionTime})
+			</if>
+			<if test="formOfAchievement != null and formOfAchievement != ''">
+				(formOfAchievement = #{formOfAchievement})
+			</if>
+			<if test="subTopic != null and subTopic != ''">
+				(subTopic = #{subTopic})
+			</if>
+			<if test="typeOfContract != null and typeOfContract != ''">
+				(typeOfContract = #{typeOfContract})
+			</if>
+			<if test="contractFunds != null and contractFunds != ''">
+				(contractFunds = #{contractFunds})
+			</if>
+			<if test="outlayCardNumber != null and outlayCardNumber != ''">
+				(outlayCardNumber = #{outlayCardNumber})
+			</if>
+			<if test="matchingFunds != null and matchingFunds != ''">
+				(matchingFunds = #{matchingFunds})
+			</if>
+			<if test="matchingCardNumber != null and matchingCardNumber != ''">
+				(matchingCardNumber = #{matchingCardNumber})
+			</if>
+			<if test="fileBox != null and fileBox != ''">
+				(fileBox = #{fileBox})
+			</if>
+			<if test="disciplineCategory != null and disciplineCategory != ''">
+				(disciplineCategory = #{disciplineCategory})
+			</if>
+			<if test="subjectClassification != null and subjectClassification != ''">
+				(subjectClassification = #{subjectClassification})
+			</if>
+			<if test="projectSource != null and projectSource != ''">
+				(projectSource = #{projectSource})
+			</if>
+			<if test="researchCategory != null and researchCategory != ''">
+				(researchCategory = #{researchCategory})
+			</if>
+			<if test="nationalBigEconomy != null and nationalBigEconomy != ''">
+				(nationalBigEconomy = #{nationalBigEconomy})
+			</if>
+			<if test="nationalMiddleEconomy != null and nationalMiddleEconomy != ''">
+				(nationalMiddleEconomy = #{nationalMiddleEconomy})
+			</if>
+			<if test="formOfCooperation != null and formOfCooperation != ''">
+				(formOfCooperation = #{formOfCooperation})
+			</if>
+			<if test="socioEconomicGoals != null and socioEconomicGoals != ''">
+				(socioEconomicGoals = #{socioEconomicGoals})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="remarks != null and remarks != ''">
+				(remarks = #{remarks})
+			</if>
+			<if test="titleOfPersonInCharge != null and titleOfPersonInCharge != ''">
+				(titleOfPersonInCharge = #{titleOfPersonInCharge})
+			</if>
+			<if test="startStopTime != null and startStopTime != ''">
+				(startStopTime = #{startStopTime})
+			</if>
+			<if test="arrivalExpenses != null and arrivalExpenses != ''">
+				(arrivalExpenses = #{arrivalExpenses})
+			</if>
+			<if test="expenditure != null and expenditure != ''">
+				(expenditure = #{expenditure})
+			</if>
+			<if test="managementFees != null and managementFees != ''">
+				(managementFees = #{managementFees})
+			</if>
+		</where>
 	</select>
 
 	<select id="list" parameterType="Map" resultType="ProjectApproval">

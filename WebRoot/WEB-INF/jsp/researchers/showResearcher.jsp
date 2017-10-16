@@ -30,10 +30,15 @@
 								type="submit" value="导入" id="lg-form">
 						</form>
 					</c:if>
-
-					<form action="${pageContext.request.contextPath}/exportResearchs"
+					<form
+						action="${pageContext.request.contextPath}/exportResearchs?type=0"
 						method="post" class="function">
-						<input type="submit" value="导出" id="lg-form">
+						<input type="submit" value="导出(当前查询)" id="lg-form">
+					</form>
+					<form
+						action="${pageContext.request.contextPath}/exportResearchs?type=1"
+						method="post" class="function">
+						<input type="submit" value="导出(全)" id="lg-form">
 					</form>
 					<form action="${pageContext.request.contextPath}/findResearcher"
 						method="post" class="function">
@@ -45,48 +50,58 @@
 					</form>
 				</div>
 				<div>
-					<table>
+					<div>
 						<h3 align="center">科研人员相关操作</h3>
-						<thead>
-							<tr>
-								<td>人员名称</td>
-								<td>职工号</td>
-								<td>科研单位</td>
-								<td>最后学位</td>
-								<td>职称</td>
-								<td>一级学科</td>
-								<td>科研详情</td>
-								<td>审核状态</td>
-								<td>操作</td>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${entryList}" var="entry">
-								<tr align="center">
-									<td><a href="showResearcherDetail?id=${entry.id}">${entry.name}</a></td>
-									<td>${entry.staffNumber}</td>
-									<td>${entry.researchUnit}</td>
-									<td>${entry.finalDegree}</td>
-									<td>${entry.title}</td>
-									<td>${entry.firstDiscipline}</td>
-									<td>暂无</td>
-									<td>${entry.approvalStatus}</td>
-									<td><a href="editResearchs?id=${entry.id}">编辑</a> <a
-										href="showDownloadResearchs?id=${entry.id}">下载</a> <c:if
-											test="${user.type == 1}">
-											<a href="dropResearcher?id=${entry.id}">删除</a>
-										</c:if></td>
+					</div>
+					<form
+						action="${pageContext.request.contextPath}/dropResearcher?pageNumber=${pageNumber}&jump=1"
+						method="post">
+						<input type="submit" value="删除" id="lg-form"
+							style='color: Red; width: 53px; height: auto; position: absolute; left:20.1%; top:10.1%'
+							onclick="return confirm('确定删除选择项？')">
+						<table>
+
+							<thead>
+								<tr>
+									<td>选择
+									<td>人员名称</td>
+									<td>职工号</td>
+									<td>科研单位</td>
+									<td>最后学位</td>
+									<td>职称</td>
+									<td>一级学科</td>
+									<td>科研详情</td>
+									<td>审核状态</td>
+									<td>操作</td>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach items="${entryList}" var="entry">
+									<tr align="center">
+										<td><input type="checkbox" name="check" id="check"
+											value="${entry.id}" /></td>
+										<td><a href="showResearcherDetail?id=${entry.id}">${entry.name}</a></td>
+										<td>${entry.staffNumber}</td>
+										<td>${entry.researchUnit}</td>
+										<td>${entry.finalDegree}</td>
+										<td>${entry.title}</td>
+										<td>${entry.firstDiscipline}</td>
+										<td>暂无</td>
+										<td>${entry.approvalStatus}</td>
+										<td><a href="editResearchs?id=${entry.id}">编辑</a> <a
+											href="showDownloadResearchs?id=${entry.id}">下载</a>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</form>
 					<tfoot>
 						<tr>
 							<td colspan="5"><form action="showResearchs" method="post"
 									id="navigatorForm">
-									<a href="showResearchs?pageNumber=${1}">首页</a>
+									<a href="showResearchs?pageNumber=${1}&jump=1">首页</a>
 									<c:if test="${pageNumber>1}">
-										<a href="showResearchs?pageNumber=${pageNumber-1}">上一页</a>
+										<a href="showResearchs?pageNumber=${pageNumber-1}&jump=1">上一页</a>
 									</c:if>
 									跳转到第 <select name="pageNumber" onchange="gotoSelectedPage()">
 										<c:forEach begin="1" end="${totalPages}" step="1"
@@ -96,15 +111,15 @@
 													<option value="${pageIndex}" selected="selected">${pageIndex}</option>
 												</c:when>
 												<c:otherwise>
-													<option value="${pageIndex}">${pageIndex}</option>
+													<option value="${pageIndex}&jump=1">${pageIndex}</option>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>
 									</select>页
 									<c:if test="${pageNumber<totalPages}">
-										<a href="showResearchs?pageNumber=${pageNumber+1}">下一页</a>
+										<a href="showResearchs?pageNumber=${pageNumber+1}&jump=1">下一页</a>
 									</c:if>
-									<a href="showResearchs?pageNumber=${totalPages}">末页</a>
+									<a href="showResearchs?pageNumber=${totalPages}&jump=1">末页</a>
 								</form></td>
 						</tr>
 					</tfoot>
@@ -118,8 +133,8 @@
 </body>
 </html>
 <script type="text/javascript">
-    function gotoSelectedPage() {
-        var x = document.getElementById("navigatorForm");
-        x.submit();
-    }
+	function gotoSelectedPage() {
+		var x = document.getElementById("navigatorForm");
+		x.submit();
+	}
 </script>

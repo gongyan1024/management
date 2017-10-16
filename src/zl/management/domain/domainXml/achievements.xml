@@ -57,8 +57,12 @@
 	<select id="find" parameterType="Map" resultType="Achievements">
 		select * from achievements
 		<where>
+
 			<if test="bookName != null and bookName != '%%'">
 				(bookName like #{bookName})
+			</if>
+			<if test="firstAuthorType != null and firstAuthorType != ''">
+				(firstAuthorType = #{firstAuthorType})
 			</if>
 			<if test="firstAuthor != null and firstAuthor != ''">
 				(firstAuthor = #{firstAuthor})
@@ -66,12 +70,61 @@
 			<if test="subordinateUnit != null and subordinateUnit != ''">
 				(subordinateUnit = #{subordinateUnit})
 			</if>
+			<if test="office != null and office != ''">
+				(office = #{office})
+			</if>
+			<if test="participatedAuthor != null and participatedAuthor != ''">
+				(participatedAuthor = #{participatedAuthor})
+			</if>
 			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
 				(firstAuthorNumber = #{firstAuthorNumber})
+			</if>
+			<if test="thePublisher != null and thePublisher != ''">
+				(thePublisher = #{thePublisher})
+			</if>
+			<if test="publicationUnitType != null and publicationUnitType != ''">
+				(publicationUnitType = #{publicationUnitType})
+			</if>
+			<if test="publicationDate != null and publicationDate != ''">
+				(publicationDate = #{publicationDate})
+			</if>
+			<if test="publishedIn != null and publishedIn != ''">
+				(publishedIn = #{publishedIn})
 			</if>
 			<if test="booksCategories != null and booksCategories != ''">
 				(booksCategories = #{booksCategories})
 			</if>
+			<if test="disciplines != null and disciplines != ''">
+				(disciplines = #{disciplines})
+			</if>
+			<if test="levelOneSubject != null and levelOneSubject != ''">
+				(levelOneSubject = #{levelOneSubject})
+			</if>
+			<if test="projectSource != null and projectSource != ''">
+				(projectSource = #{projectSource})
+			</if>
+			<if test="wordsNumber != null and wordsNumber != ''">
+				(wordsNumber = #{wordsNumber})
+			</if>
+			<if test="foreignLanguage != null and foreignLanguage != ''">
+				(foreignLanguage = #{foreignLanguage})
+			</if>
+			<if test="schoolName != null and schoolName != ''">
+				(schoolName = #{schoolName})
+			</if>
+			<if test="languages != null and languages != ''">
+				(languages = #{languages})
+			</if>
+			<if test="isbn != null and isbn != ''">
+				(isbn = #{isbn})
+			</if>
+			<if test="profile != null and profile != ''">
+				(profile = #{profile})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+
 		</where>
 		limit #{pageOffset}, #{pageSize}
 	</select>
@@ -79,6 +132,74 @@
 	<select id="find_count" parameterType="Map" resultType="int">
 		select
 		count(*) from achievements
+		<where>
+			<if test="bookName != null and bookName != '%%'">
+				(bookName like #{bookName})
+			</if>
+			<if test="firstAuthorType != null and firstAuthorType != ''">
+				(firstAuthorType = #{firstAuthorType})
+			</if>
+			<if test="firstAuthor != null and firstAuthor != ''">
+				(firstAuthor = #{firstAuthor})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if test="office != null and office != ''">
+				(office = #{office})
+			</if>
+			<if test="participatedAuthor != null and participatedAuthor != ''">
+				(participatedAuthor = #{participatedAuthor})
+			</if>
+			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
+				(firstAuthorNumber = #{firstAuthorNumber})
+			</if>
+			<if test="thePublisher != null and thePublisher != ''">
+				(thePublisher = #{thePublisher})
+			</if>
+			<if test="publicationUnitType != null and publicationUnitType != ''">
+				(publicationUnitType = #{publicationUnitType})
+			</if>
+			<if test="publicationDate != null and publicationDate != ''">
+				(publicationDate = #{publicationDate})
+			</if>
+			<if test="publishedIn != null and publishedIn != ''">
+				(publishedIn = #{publishedIn})
+			</if>
+			<if test="booksCategories != null and booksCategories != ''">
+				(booksCategories = #{booksCategories})
+			</if>
+			<if test="disciplines != null and disciplines != ''">
+				(disciplines = #{disciplines})
+			</if>
+			<if test="levelOneSubject != null and levelOneSubject != ''">
+				(levelOneSubject = #{levelOneSubject})
+			</if>
+			<if test="projectSource != null and projectSource != ''">
+				(projectSource = #{projectSource})
+			</if>
+			<if test="wordsNumber != null and wordsNumber != ''">
+				(wordsNumber = #{wordsNumber})
+			</if>
+			<if test="foreignLanguage != null and foreignLanguage != ''">
+				(foreignLanguage = #{foreignLanguage})
+			</if>
+			<if test="schoolName != null and schoolName != ''">
+				(schoolName = #{schoolName})
+			</if>
+			<if test="languages != null and languages != ''">
+				(languages = #{languages})
+			</if>
+			<if test="isbn != null and isbn != ''">
+				(isbn = #{isbn})
+			</if>
+			<if test="profile != null and profile != ''">
+				(profile = #{profile})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+		</where>
 	</select>
 
 	<select id="list" parameterType="Map" resultType="Achievements">

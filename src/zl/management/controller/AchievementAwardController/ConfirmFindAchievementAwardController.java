@@ -23,11 +23,11 @@ public class ConfirmFindAchievementAwardController implements Controller {
 			e.printStackTrace();
 		}
 		
-		String bonusName = "%" + request.getParameter("bonusName") + "%";
-		String firstAdult = request.getParameter("firstAdult");
-		String outcomeName = request.getParameter("outcomeName");
-		String issuingAuthority = request.getParameter("issuingAuthority");
-		String awardLevel = request.getParameter("awardLevel");
+		String bonusName = "%" + request.getParameter("bonusName").trim() + "%";
+		String firstAdult = request.getParameter("firstAdult").trim();
+		String outcomeName = "%" + request.getParameter("outcomeName").trim() + "%";
+		String issuingAuthority = request.getParameter("issuingAuthority").trim();
+		String awardLevel = request.getParameter("awardLevel").trim();
 		
 		Map<String, Object> params = new HashMap<String, Object> ();
 		params.put("bonusName", bonusName);
@@ -35,7 +35,11 @@ public class ConfirmFindAchievementAwardController implements Controller {
 		params.put("outcomeName", outcomeName);
 		params.put("issuingAuthority", issuingAuthority);
 		params.put("awardLevel", awardLevel);
+		request.getSession().setAttribute("isFind", "1");
+		request.getSession().setAttribute("findParams", params);
 		
+		request.getSession().setAttribute("isFind", "1");
+		request.getSession().setAttribute("findParams", params);
 		ControllDeal.showDomain(request, response, dao, AchievementAward.class, params);
 		return "/WEB-INF/jsp/achievementAward/showAchievementAward.jsp";
 	}

@@ -11,7 +11,6 @@ import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -57,7 +56,7 @@ public class ExcelUtil {
 				Field field = fields[i];
 				String fieldName = field.getName();
 				// 并不需要传佐证和id
-				if ("evidences".equals(fieldName) || "id".equals(fieldName))
+				if ("id".equals(fieldName))
 					continue;
 
 				// 获取方法名
@@ -71,14 +70,12 @@ public class ExcelUtil {
 						textValue = "";
 					} else if (value instanceof Boolean) {
 						boolean bValue = (Boolean) value;
-						textValue = "男";
+						textValue = "是";
 						if (!bValue) {
-							textValue = "女";
+							textValue = "否";
 						}
-					} else if (value instanceof Date) {
-						Date date = new Date();
-						SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
-						textValue = format.format(date);
+					} else if (value instanceof java.sql.Date) {
+						textValue = value.toString();
 					} else {
 						textValue = value.toString();
 					}
